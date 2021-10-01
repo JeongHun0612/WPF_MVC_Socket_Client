@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="WPF_MVC_Socket_Client.View.ConnectSelectView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:view="clr-namespace:WPF_MVC_Socket_Client.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type GroupBox}">
+            <Setter Property="BorderBrush" Value="{StaticResource ContentBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="0.1"/>
+            <Setter Property="Foreground" Value="{StaticResource ContentForegroundBrush}"/>
+            <Setter Property="FontFamily" Value="/Fonts/#Roboto Medium"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Margin="5">
+        <TabControl Background="{StaticResource ContentBackgroundBrush}" BorderBrush="{x:Null}" >
+            <TabItem Style="{DynamicResource TabItemStyle}" Header="TCP">
+                <GroupBox Header="네트워크 설정" FontFamily="/Fonts/#KoPubDotum Medium">
+                    <view:ConnectTCPView/>
+                </GroupBox>
+            </TabItem>
+            <TabItem Style="{DynamicResource TabItemStyle}" Header="UDP">
+                <GroupBox Header="네트워크 설정" FontFamily="/Fonts/#KoPubDotum Medium">
+                    <Button Content="UDP" Width="100" Height="50"/>
+                </GroupBox>
+            </TabItem>
+            <TabItem Style="{DynamicResource TabItemStyle}" Header="Serial">
+                <GroupBox Header="네트워크 설정" FontFamily="/Fonts/#KoPubDotum Medium">
+                    <Button Content="Serail" Width="100" Height="50"/>
+                </GroupBox>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

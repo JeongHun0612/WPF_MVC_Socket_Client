@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="WPF_MVC_Socket_Client.View.ReceiveOptionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_MVC_Socket_Client.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="220" d:DesignWidth="300">
+    
+    <GroupBox Header="송수신 설정" Foreground="{StaticResource ContentForegroundBrush}" BorderBrush="{StaticResource ContentBorderBrush}" BorderThickness="0.1" FontFamily="/Fonts/#KoPubDotum Medium" Margin="8">
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Margin="0,20,0,0">
+                <TextBlock Text="문자열 표시방식" FontSize="11"/>
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                    <RadioButton GroupName="StringPrintMethod" Content="HEX"/>
+                    <RadioButton GroupName="StringPrintMethod" Content="ASCII" Margin="10,0,0,0"/>
+                </StackPanel>
+            </Grid> 
+        </Grid>
+    </GroupBox>
+</UserControl>
