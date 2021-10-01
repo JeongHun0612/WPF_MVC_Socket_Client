@@ -18,8 +18,8 @@
             <Grid Grid.Row="0" Margin="0,20,0,0">
                 <TextBlock Text="문자열 표시방식" FontSize="11"/>
                 <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-                    <RadioButton GroupName="StringPrintMethod" Content="HEX"/>
-                    <RadioButton GroupName="StringPrintMethod" Content="ASCII" Margin="10,0,0,0"/>
+                    <RadioButton GroupName="StringPrintMethod" Content="HEX" Foreground="{StaticResource ContentForegroundBrush}" FontFamily="Fonts/#Roboto Medium"/>
+                    <RadioButton GroupName="StringPrintMethod" Content="ASCII" Foreground="{StaticResource ContentForegroundBrush}" FontFamily="Fonts/#Roboto Medium" Margin="10,0,0,0"/>
                 </StackPanel>
             </Grid> 
         </Grid>
