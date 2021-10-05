@@ -31,3 +31,8 @@ C:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debu
 C:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\IPMaskedTextBox.baml
 C:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\Style\FocusVisualStyle.baml
 C:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\Style\TextBoxStyle.baml
+C:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\DataReceiveView.g.cs
+C:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\DataReceiveView.baml
+C:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\DataSendView.g.cs
+C:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\DataSendView.baml
+C:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\Style\ScrollBarStyle.baml

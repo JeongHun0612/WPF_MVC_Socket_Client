@@ -4,23 +4,25 @@
     <!-- Base Color -->
     <Color x:Key="Color_000">#282D37</Color>
     <Color x:Key="Color_001">#313743</Color>
-    <Color x:Key="Color_002">#7A7A7A</Color>
+    <Color x:Key="Color_002">#3D4554</Color>
+    <Color x:Key="Color_003">#4C5669</Color>
+    <Color x:Key="Color_004">#5F6C83</Color>
+    <Color x:Key="Color_005">#7A7A7A</Color>
 
-    <!--<Color x:Key="Color_000">#2D2D2D</Color>-->
-    <!--<Color x:Key="Color_002">#2D2D2D</Color>-->
-
-    <!--#30a58a 민트-->
-    <!--#FF569DE5 SkyBlue-->
     
-
-    <!-- Main Color -->
-    <Color x:Key="Color_003">#FFF1F1F1</Color>
-    <Color x:Key="Color_004">#30A58A</Color>
+    <!-- Point Color -->
+    <Color x:Key="Color_006">#FFF1F1F1</Color>
+    
+    <Color x:Key="Color_007">#30A58A</Color>
+    <Color x:Key="Color_008">#26846E</Color>
+    
+    <!--<Color x:Key="Color_014">#1E6A58</Color>
+    <Color x:Key="Color_013">#42C8A9</Color>-->
 
     <!-- Style Color -->
-    <Color x:Key="Color_005">DarkGray</Color>
-    <Color x:Key="Color_006">Gray</Color>
-    <Color x:Key="Color_007">Red</Color>
-    <Color x:Key="Color_008">IndianRed</Color>
+    <Color x:Key="Color_009">DarkGray</Color>
+    <Color x:Key="Color_010">Gray</Color>
+    <Color x:Key="Color_011">Red</Color>
+    <Color x:Key="Color_012">IndianRed</Color>
 
 </ResourceDictionary>

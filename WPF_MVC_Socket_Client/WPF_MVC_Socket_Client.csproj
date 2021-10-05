@@ -55,11 +55,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\DataReceiveModel.cs" />
     <Compile Include="View\ConnectSelectView.xaml.cs">
       <DependentUpon>ConnectSelectView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ConnectTCPView.xaml.cs">
       <DependentUpon>ConnectTCPView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DataReceiveView.xaml.cs">
+      <DependentUpon>DataReceiveView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DataSendView.xaml.cs">
+      <DependentUpon>DataSendView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\IPMaskedTextBox.xaml.cs">
       <DependentUpon>IPMaskedTextBox.xaml</DependentUpon>
@@ -98,6 +105,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Style\ScrollBarStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Style\TabItemStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -111,6 +122,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ConnectTCPView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DataReceiveView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DataSendView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

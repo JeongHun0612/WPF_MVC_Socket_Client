@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPF_MVC_Socket_Client.View"
              mc:Ignorable="d" 
-             d:DesignHeight="30" d:DesignWidth="800">
+             d:DesignHeight="30" d:DesignWidth="1100">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -17,7 +17,7 @@
                 <!-- MinimizeButton -->
                 <Button Style="{DynamicResource SystemButtonStyle}" Click="MinimizeClick">
                     <Button.Content>
-                        <Rectangle Width="12" Height="1" Fill="{StaticResource ShapesFillBrush}"/>
+                        <Rectangle Width="12" Height="1" Fill="{StaticResource ContentForegroundBrush}"/>
                     </Button.Content>
                 </Button>
 
@@ -25,10 +25,10 @@
                 <Button Style="{DynamicResource SystemButtonStyle}" Click="MaximizeClick">
                     <Button.Content>
                         <Grid>
-                            <Rectangle x:Name="minRectAngle" Width="10" Height="10" Stroke="{StaticResource ShapesStrokeBrush}" Visibility="Visible"/>
+                            <Rectangle x:Name="minRectAngle" Width="10" Height="10" Stroke="{StaticResource ContentForegroundBrush}" Visibility="Visible"/>
                             <Grid x:Name="maxRectAngle" Visibility="Collapsed">
-                                <Rectangle Width="8" Height="8" Stroke="{StaticResource ShapesStrokeBrush}" Margin="0,2,2,0"/>
-                                <Polyline Points="3,2 3,0 10,0 10,7 8,7" Stroke="{StaticResource ShapesStrokeBrush}"/>
+                                <Rectangle Width="8" Height="8" Stroke="{StaticResource ContentForegroundBrush}" Margin="0,2,2,0"/>
+                                <Polyline Points="3,2 3,0 10,0 10,7 8,7" Stroke="{StaticResource ContentForegroundBrush}"/>
                             </Grid>
                         </Grid>
                     </Button.Content>
@@ -38,8 +38,8 @@
                 <Button Style="{DynamicResource SystemButtonExitStyle}" Click="ExitClick">
                     <Button.Content>
                         <Canvas>
-                            <Line X1="-5" Y1="-5" X2="5" Y2="5" Stroke="{StaticResource ShapesStrokeBrush}"/>
-                            <Line X1="5" Y1="-5" X2="-5" Y2="5" Stroke="{StaticResource ShapesStrokeBrush}"/>
+                            <Line X1="-5" Y1="-5" X2="5" Y2="5" Stroke="{StaticResource ContentForegroundBrush}"/>
+                            <Line X1="5" Y1="-5" X2="-5" Y2="5" Stroke="{StaticResource ContentForegroundBrush}"/>
                         </Canvas>
                     </Button.Content>
                 </Button>

@@ -3,6 +3,8 @@ FC:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\App.xam
 FC:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\MainWindow.xaml;;
 FC:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\View\ConnectSelectView.xaml;;
 FC:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\View\ConnectTCPView.xaml;;
+FC:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\View\DataReceiveView.xaml;;
+FC:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\View\DataSendView.xaml;;
 FC:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\View\IPMaskedTextBox.xaml;;
 FC:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\View\ReceiveOptionView.xaml;;
 FC:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\View\WindowTitleBarView.xaml;;

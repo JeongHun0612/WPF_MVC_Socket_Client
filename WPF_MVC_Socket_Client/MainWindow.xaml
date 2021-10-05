@@ -9,7 +9,7 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         Background="{StaticResource MainBackgroundBrush}"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="700" Width="1100">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
@@ -27,21 +27,26 @@
         </Grid>
 
         <Grid Grid.Column="0" Grid.Row="1" Margin="10,10,5,5">
-            <Border Background="{StaticResource ContentBackgroundBrush}" CornerRadius="10">
+            <Border Background="{StaticResource AreaBackgroundBrush}" CornerRadius="10">
                 <view:ConnectSelectView/>
             </Border>
         </Grid>
 
         <Grid Grid.Column="0" Grid.Row="2" Margin="10,5,5,10">
-            <Border Background="{StaticResource ContentBackgroundBrush}" CornerRadius="10">
+            <Border Background="{StaticResource AreaBackgroundBrush}" CornerRadius="10">
                 <view:ReceiveOptionView/>
             </Border>
         </Grid>
 
         <Grid Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Margin="5,10,10,10">
-            <Border Background="{StaticResource ContentBackgroundBrush}" CornerRadius="10">
+            <Border Background="{StaticResource AreaBackgroundBrush}" CornerRadius="10">
                 <Grid>
-                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    <view:DataReceiveView Grid.Row="0"/>
+                    <view:DataSendView Grid.Row="1"/>
                 </Grid>
             </Border>
         </Grid>

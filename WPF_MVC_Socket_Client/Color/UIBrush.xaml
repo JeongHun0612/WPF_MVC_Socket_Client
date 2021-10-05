@@ -7,27 +7,23 @@
 
     <!-- Main Brush -->
     <SolidColorBrush x:Key="MainBackgroundBrush" Color="{StaticResource Color_000}"/>
-    <SolidColorBrush x:Key="ContentBackgroundBrush" Color="{StaticResource Color_001}"/>
-    <SolidColorBrush x:Key="ContentBorderBrush" Color="{StaticResource Color_002}"/>
-    <SolidColorBrush x:Key="ContentTitleForegroundBrush" Color="{StaticResource Color_003}"/>
-    <SolidColorBrush x:Key="ContentForegroundBrush" Color="{StaticResource Color_003}"/>
-    <SolidColorBrush x:Key="ContentHoverForegroundBrush" Color="{StaticResource Color_004}"/>
-    <SolidColorBrush x:Key="ContentPressedForegroundBrush" Color="{StaticResource Color_004}"/>
+    <SolidColorBrush x:Key="AreaBackgroundBrush" Color="{StaticResource Color_001}"/>
+
+    <SolidColorBrush x:Key="ContentBackgroundBrush" Color="{StaticResource Color_000}"/>
+    <SolidColorBrush x:Key="ContentBorderBrush" Color="{StaticResource Color_005}"/>
+    <SolidColorBrush x:Key="ContentForegroundBrush" Color="{StaticResource Color_006}"/>
+
+    <SolidColorBrush x:Key="ContentHoverBackgroundBrush" Color="{StaticResource Color_008}"/>
+    <SolidColorBrush x:Key="ContentPressedBackgroundBrush" Color="{StaticResource Color_007}"/>
 
     <!-- Button Brush -->
-    <SolidColorBrush x:Key="SystemButtonHoverBackgroudBrush" Color="{StaticResource Color_005}"/>
-    <SolidColorBrush x:Key="SystemButtonPressedBackgroudBrush" Color="{StaticResource Color_006}"/>
-    <SolidColorBrush x:Key="ExitButtonHoverBackgroudBrush" Color="{StaticResource Color_007}"/>
-    <SolidColorBrush x:Key="ExitButtonPressedBackgroudBrush" Color="{StaticResource Color_008}"/>
+    <SolidColorBrush x:Key="SystemButtonHoverBackgroudBrush" Color="{StaticResource Color_002}"/>
+    <SolidColorBrush x:Key="SystemButtonPressedBackgroudBrush" Color="{StaticResource Color_003}"/>
+    <SolidColorBrush x:Key="ExitButtonHoverBackgroudBrush" Color="{StaticResource Color_011}"/>
+    <SolidColorBrush x:Key="ExitButtonPressedBackgroudBrush" Color="{StaticResource Color_012}"/>
 
-    <!-- Shapes Brush -->
-    <SolidColorBrush x:Key="ShapesStrokeBrush" Color="{StaticResource Color_003}"/>
-    <SolidColorBrush x:Key="ShapesFillBrush" Color="{StaticResource Color_003}"/>
-
-    <!-- TabItem Brush -->
-    <SolidColorBrush x:Key="TabItemBorderBrush" Color="{StaticResource Color_003}"/>
-    <SolidColorBrush x:Key="TabItemHoverBorderBrush" Color="{StaticResource Color_004}"/>
-    <SolidColorBrush x:Key="TabItemPressedBorderBrush" Color="{StaticResource Color_004}"/>
-
-
+    <!-- ScrollBar Brush -->
+    <SolidColorBrush x:Key="ScrollBarBackgroundBrush" Color="{StaticResource Color_000}"/>
+    <SolidColorBrush x:Key="ScrollBarHoverPathBrush" Color="{StaticResource Color_004}"/>
+    <SolidColorBrush x:Key="ScrollBarPressedPathBrush" Color="{StaticResource Color_009}"/>
 </ResourceDictionary>
