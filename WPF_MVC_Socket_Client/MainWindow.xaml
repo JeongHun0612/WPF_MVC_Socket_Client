@@ -43,13 +43,12 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="55"/>
                     </Grid.RowDefinitions>
                     <view:DataReceiveView Grid.Row="0"/>
                     <view:DataSendView Grid.Row="1"/>
                 </Grid>
             </Border>
         </Grid>
-
     </Grid>
 </Window>

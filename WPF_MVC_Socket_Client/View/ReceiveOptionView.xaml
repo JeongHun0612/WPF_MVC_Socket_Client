@@ -6,42 +6,52 @@
              xmlns:local="clr-namespace:WPF_MVC_Socket_Client.View"
              mc:Ignorable="d" 
              d:DesignHeight="470" d:DesignWidth="250">
-    
-    <GroupBox Header="송수신 설정" Foreground="{StaticResource ContentForegroundBrush}" BorderBrush="{StaticResource ContentBorderBrush}" BorderThickness="0.1" FontFamily="/Fonts/#KoPubDotum Medium" Margin="8">
-        <Grid Margin="10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="70"/>
-                <RowDefinition Height="70"/>
-                <RowDefinition Height="70"/>
-            </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0" VerticalAlignment="Center">
-                <TextBlock Text="문자열 출력 방식" FontSize="11"/>
-                <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-                    <RadioButton GroupName="StringPrintMethod" Content="HEX" Foreground="{StaticResource ContentForegroundBrush}" VerticalContentAlignment="Center" FontSize="11" FontFamily="/Fonts/#Roboto Medium"/>
-                    <RadioButton GroupName="StringPrintMethod" Content="ASCII" Foreground="{StaticResource ContentForegroundBrush}" VerticalContentAlignment="Center" FontSize="11" FontFamily="/Fonts/#Roboto Medium" Margin="10,0,0,0"/>
-                </StackPanel>
-            </Grid>
-            <Grid Grid.Row="1" VerticalAlignment="Center">
-                <TextBlock Text="송수신 출력 기능" FontSize="11"/>
-                <WrapPanel Margin="0,20,0,0">
-                    <StackPanel Orientation="Horizontal">
-                        <CheckBox Content="시간 표시" Foreground="{StaticResource ContentForegroundBrush}" VerticalContentAlignment="Center" FontSize="11" FontFamily="/Fonts/#Roboto Medium"/>
-                        <CheckBox Content="RX/TX 표시" Foreground="{StaticResource ContentForegroundBrush}" VerticalContentAlignment="Center"  FontSize="11" FontFamily="/Fonts/#Roboto Medium" Margin="10,0,0,0"/>
+    <GroupBox Header="송수신 설정" Foreground="{StaticResource ContentForegroundBrush}" BorderBrush="{StaticResource ContentBorderBrush}" BorderThickness="0.1" FontSize="14" FontFamily="/Fonts/#KoPubDotum Medium" Margin="8">
+        <Grid Margin="10">
+            <StackPanel>
+                <!-- 데이터 출력 방식 -->
+                <Grid Margin="0,20,0,0">
+                    <TextBlock Text="데이터 출력 방식" FontSize="13" FontFamily="/Fonts/#KoPubDotum Light"/>
+                    <WrapPanel Margin="5,25,0,0">
+                        <RadioButton GroupName="StringPrintMethod" Content="HEX"/>
+                        <RadioButton GroupName="StringPrintMethod" Content="ASCII" Margin="10,0,0,0"/>
+                    </WrapPanel>
+                </Grid>
+
+                <!-- 데이터 출력 기능 -->
+                <Grid Margin="0,30,0,0">
+                    <TextBlock Text="데이터 출력 기능" FontSize="13" FontFamily="/Fonts/#KoPubDotum Light"/>
+                    <WrapPanel Margin="5,25,0,0">
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Content="시간 표시"/>
+                            <CheckBox Content="RX/TX 표시" Margin="10,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Content="일시 정지" Margin="0,8,0,0"/>
+                            <CheckBox Content="자동 보내기" Margin="10,8,0,0"/>
+                        </StackPanel>
+                    </WrapPanel>
+                </Grid>
+
+                <!-- 데이터 출력 표시 -->
+                <Grid Margin="0,30,0,0">
+                    <TextBlock Text="데이터 출력 표시" FontSize="13" FontFamily="/Fonts/#KoPubDotum Light"/>
+                    <StackPanel Margin="5,25,0,0">
+                        <CheckBox Content="송신 [RX]" IsChecked="True" Foreground="{StaticResource ContentForegroundBrush}" FontSize="13" FontFamily="/Fonts/#Roboto Light"/>
+                        <CheckBox Content="수신 [TX]" IsChecked="True" Foreground="{StaticResource ContentForegroundBrush}" FontSize="13" FontFamily="/Fonts/#Roboto Light" Margin="0,8,0,0"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <CheckBox Content="일시 정지" Foreground="{StaticResource ContentForegroundBrush}" VerticalContentAlignment="Center" FontSize="11" FontFamily="/Fonts/#Roboto Medium" Margin="0,5,0,0"/>
-                        <CheckBox Content="자동 보내기" Foreground="{StaticResource ContentForegroundBrush}" VerticalContentAlignment="Center"  FontSize="11" FontFamily="/Fonts/#Roboto Medium" Margin="10,5,0,0"/>
-                    </StackPanel>
-                </WrapPanel>
-            </Grid>
-            <Grid Grid.Row="2" VerticalAlignment="Center">
-                <TextBlock Text="송수신 출력 표시" FontSize="11"/>
-                <StackPanel Margin="0,20,0,0">
-                    <CheckBox Content="송신 문자열 표시" Foreground="{StaticResource ContentForegroundBrush}" FontSize="11" FontFamily="/Fonts/#Roboto Medium"/>
-                    <CheckBox Content="송신 문자열 표시" Foreground="{StaticResource ContentForegroundBrush}" FontSize="11" FontFamily="/Fonts/#Roboto Medium" Margin="0,5,0,0"/>
-                </StackPanel>
-            </Grid>
+                </Grid>
+
+                <!-- 데이터 관리 -->
+                <Grid Margin="0,30,0,0">
+                    <TextBlock Text="데이터 관리" FontSize="13" FontFamily="/Fonts/#KoPubDotum Light"/>
+                    <WrapPanel Margin="5,25,0,0">
+                        <Button Content="저장" Width="80" Height="25"/>
+                        <Button Style="{DynamicResource ErrorButtonStyle}" Content="삭제" Width="80" Height="25" Margin="10,0,0,0"/>
+                    </WrapPanel>
+                </Grid>
+            </StackPanel>
         </Grid>
     </GroupBox>
 </UserControl>

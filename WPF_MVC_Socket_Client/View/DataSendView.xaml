@@ -7,12 +7,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="850">
 
-    <Grid Margin="10">
+    <Grid Margin="10,0,10,10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="60"/>
         </Grid.ColumnDefinitions>
-        <TextBox Grid.Column="0" Style="{DynamicResource TextBoxStyle}" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
-        <Button Style="{DynamicResource ButtonStyle}" Grid.Column="1" Content="Send" Width="50" HorizontalAlignment="Right" FontFamily="/Fonts/#Roboto Medium" Click="Button_Click"/>
+        <TextBox Grid.Column="0" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
+        <Button Grid.Column="1" Content="Send" Width="50" HorizontalAlignment="Right" Click="Button_Click"/>
     </Grid>
 </UserControl>

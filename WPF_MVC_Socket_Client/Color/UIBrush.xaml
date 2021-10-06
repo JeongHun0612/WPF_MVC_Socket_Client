@@ -12,15 +12,31 @@
     <SolidColorBrush x:Key="ContentBackgroundBrush" Color="{StaticResource Color_000}"/>
     <SolidColorBrush x:Key="ContentBorderBrush" Color="{StaticResource Color_005}"/>
     <SolidColorBrush x:Key="ContentForegroundBrush" Color="{StaticResource Color_006}"/>
+    <SolidColorBrush x:Key="ContentSelectionBrush" Color="{StaticResource Color_004}"/>
 
     <SolidColorBrush x:Key="ContentHoverBackgroundBrush" Color="{StaticResource Color_008}"/>
     <SolidColorBrush x:Key="ContentPressedBackgroundBrush" Color="{StaticResource Color_007}"/>
+    <SolidColorBrush x:Key="ContentHoverBorderBrush" Color="{StaticResource Color_008}"/>
+    <SolidColorBrush x:Key="ContentPressedBorderBrush" Color="{StaticResource Color_007}"/>
+
+    <SolidColorBrush x:Key="ErrorContentHoverBackgroundBrush" Color="{StaticResource Color_014}"/>
+    <SolidColorBrush x:Key="ErrorContentPressedBackgroundBrush" Color="{StaticResource Color_013}"/>
+    <SolidColorBrush x:Key="ErrorContentPressedBorderBrush" Color="{StaticResource Color_014}"/>
+    <SolidColorBrush x:Key="ErrorContentHoverBorderBrush" Color="{StaticResource Color_013}"/>
 
     <!-- Button Brush -->
     <SolidColorBrush x:Key="SystemButtonHoverBackgroudBrush" Color="{StaticResource Color_002}"/>
     <SolidColorBrush x:Key="SystemButtonPressedBackgroudBrush" Color="{StaticResource Color_003}"/>
     <SolidColorBrush x:Key="ExitButtonHoverBackgroudBrush" Color="{StaticResource Color_011}"/>
     <SolidColorBrush x:Key="ExitButtonPressedBackgroudBrush" Color="{StaticResource Color_012}"/>
+
+    <!-- ListItem Brush -->
+    <SolidColorBrush x:Key="ListItemHoverBackgroudBrush" Color="{StaticResource Color_002}"/>
+    <SolidColorBrush x:Key="ListItemSelectedTrueBackgroudBrush" Color="{StaticResource Color_002}"/>
+    <SolidColorBrush x:Key="ListItemSelectedFalseBackgroudBrush" Color="{StaticResource Color_001}"/>
+    <SolidColorBrush x:Key="ListItemRXTagForegroundBrush" Color="{StaticResource Color_007}"/>
+    <SolidColorBrush x:Key="ListItemTXTagForegroundBrush" Color="{StaticResource Color_013}"/>
+
 
     <!-- ScrollBar Brush -->
     <SolidColorBrush x:Key="ScrollBarBackgroundBrush" Color="{StaticResource Color_000}"/>

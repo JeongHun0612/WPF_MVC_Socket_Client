@@ -9,6 +9,7 @@
         <Setter Property="Background" Value="{StaticResource ContentBackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ContentBorderBrush}"/>
         <Setter Property="FontFamily" Value="/Fonts/#Roboto Medium"/>
+        <Setter Property="FontSize" Value="14"/>
         <Setter Property="Width" Value="73"/>
         <Setter Property="Padding" Value="15"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>

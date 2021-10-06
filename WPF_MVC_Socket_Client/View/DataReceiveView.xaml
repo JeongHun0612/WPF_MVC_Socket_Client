@@ -12,12 +12,37 @@
             <ListView.ItemTemplate>
                 <DataTemplate DataType="{x:Type model:DataReceiveModel}">
                     <WrapPanel>
-                        <TextBlock Text="{Binding TXRXTag}" Margin="0,0,10,0"/>
-                        <TextBlock Text="{Binding DateTime}" Margin="0,0,10,0"/>
-                        <TextBlock Text="{Binding Content}" TextWrapping="Wrap"/>
+                        <TextBlock x:Name="TagName" Text="{Binding TXRXTag}" FontFamily="/Fonts/#Roboto Light" Margin="0,0,10,0">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding TXRXTag}" Value="[RX]">
+                                            <Setter Property="Foreground" Value="{StaticResource ListItemRXTagForegroundBrush}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding TXRXTag}" Value="[TX]">
+                                            <Setter Property="Foreground" Value="{StaticResource ListItemTXTagForegroundBrush}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <TextBlock Text="{Binding DateTime}" FontFamily="/Fonts/#Roboto Light" Margin="0,0,10,0"/>
+                        <TextBlock Text="{Binding Content}" FontFamily="/Fonts/#Roboto Light" TextWrapping="Wrap"/>
                     </WrapPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <!--<ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding TXRXTag}" Value="[RX]">
+                            <Setter Property="Foreground" Value="{StaticResource ListItemRXTagForegroundBrush}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding TXRXTag}" Value="[TX]">
+                            <Setter Property="Foreground" Value="{StaticResource ListItemTXTagForegroundBrush}"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>-->
         </ListView>
     </Grid>
 </UserControl>

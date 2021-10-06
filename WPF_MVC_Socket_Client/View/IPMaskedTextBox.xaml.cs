@@ -1,6 +1,8 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Diagnostics;
+using System.Text.RegularExpressions;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace WPF_MVC_Socket_Client.View
 {
@@ -13,6 +15,11 @@ namespace WPF_MVC_Socket_Client.View
         {
             InitializeComponent();
         }
+
+        private bool isFocus = false;
+        private readonly SolidColorBrush normalColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A7A7A"));
+        private readonly SolidColorBrush focusColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#30A58A"));
+        private readonly SolidColorBrush hoverColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#26846E"));
 
         public string GetIPAddress()
         {
@@ -154,6 +161,28 @@ namespace WPF_MVC_Socket_Client.View
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void TextBox_IsKeyboardFocusedChanged(object sender, System.Windows.DependencyPropertyChangedEventArgs e)
+        {
+            isFocus = !isFocus;
+            IPMaskedUserControl.BorderBrush = isFocus ? focusColorBrush : normalColorBrush;
+        }
+
+        private void IPMaskedUserControl_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (!isFocus)
+            {
+                IPMaskedUserControl.BorderBrush = hoverColorBrush;
+            }
+        }
+
+        private void IPMaskedUserControl_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (!isFocus)
+            {
+                IPMaskedUserControl.BorderBrush = normalColorBrush;
+            }
         }
     }
 }
