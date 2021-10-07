@@ -34,7 +34,7 @@
     <SolidColorBrush x:Key="ListItemHoverBackgroudBrush" Color="{StaticResource Color_002}"/>
     <SolidColorBrush x:Key="ListItemSelectedTrueBackgroudBrush" Color="{StaticResource Color_002}"/>
     <SolidColorBrush x:Key="ListItemSelectedFalseBackgroudBrush" Color="{StaticResource Color_001}"/>
-    <SolidColorBrush x:Key="ListItemRXTagForegroundBrush" Color="{StaticResource Color_007}"/>
+    <SolidColorBrush x:Key="ListItemRXTagForegroundBrush" Color="{StaticResource Color_015}"/>
     <SolidColorBrush x:Key="ListItemTXTagForegroundBrush" Color="{StaticResource Color_013}"/>
 
 

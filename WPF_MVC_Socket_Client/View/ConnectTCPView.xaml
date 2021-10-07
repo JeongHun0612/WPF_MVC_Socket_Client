@@ -29,6 +29,6 @@
 
         <!-- Connect Button -->
         <Rectangle Grid.Row="1" Grid.Column="1" Width="20" Height="20" Fill="{StaticResource ContentBorderBrush}" Stroke="{StaticResource ContentBackgroundBrush}" RadiusX="3" RadiusY="3" Margin="0,0,5,0"/>
-        <Button Grid.Row="1" Grid.Column="1" Content="Connect" Width="70" Height="25" HorizontalAlignment="Right"/>
+        <Button Grid.Row="1" Grid.Column="1" Content="Connect" Width="70" Height="25" HorizontalAlignment="Right" FontFamily="/Fonts/#Roboto Light" />
     </Grid>
 </UserControl>

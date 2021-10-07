@@ -18,8 +18,8 @@ namespace WPF_MVC_Socket_Client.View
 
         private bool isFocus = false;
         private readonly SolidColorBrush normalColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A7A7A"));
-        private readonly SolidColorBrush focusColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#30A58A"));
-        private readonly SolidColorBrush hoverColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#26846E"));
+        private readonly SolidColorBrush focusColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#BB86FC"));
+        private readonly SolidColorBrush hoverColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#AD6DFB"));
 
         public string GetIPAddress()
         {

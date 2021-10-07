@@ -11,12 +11,15 @@
 
     <!-- Point Color -->
     <Color x:Key="Color_006">#FFF1F1F1</Color>
-    
-    <Color x:Key="Color_007">#30A58A</Color>
-    <Color x:Key="Color_008">#26846E</Color>
+
+    <Color x:Key="Color_007">#BB86FC</Color>
+    <Color x:Key="Color_008">#AD6DFB</Color>
 
     <Color x:Key="Color_013">#DA808E</Color>
     <Color x:Key="Color_014">#CF6679</Color>
+
+    <Color x:Key="Color_015">#30A58A</Color>
+    <Color x:Key="Color_016">#26846E</Color>
 
     <!-- Style Color -->
     <Color x:Key="Color_009">DarkGray</Color>
