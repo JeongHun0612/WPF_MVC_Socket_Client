@@ -5,16 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPF_MVC_Socket_Client.View"
              mc:Ignorable="d" 
-             d:DesignHeight="70" d:DesignWidth="850">
+             d:DesignHeight="70" d:DesignWidth="900">
 
-    <Grid>
+    <Grid Margin="0,5,0,0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <CheckBox Content="자동 보내기" Width="Auto" HorizontalAlignment="Left"/>
+            <Button Content="Auto Send" Width="90" Height="25" HorizontalAlignment="Left"/>
         </Grid>
 
         <Grid Grid.Row="1">
@@ -24,7 +24,7 @@
             </Grid.ColumnDefinitions>
             
             <TextBox Grid.Column="0" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
-            <Button Grid.Column="1" Content="보내기" Width="50" HorizontalAlignment="Right" Click="Button_Click"/>
+            <Button Grid.Column="1" Content="Send" Width="50" HorizontalAlignment="Right" Click="Button_Click"/>
         </Grid>
     </Grid>
 </UserControl>

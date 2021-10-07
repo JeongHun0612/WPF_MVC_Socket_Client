@@ -5,15 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:model="clr-namespace:WPF_MVC_Socket_Client.Model"
              mc:Ignorable="d" 
-             d:DesignHeight="760" d:DesignWidth="850">
+             d:DesignHeight="760" d:DesignWidth="900">
 
-    <Grid >
+    <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="34"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" HorizontalAlignment="Right" Margin="0,2,0,0">
+            <WrapPanel>
+                <Button Content="Save" Width="70" Height="25"/>
+                <Button Style="{DynamicResource ErrorButtonStyle}" Content="Clear" Width="70" Height="25" Margin="10,0,0,0"/>
+            </WrapPanel>
+        </Grid>
         
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="1">
             <ListView x:Name="DataReceiveListView" Width="Auto" Height="Auto" Background="{StaticResource MainBackgroundBrush}" BorderBrush="{StaticResource ContentBorderBrush}" Foreground="{StaticResource ContentForegroundBrush}" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListView.ItemTemplate>
                     <DataTemplate DataType="{x:Type model:DataReceiveModel}">
@@ -38,13 +45,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </Grid>
-
-        <Grid Grid.Row="1" HorizontalAlignment="Right" Margin="0,8,0,0">
-            <WrapPanel>
-                <Button Content="저장" Width="80" Height="25"/>
-                <Button Style="{DynamicResource ErrorButtonStyle}" Content="삭제" Width="80" Height="25" Margin="10,0,0,0"/>
-            </WrapPanel>
         </Grid>
     </Grid>
 </UserControl>

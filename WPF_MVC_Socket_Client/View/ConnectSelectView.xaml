@@ -20,16 +20,16 @@
     <Grid Margin="5">
         <TabControl TabStripPlacement="Left" VerticalAlignment="Center" Background="{StaticResource AreaBackgroundBrush}" BorderBrush="{x:Null}">
             <TabItem Style="{DynamicResource TabItemStyle}" Header="TCP">
-                <GroupBox Header="TCP 통신 설정">
+                <GroupBox Header="Connect Setting">
                     <view:ConnectTCPView/>
                 </GroupBox>
             </TabItem>
             <TabItem Style="{DynamicResource TabItemStyle}" Header="UDP">
-                <GroupBox Header="UDP 통신 설정">
+                <GroupBox Header="Connect Setting">
                 </GroupBox>
             </TabItem>
             <TabItem Style="{DynamicResource TabItemStyle}" Header="Serial">
-                <GroupBox Header="Serial 통신 설정">
+                <GroupBox Header="Connect Setting">
                 </GroupBox>
             </TabItem>
         </TabControl>

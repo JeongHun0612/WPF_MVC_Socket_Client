@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPF_MVC_Socket_Client.View"
              mc:Ignorable="d" 
-             d:DesignHeight="140" d:DesignWidth="550">
+             d:DesignHeight="140" d:DesignWidth="600">
 
-    <GroupBox Header="송수신 출력 설정" BorderBrush="{StaticResource ContentBorderBrush}" BorderThickness="0.1" Foreground="{StaticResource ContentForegroundBrush}" FontSize="14" FontFamily="/Fonts/#KoPubDotum Medium" Margin="10">
+    <!--<GroupBox Header="송수신 출력 설정" BorderBrush="{StaticResource ContentBorderBrush}" BorderThickness="0.1" Foreground="{StaticResource ContentForegroundBrush}" FontSize="14" FontFamily="/Fonts/#KoPubDotum Medium" Margin="10">
         <Grid VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -66,9 +66,9 @@
                 </StackPanel>
             </Grid>
         </Grid>
-    </GroupBox>
+    </GroupBox>-->
 
-    <!--<Border BorderBrush="{StaticResource ContentBorderBrush}" BorderThickness="0.6" Margin="10,19,10,11">
+    <Border BorderBrush="{StaticResource ContentBorderBrush}" BorderThickness="0.6" Margin="10,20,10,11">
         <Grid VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -78,7 +78,7 @@
 
             <Grid Grid.Column="0" Margin="20,0,0,0">
                 <StackPanel>
-                    <TextBlock Text="문자열 출력 방식" Foreground="{StaticResource ContentForegroundBrush}" FontSize="14" FontFamily="/Fonts/#KoPubDotum Medium"/>
+                    <TextBlock Text="String Method" Foreground="{StaticResource ContentForegroundBrush}" FontSize="14" FontFamily="/Fonts/#Roboto Medium"/>
                     <StackPanel Margin="0,10,0,0">
                         <RadioButton GroupName="StringPrintMethod" Content="HEX"/>
                         <RadioButton GroupName="StringPrintMethod" Content="ASCII" Margin="0,10,0,0"/>
@@ -88,7 +88,7 @@
 
             <Grid Grid.Column="1" Margin="60,0,0,0">
                 <StackPanel>
-                    <TextBlock Text="문자열 표시" Foreground="{StaticResource ContentForegroundBrush}" FontSize="14" FontFamily="/Fonts/#KoPubDotum Medium"/>
+                    <TextBlock Text="String Display" Foreground="{StaticResource ContentForegroundBrush}" FontSize="14" FontFamily="/Fonts/#Roboto Medium"/>
                     <Grid Margin="0,5,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -97,25 +97,25 @@
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
                             <WrapPanel>
-                                <CheckBox Content="송신" IsChecked="True"/>
-                                <Label Content="[RX]" FontSize="12" Foreground="{StaticResource ListItemRXTagForegroundBrush}" FontFamily="/Fonts/#Roboto Medium"/>
+                                <CheckBox Content="Receive" IsChecked="True"/>
+                                <Label Content="  [RX]" FontSize="13" Foreground="{StaticResource ListItemRXTagForegroundBrush}" FontFamily="/Fonts/#Roboto Light"/>
                             </WrapPanel>
                             <WrapPanel>
-                                <CheckBox Content="수신" IsChecked="True"/>
-                                <Label Content="[TX]" FontSize="12" Foreground="{StaticResource ListItemTXTagForegroundBrush}" FontFamily="/Fonts/#Roboto Medium"/>
+                                <CheckBox Content="Transmit" IsChecked="True"/>
+                                <Label Content="[TX]" FontSize="13" Foreground="{StaticResource ListItemTXTagForegroundBrush}" FontFamily="/Fonts/#Roboto Light"/>
                             </WrapPanel>
                         </StackPanel>
-                        <StackPanel Grid.Column="1" Margin="15,0,0,0">
-                            <CheckBox Content="시간" Height="25"/>
-                            <CheckBox Content="RX/TX" Height="25" FontFamily="/Fonts/#Roboto Light"/>
+                        <StackPanel Grid.Column="1" Margin="20,0,0,0">
+                            <CheckBox Content="Time Tag" Height="25"/>
+                            <CheckBox Content="RX/TX Tag" Height="25" FontFamily="/Fonts/#Roboto Light"/>
                         </StackPanel>
-                        <StackPanel Grid.Column="2" Margin="15,0,0,0">
-                            <CheckBox Content="일시 정지" Height="25"/>
-                            <CheckBox Content="자동 줄바꿈" Height="25"/>
+                        <StackPanel Grid.Column="2" Margin="20,0,0,0">
+                            <CheckBox Content="Pause" Height="25"/>
+                            <CheckBox Content="Line Break" Height="25"/>
                         </StackPanel>
                     </Grid>
                 </StackPanel>
             </Grid>
         </Grid>
-    </Border>-->
+    </Border>
 </UserControl>
