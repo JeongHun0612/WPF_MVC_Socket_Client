@@ -9,41 +9,41 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         Background="{StaticResource MainBackgroundBrush}"
-        Title="MainWindow" Height="700" Width="1100">
+        Title="MainWindow" Height="1000" Width="850">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="330"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="200"/>
+            <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0">
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <view:WindowTitleBarView/>
         </Grid>
 
-        <Grid Grid.Column="0" Grid.Row="1" Margin="10,10,5,5">
+        <Grid Grid.Row="1" Grid.Column="0" Margin="10,5,5,5">
             <Border Background="{StaticResource AreaBackgroundBrush}" CornerRadius="10">
                 <view:ConnectSelectView/>
             </Border>
         </Grid>
 
-        <Grid Grid.Column="0" Grid.Row="2" Margin="10,5,5,10">
+        <Grid Grid.Row="1" Grid.Column="1" Margin="5,5,10,5">
             <Border Background="{StaticResource AreaBackgroundBrush}" CornerRadius="10">
                 <view:ReceiveOptionView/>
             </Border>
         </Grid>
 
-        <Grid Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Margin="5,10,10,10">
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="10,5,10,10">
             <Border Background="{StaticResource AreaBackgroundBrush}" CornerRadius="10">
-                <Grid>
+                <Grid Margin="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="55"/>
+                        <RowDefinition Height="70"/>
                     </Grid.RowDefinitions>
                     <view:DataReceiveView Grid.Row="0"/>
                     <view:DataSendView Grid.Row="1"/>

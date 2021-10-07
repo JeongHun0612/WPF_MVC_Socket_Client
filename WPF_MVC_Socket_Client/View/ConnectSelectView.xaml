@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:view="clr-namespace:WPF_MVC_Socket_Client.View"
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="250">
+             d:DesignHeight="140" d:DesignWidth="330">
 
     <UserControl.Resources>
         <Style TargetType="{x:Type GroupBox}">
@@ -18,18 +18,18 @@
     </UserControl.Resources>
 
     <Grid Margin="5">
-        <TabControl Background="{StaticResource AreaBackgroundBrush}" BorderBrush="{x:Null}">
+        <TabControl TabStripPlacement="Left" VerticalAlignment="Center" Background="{StaticResource AreaBackgroundBrush}" BorderBrush="{x:Null}">
             <TabItem Style="{DynamicResource TabItemStyle}" Header="TCP">
-                <GroupBox Header="네트워크 설정">
+                <GroupBox Header="TCP 통신 설정">
                     <view:ConnectTCPView/>
                 </GroupBox>
             </TabItem>
             <TabItem Style="{DynamicResource TabItemStyle}" Header="UDP">
-                <GroupBox Header="네트워크 설정">
+                <GroupBox Header="UDP 통신 설정">
                 </GroupBox>
             </TabItem>
             <TabItem Style="{DynamicResource TabItemStyle}" Header="Serial">
-                <GroupBox Header="네트워크 설정">
+                <GroupBox Header="Serial 통신 설정">
                 </GroupBox>
             </TabItem>
         </TabControl>

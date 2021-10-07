@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:view="clr-namespace:WPF_MVC_Socket_Client.View"
+             xmlns:control="clr-namespace:WPF_MVC_Socket_Client.View.Control"
              mc:Ignorable="d" 
              FontFamily="/Fonts/#Roboto Medium"
              d:DesignHeight="100" d:DesignWidth="200">
@@ -20,15 +21,27 @@
         </Grid.RowDefinitions>
 
         <!-- IP Address TextBox -->
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="IP" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="13" FontFamily="#Roboto Light"/>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="IP" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="13" FontFamily="/Fonts/#Roboto Light"/>
         <view:IPMaskedTextBox Grid.Row="0" Grid.Column="1" Height="25" Margin="10,0,0,0"/>
 
         <!-- Port Number TextBox -->
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="Port" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="13" FontFamily="#Roboto Light"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Width="50" Height="25" VerticalContentAlignment="Center" MaxLength="4" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Port" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="13" FontFamily="/Fonts/#Roboto Light"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Width="50" Height="25" HorizontalAlignment="Left" VerticalContentAlignment="Center" MaxLength="4"  Margin="10,0,0,0"/>
 
         <!-- Connect Button -->
-        <Rectangle Grid.Row="1" Grid.Column="1" Width="20" Height="20" Fill="{StaticResource ContentBorderBrush}" Stroke="{StaticResource ContentBackgroundBrush}" RadiusX="3" RadiusY="3" Margin="0,0,5,0"/>
-        <Button Grid.Row="1" Grid.Column="1" Content="Connect" Width="70" Height="25" HorizontalAlignment="Right" FontFamily="/Fonts/#Roboto Light" />
+        <!--<control:LoadingAnimation Grid.Row="1" Grid.Column="1" Margin="0,-30,0,0"/>-->
+        <Button Grid.Row="1" Grid.Column="1" Content="Connect" Width="70" Height="25" HorizontalAlignment="Right" FontFamily="/Fonts/#Roboto Light"/>
+        <Rectangle Grid.Row="1" Grid.Column="1" Width="20" Height="20" Stroke="{StaticResource ContentBackgroundBrush}" RadiusX="3" RadiusY="3" Margin="0,0,5,0">
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0 0" EndPoint="0 1">
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Offset="0.0" Color="#BB86FC"/>
+                        <GradientStop Offset="1.0" Color="#AD6DFB"/>
+                        <!--<GradientStop Offset="0.0" Color="#B3B3B3"/>
+                        <GradientStop Offset="1.0" Color="#999999"/>-->
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
     </Grid>
 </UserControl>

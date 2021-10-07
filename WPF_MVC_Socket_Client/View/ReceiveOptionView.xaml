@@ -5,67 +5,117 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPF_MVC_Socket_Client.View"
              mc:Ignorable="d" 
-             d:DesignHeight="470" d:DesignWidth="250">
+             d:DesignHeight="140" d:DesignWidth="550">
 
-    <GroupBox Header="송수신 설정" Foreground="{StaticResource ContentForegroundBrush}" BorderBrush="{StaticResource ContentBorderBrush}" BorderThickness="0.1" FontSize="14" FontFamily="/Fonts/#KoPubDotum Medium" Margin="8">
-        <Grid Margin="10">
-            <StackPanel>
-                <!-- 문자열 출력 방식 -->
-                <Grid Margin="0,20,0,0">
-                    <TextBlock Text="문자열 출력 방식" FontSize="13" FontFamily="/Fonts/#KoPubDotum Light"/>
-                    <WrapPanel Margin="5,25,0,0">
-                        <RadioButton GroupName="StringPrintMethod" Content="HEX"/>
-                        <RadioButton GroupName="StringPrintMethod" Content="ASCII" Margin="10,0,0,0"/>
-                    </WrapPanel>
-                </Grid>
+    <GroupBox Header="송수신 출력 설정" BorderBrush="{StaticResource ContentBorderBrush}" BorderThickness="0.1" Foreground="{StaticResource ContentForegroundBrush}" FontSize="14" FontFamily="/Fonts/#KoPubDotum Medium" Margin="10">
+        <Grid VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
 
-                <!-- 송수신 문자열 표시 -->
-                <Grid Margin="0,30,0,0">
-                    <TextBlock Text="문자열 표시" FontSize="13" FontFamily="/Fonts/#KoPubDotum Light"/>
-                    <Grid Margin="5,25,0,0">
+            <Grid Grid.Column="0" Margin="20,0,0,0">
+                <StackPanel>
+                    <Grid Margin="0,5,0,0">
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
-                            <CheckBox Content="일시 정지" Height="25"/>
-                            <CheckBox Content="RX/TX" Height="25" FontFamily="/Fonts/#Roboto Light"/>
+                            <WrapPanel>
+                                <CheckBox IsChecked="True">
+                                    <CheckBox.Content>
+                                        <WrapPanel>
+                                            <TextBlock Text="송신 "/>
+                                            <TextBlock Text="[RX]" FontSize="12" VerticalAlignment="Center" Foreground="{StaticResource ListItemRXTagForegroundBrush}" FontFamily="/Fonts/#Roboto Light"/>
+                                        </WrapPanel>
+                                    </CheckBox.Content>
+                                </CheckBox>
+                            </WrapPanel>
+                            <WrapPanel Margin="0,10,0,0">
+                                <CheckBox IsChecked="True">
+                                    <CheckBox.Content>
+                                        <WrapPanel>
+                                            <TextBlock Text="수신 "/>
+                                            <TextBlock Text="[TX]" FontSize="12" VerticalAlignment="Center" Foreground="{StaticResource ListItemTXTagForegroundBrush}" FontFamily="/Fonts/#Roboto Light"/>
+                                        </WrapPanel>
+                                    </CheckBox.Content>
+                                </CheckBox>
+                            </WrapPanel>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Margin="15,0,0,0">
+                            <CheckBox Content="시간"/>
+                            <CheckBox Content="RX/TX"  FontFamily="/Fonts/#Roboto Light" Margin="0,10,0,0"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" Margin="15,0,0,0">
+                            <CheckBox Content="일시 정지"/>
+                            <CheckBox Content="자동 줄바꿈" Margin="0,10,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+            
+            <Grid Grid.Column="1" Margin="50,5,0,0">
+                <StackPanel >
+                    <TextBlock Text="문자열 출력 방식" Foreground="{StaticResource ContentForegroundBrush}" FontSize="13" FontFamily="/Fonts/#KoPubDotum Light"/>
+                    <WrapPanel Margin="0,10,0,0">
+                        <RadioButton GroupName="StringPrintMethod" Content="HEX"/>
+                        <RadioButton GroupName="StringPrintMethod" Content="ASCII" Margin="10,0,0,0"/>
+                    </WrapPanel>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </GroupBox>
+
+    <!--<Border BorderBrush="{StaticResource ContentBorderBrush}" BorderThickness="0.6" Margin="10,19,10,11">
+        <Grid VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" Margin="20,0,0,0">
+                <StackPanel>
+                    <TextBlock Text="문자열 출력 방식" Foreground="{StaticResource ContentForegroundBrush}" FontSize="14" FontFamily="/Fonts/#KoPubDotum Medium"/>
+                    <StackPanel Margin="0,10,0,0">
+                        <RadioButton GroupName="StringPrintMethod" Content="HEX"/>
+                        <RadioButton GroupName="StringPrintMethod" Content="ASCII" Margin="0,10,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="1" Margin="60,0,0,0">
+                <StackPanel>
+                    <TextBlock Text="문자열 표시" Foreground="{StaticResource ContentForegroundBrush}" FontSize="14" FontFamily="/Fonts/#KoPubDotum Medium"/>
+                    <Grid Margin="0,5,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
                             <WrapPanel>
                                 <CheckBox Content="송신" IsChecked="True"/>
                                 <Label Content="[RX]" FontSize="12" Foreground="{StaticResource ListItemRXTagForegroundBrush}" FontFamily="/Fonts/#Roboto Medium"/>
                             </WrapPanel>
-                        </StackPanel>
-                        <StackPanel Grid.Column="1">
-                            <CheckBox Content="자동 줄바꿈" Height="25"/>
-                            <CheckBox Content="시간" Height="25"/>
-                            <WrapPanel >
+                            <WrapPanel>
                                 <CheckBox Content="수신" IsChecked="True"/>
                                 <Label Content="[TX]" FontSize="12" Foreground="{StaticResource ListItemTXTagForegroundBrush}" FontFamily="/Fonts/#Roboto Medium"/>
                             </WrapPanel>
                         </StackPanel>
+                        <StackPanel Grid.Column="1" Margin="15,0,0,0">
+                            <CheckBox Content="시간" Height="25"/>
+                            <CheckBox Content="RX/TX" Height="25" FontFamily="/Fonts/#Roboto Light"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" Margin="15,0,0,0">
+                            <CheckBox Content="일시 정지" Height="25"/>
+                            <CheckBox Content="자동 줄바꿈" Height="25"/>
+                        </StackPanel>
                     </Grid>
-                </Grid>
-
-                <!-- 문자열 표시 설정 -->
-                <Grid Margin="0,30,0,0">
-                    <TextBlock Text="문자열 표시 설정" FontSize="13" FontFamily="/Fonts/#KoPubDotum Light"/>
-                    <StackPanel Margin="5,25,0,0">
-                        <WrapPanel>
-                            <Label Content="문자열 표시 갯수" FontSize="13" Foreground="{StaticResource ContentForegroundBrush}"/>
-                            <TextBox Width="50" Height="25" Text="1000" VerticalContentAlignment="Center"/>
-                        </WrapPanel>
-                    </StackPanel>
-                </Grid>
-                
-                <!-- 문자열 관리 -->
-                <Grid Margin="0,30,0,0">
-                    <TextBlock Text="문자열 관리" FontSize="13" FontFamily="/Fonts/#KoPubDotum Light"/>
-                    <WrapPanel Margin="5,25,0,0">
-                        <Button Content="저장" Width="80" Height="25"/>
-                        <Button Style="{DynamicResource ErrorButtonStyle}" Content="삭제" Width="80" Height="25" Margin="10,0,0,0"/>
-                    </WrapPanel>
-                </Grid>
-            </StackPanel>
+                </StackPanel>
+            </Grid>
         </Grid>
-    </GroupBox>
+    </Border>-->
 </UserControl>

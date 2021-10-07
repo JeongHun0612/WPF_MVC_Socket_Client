@@ -62,6 +62,12 @@
     <Compile Include="View\ConnectTCPView.xaml.cs">
       <DependentUpon>ConnectTCPView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Control\Block.xaml.cs">
+      <DependentUpon>Block.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Control\LoadingAnimation.xaml.cs">
+      <DependentUpon>LoadingAnimation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DataReceiveView.xaml.cs">
       <DependentUpon>DataReceiveView.xaml</DependentUpon>
     </Compile>
@@ -136,6 +142,14 @@
     <Page Include="View\ConnectTCPView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Control\Block.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Control\LoadingAnimation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\DataReceiveView.xaml">
       <SubType>Designer</SubType>

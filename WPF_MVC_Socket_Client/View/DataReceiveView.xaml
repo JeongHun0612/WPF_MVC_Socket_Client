@@ -5,44 +5,46 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:model="clr-namespace:WPF_MVC_Socket_Client.Model"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="850">
+             d:DesignHeight="760" d:DesignWidth="850">
 
-    <Grid Margin="10">
-        <ListView x:Name="DataReceiveListView" Width="Auto" Height="Auto" Background="{StaticResource MainBackgroundBrush}" BorderBrush="{StaticResource ContentBorderBrush}" Foreground="{StaticResource ContentForegroundBrush}" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-            <ListView.ItemTemplate>
-                <DataTemplate DataType="{x:Type model:DataReceiveModel}">
-                    <WrapPanel>
-                        <TextBlock x:Name="TagName" Text="{Binding TXRXTag}" FontFamily="/Fonts/#Roboto Light" Margin="0,0,10,0">
-                            <TextBlock.Style>
-                                <Style TargetType="{x:Type TextBlock}">
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding TXRXTag}" Value="[RX]">
-                                            <Setter Property="Foreground" Value="{StaticResource ListItemRXTagForegroundBrush}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding TXRXTag}" Value="[TX]">
-                                            <Setter Property="Foreground" Value="{StaticResource ListItemTXTagForegroundBrush}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </TextBlock.Style>
-                        </TextBlock>
-                        <TextBlock Text="{Binding DateTime}" FontFamily="/Fonts/#Roboto Light" Margin="0,0,10,0"/>
-                        <TextBlock Text="{Binding Content}" FontFamily="/Fonts/#Roboto Light" TextWrapping="Wrap"/>
-                    </WrapPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-            <!--<ListView.ItemContainerStyle>
-                <Style TargetType="{x:Type ListViewItem}">
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding TXRXTag}" Value="[RX]">
-                            <Setter Property="Foreground" Value="{StaticResource ListItemRXTagForegroundBrush}"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding TXRXTag}" Value="[TX]">
-                            <Setter Property="Foreground" Value="{StaticResource ListItemTXTagForegroundBrush}"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </ListView.ItemContainerStyle>-->
-        </ListView>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0">
+            <ListView x:Name="DataReceiveListView" Width="Auto" Height="Auto" Background="{StaticResource MainBackgroundBrush}" BorderBrush="{StaticResource ContentBorderBrush}" Foreground="{StaticResource ContentForegroundBrush}" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView.ItemTemplate>
+                    <DataTemplate DataType="{x:Type model:DataReceiveModel}">
+                        <WrapPanel>
+                            <TextBlock x:Name="TagName" Text="{Binding TXRXTag}" FontFamily="/Fonts/#Roboto Light" Margin="0,0,10,0">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding TXRXTag}" Value="[RX]">
+                                                <Setter Property="Foreground" Value="{StaticResource ListItemRXTagForegroundBrush}"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding TXRXTag}" Value="[TX]">
+                                                <Setter Property="Foreground" Value="{StaticResource ListItemTXTagForegroundBrush}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                            <TextBlock Text="{Binding DateTime}" FontFamily="/Fonts/#Roboto Light" Margin="0,0,10,0"/>
+                            <TextBlock Text="{Binding Content}" FontFamily="/Fonts/#Roboto Light" TextWrapping="Wrap"/>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
+        <Grid Grid.Row="1" HorizontalAlignment="Right" Margin="0,8,0,0">
+            <WrapPanel>
+                <Button Content="저장" Width="80" Height="25"/>
+                <Button Style="{DynamicResource ErrorButtonStyle}" Content="삭제" Width="80" Height="25" Margin="10,0,0,0"/>
+            </WrapPanel>
+        </Grid>
     </Grid>
 </UserControl>

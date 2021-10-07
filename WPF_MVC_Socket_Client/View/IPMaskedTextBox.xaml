@@ -23,7 +23,7 @@
             <Setter Property="SelectionBrush" Value="{StaticResource ContentSelectionBrush}"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="TextAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontSize" Value="13"/>
             <Setter Property="FontFamily" Value="/Fonts/#Roboto Light"/>
             <Setter Property="MaxLength" Value="3"/>
             <Style.Triggers>

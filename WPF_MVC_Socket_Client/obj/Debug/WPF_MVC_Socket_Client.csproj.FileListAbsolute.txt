@@ -39,3 +39,7 @@ C:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debu
 C:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\Style\CheckBoxStyle.baml
 C:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\Style\RadioButtonStyle.baml
 C:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\Style\ListItemStyle.baml
+C:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\Control\Block.baml
+C:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\Control\Block.g.cs
+C:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\Control\LoadingAnimation.g.cs
+C:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\Control\LoadingAnimation.baml
