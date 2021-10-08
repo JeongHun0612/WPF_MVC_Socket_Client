@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace WPF_MVC_Socket_Client.View
 {
@@ -18,5 +20,11 @@ namespace WPF_MVC_Socket_Client.View
         {
             Debug.WriteLine("Send Click");
         }
+
+        //private void OnlyNumber_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        //{
+        //    Regex regex = new Regex("[^0-9]+");
+        //    e.Handled = regex.IsMatch(e.Text);
+        //}
     }
 }

@@ -14,7 +14,17 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <Button Content="Auto Send" Width="90" Height="25" HorizontalAlignment="Left"/>
+            <DockPanel>
+                <Button Content="Auto Send" Width="90" Height="25" HorizontalAlignment="Left"/>
+                    <Grid Margin="20,2,0,0">
+                        <WrapPanel VerticalAlignment="Center">
+                            <TextBlock Text="Every(Sec)" Foreground="{StaticResource ContentForegroundBrush}" FontSize="13" FontFamily="/Fonts/#Roboto Light"/>
+                            <Slider x:Name="sliderValue" Width="200" Minimum="1" Maximum="15" TickPlacement="None" Value="1" TickFrequency="1" IsSnapToTickEnabled="True" Margin="10,0,0,0"/>
+                        <!--<TextBlock Text="{Binding ElementName=sliderValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Foreground="{StaticResource ContentForegroundBrush}" FontSize="14" FontFamily="/Fonts/#Roboto Light" Margin="10,0,0,0"/>-->
+                            <TextBox Width="40" Text="{Binding ElementName=sliderValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center" Foreground="{StaticResource ContentForegroundBrush}" FontSize="14" FontFamily="/Fonts/#Roboto Light" Margin="10,0,0,0"/>
+                        </WrapPanel>
+                    </Grid>
+            </DockPanel>
         </Grid>
 
         <Grid Grid.Row="1">
@@ -23,7 +33,7 @@
                 <ColumnDefinition Width="60"/>
             </Grid.ColumnDefinitions>
             
-            <TextBox Grid.Column="0" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
+            <TextBox Grid.Column="0" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" ContextMenu="{x:Null}"/>
             <Button Grid.Column="1" Content="Send" Width="50" HorizontalAlignment="Right" Click="Button_Click"/>
         </Grid>
     </Grid>

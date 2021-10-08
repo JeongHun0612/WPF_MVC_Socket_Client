@@ -43,3 +43,4 @@ C:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debu
 C:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\Control\Block.g.cs
 C:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\Control\LoadingAnimation.g.cs
 C:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\Control\LoadingAnimation.baml
+C:\Users\sjh96\source\repos\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\Style\SliderStyle.baml

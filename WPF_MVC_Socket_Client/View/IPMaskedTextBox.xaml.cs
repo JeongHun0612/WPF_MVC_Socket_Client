@@ -20,18 +20,21 @@ namespace WPF_MVC_Socket_Client.View
         private readonly SolidColorBrush normalColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A7A7A"));
         private readonly SolidColorBrush focusColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#BB86FC"));
         private readonly SolidColorBrush hoverColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#AD6DFB"));
+        private readonly SolidColorBrush errorColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#CF6679"));
 
         public string GetIPAddress()
         {
             return firstBox.Text + "." + secondBox.Text + "." + thirdBox.Text + "." + fourthBox.Text;
         }
 
-        public void FocusChanged()
+        public void IPAddressError()
         {
             if (firstBox.Text == string.Empty) { firstBox.Focus(); }
             else if (secondBox.Text == string.Empty) { secondBox.Focus(); }
             else if (thirdBox.Text == string.Empty) { thirdBox.Focus(); }
             else if (fourthBox.Text == string.Empty) { fourthBox.Focus(); }
+
+            IPMaskedUserControl.BorderBrush = errorColorBrush;
         }
 
         private void JumpRight(TextBox rightNeighborBox, KeyEventArgs e)

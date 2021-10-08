@@ -3,7 +3,7 @@
 
     <!-- ButtonStyle -->
     <Style TargetType="{x:Type Button}">
-        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Background" Value="{StaticResource ContentBackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ContentBorderBrush}"/>
         <Setter Property="Foreground" Value="{StaticResource ContentForegroundBrush}"/>
@@ -82,7 +82,7 @@
 
     <!-- ErrorButtonStyle -->
     <Style x:Key="ErrorButtonStyle" TargetType="{x:Type Button}">
-        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Background" Value="{StaticResource ContentBackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ContentBorderBrush}"/>
         <Setter Property="Foreground" Value="{StaticResource ContentForegroundBrush}"/>

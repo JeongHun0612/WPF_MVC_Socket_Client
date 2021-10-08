@@ -16,6 +16,7 @@
     <UserControl.Resources>
         <Style TargetType="{x:Type TextBox}">
             <EventSetter Event="PreviewTextInput" Handler="OnlyNumber_PreviewTextInput"/>
+            <Setter Property="ContextMenu" Value="{x:Null}"/>
             <Setter Property="Background" Value="{StaticResource ContentBackgroundBrush}"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Foreground" Value="{StaticResource ContentForegroundBrush}"/>
@@ -26,11 +27,6 @@
             <Setter Property="FontSize" Value="13"/>
             <Setter Property="FontFamily" Value="/Fonts/#Roboto Light"/>
             <Setter Property="MaxLength" Value="3"/>
-            <Style.Triggers>
-                <Trigger Property="IsFocused" Value="True">
-                    <Setter Property="BorderBrush" Value="Red"/>
-                </Trigger>
-            </Style.Triggers>
         </Style>
     </UserControl.Resources>
 
@@ -45,15 +41,15 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <TextBox x:Name="firstBox" Grid.Column="0" PreviewKeyDown="FirstByte_PreviewKeyDown" TextChanged="FirstByte_TextChanged" IsKeyboardFocusedChanged="TextBox_IsKeyboardFocusedChanged"/>
+        <TextBox x:Name="firstBox" Grid.Column="0" PreviewKeyDown="FirstByte_PreviewKeyDown" TextChanged="FirstByte_TextChanged" IsKeyboardFocusedChanged="TextBox_IsKeyboardFocusedChanged" ContextMenu="{x:Null}"/>
         <TextBlock Grid.Column="1" Text="." VerticalAlignment="Center" Background="{StaticResource ContentBackgroundBrush}" TextAlignment="Center" FontSize="15"/>
 
-        <TextBox x:Name="secondBox" Grid.Column="2" PreviewKeyDown="SecondByte_PreviewKeyDown" TextChanged="SecondByte_TextChanged" IsKeyboardFocusedChanged="TextBox_IsKeyboardFocusedChanged"/>
+        <TextBox x:Name="secondBox" Grid.Column="2" PreviewKeyDown="SecondByte_PreviewKeyDown" TextChanged="SecondByte_TextChanged" IsKeyboardFocusedChanged="TextBox_IsKeyboardFocusedChanged" ContextMenu="{x:Null}"/>
         <TextBlock Grid.Column="3" Text="." VerticalAlignment="Center" Background="{StaticResource ContentBackgroundBrush}" TextAlignment="Center" FontSize="15"/>
 
-        <TextBox x:Name="thirdBox"  Grid.Column="4" PreviewKeyDown="ThirdByte_PreviewKeyDown" TextChanged="ThirdByte_TextChanged" IsKeyboardFocusedChanged="TextBox_IsKeyboardFocusedChanged"/>
+        <TextBox x:Name="thirdBox"  Grid.Column="4" PreviewKeyDown="ThirdByte_PreviewKeyDown" TextChanged="ThirdByte_TextChanged" IsKeyboardFocusedChanged="TextBox_IsKeyboardFocusedChanged" ContextMenu="{x:Null}"/>
         <TextBlock Grid.Column="5" Text="." VerticalAlignment="Center" Background="{StaticResource ContentBackgroundBrush}" TextAlignment="Center" FontSize="15"/>
 
-        <TextBox x:Name="fourthBox" Grid.Column="6" PreviewKeyDown="FourthByte_PreviewKeyDown" TextChanged="FourthByte_TextChanged" IsKeyboardFocusedChanged="TextBox_IsKeyboardFocusedChanged"/>
+        <TextBox x:Name="fourthBox" Grid.Column="6" PreviewKeyDown="FourthByte_PreviewKeyDown" TextChanged="FourthByte_TextChanged" IsKeyboardFocusedChanged="TextBox_IsKeyboardFocusedChanged" ContextMenu="{x:Null}"/>
     </Grid>
 </UserControl>
