@@ -33,7 +33,7 @@
     </Style>
 
     <!-- PortTextBoxStyle -->
-    <!--<Style x:Key="PortTextBoxStyle" TargetType="{x:Type TextBox}">
+    <Style x:Key="PortTextBoxStyle" TargetType="{x:Type TextBox}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="ContextMenu" Value="{x:Null}"/>
         <Setter Property="Background" Value="{StaticResource ContentBackgroundBrush}"/>
@@ -57,20 +57,12 @@
                         <Trigger Property="IsFocused" Value="true">
                             <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource ContentPressedBackgroundBrush}"/>
                         </Trigger>
-                        --><!--<MultiTrigger>
-                            <MultiTrigger.Conditions>s
-                                <Condition Property="IsSelected" Value="True"/>
-                            </MultiTrigger.Conditions>
-                        </MultiTrigger>--><!--
-                        <DataTrigger Binding="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=Text}" Value="1">
-                            <Setter Property="BorderBrush" TargetName="border" Value="Red"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding IsPortError}" Value="True">
-                            <Setter Property="BorderBrush" TargetName="border" Value="Blue"/>
+                        <DataTrigger Binding="{Binding IsPortError}" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource ErrorContentPressedBorderBrush}"/>
                         </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>-->
+    </Style>
 </ResourceDictionary>

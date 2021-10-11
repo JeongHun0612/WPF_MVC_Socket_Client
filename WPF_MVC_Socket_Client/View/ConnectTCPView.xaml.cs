@@ -19,38 +19,51 @@ namespace WPF_MVC_Socket_Client.View
         public ConnectTCPView()
         {
             InitializeComponent();
-
-            MainWindow.connectTCPController.delegateIsConnect += SendIsConnect;
+            //MainWindow.connectTCPController.delegateIsConnect += SendIsConnect;
         }
 
-        private Color normalStartColor = (Color)ColorConverter.ConvertFromString("#A7E59E");
-        private Color normalEndColor = (Color)ColorConverter.ConvertFromString("#69E03A");
+        //private void ConnectClick(object sender, RoutedEventArgs e)
+        //{
+        //    if (IPAddress.TryParse(IpMaskedTextBoxView.GetIPAddress(), out IPAddress ipAddress))
+        //    {
+        //        if (int.TryParse(PortTextBox.Text, out int portNum))
+        //        {
+        //            //&& PortTextBox.Text != "0"
+        //            MainWindow.connectTCPController.CallTCPConnect(ipAddress, portNum);
+        //        }
+        //        else
+        //        {
+        //            PortTextBox.Focus();
+        //        }
+        //    }
+        //    else
+        //    {
+        //        IpMaskedTextBoxView.IPAddressError();
+        //    }
+        //}
 
-        private Color connectStartColor = (Color)ColorConverter.ConvertFromString("#A7E59E");
-        private Color connectEndColor = (Color)ColorConverter.ConvertFromString("#69E03A");
+        //private void DisConnectClick(object sender, RoutedEventArgs e)
+        //{
+        //    MainWindow.connectTCPController.CallTCPDisConnect();
+        //}
 
+        //private void SendIsConnect(bool isConnect)
+        //{
+        //    Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+        //    {
+        //        if (isConnect)
+        //        {
+        //            ConnectButton.Visibility = Visibility.Collapsed;
+        //            DisConnectButton.Visibility = Visibility.Visible;
+        //        }
 
-        private void ConnectClick(object sender, RoutedEventArgs e)
-        {
-            MainWindow.connectTCPController.CallTCPConnect(IpMaskedTextBoxView.GetIPAddress(), PortTextBox.Text);
-        }
-
-        private void SendIsConnect(bool isConnect)
-        {
-            Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
-            {
-                if (isConnect)
-                {
-                    ConnectLampStartColor.Color = connectStartColor;
-                    ConnectLampEndColor.Color = connectEndColor;
-                }
-                else
-                {
-                    ConnectLampStartColor.Color = normalStartColor;
-                    ConnectLampEndColor.Color = normalEndColor;
-                }
-            }));
-        }
+        //        else
+        //        {
+        //            ConnectButton.Visibility = Visibility.Visible;
+        //            DisConnectButton.Visibility = Visibility.Collapsed;
+        //        }
+        //    }));
+        //}
 
         private void OnlyNumber_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

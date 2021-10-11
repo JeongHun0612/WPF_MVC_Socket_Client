@@ -4,14 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:view="clr-namespace:WPF_MVC_Socket_Client.View"
-             xmlns:model="clr-namespace:WPF_MVC_Socket_Client.Model"
-             xmlns:control="clr-namespace:WPF_MVC_Socket_Client.View.Control"
+             xmlns:viewModel="clr-namespace:WPF_MVC_Socket_Client.ViewModel"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
-             FontFamily="/Fonts/#Roboto Medium"
              d:DesignHeight="100" d:DesignWidth="220">
 
     <UserControl.DataContext>
-        <model:ClientDataModel/>
+        <viewModel:ConnectTCPViewModel/>
     </UserControl.DataContext>
 
     <Grid Margin="10">
@@ -31,31 +30,19 @@
 
         <!-- Port Number TextBox -->
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Port" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="13" FontFamily="/Fonts/#Roboto Light"/>
-        <TextBox x:Name="PortTextBox" Grid.Row="1" Grid.Column="1" Width="40" Height="25" HorizontalAlignment="Left" VerticalContentAlignment="Center" MaxLength="4" ContextMenu="{x:Null}" Margin="10,0,0,0"
-                 PreviewTextInput="OnlyNumber_PreviewTextInput"/>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="PortTextBox" Text="{Binding PortNumText}" Width="40" Height="25" HorizontalAlignment="Left" VerticalContentAlignment="Center" MaxLength="4" ContextMenu="{x:Null}" Margin="10,0,0,0"
+                 PreviewTextInput="OnlyNumber_PreviewTextInput">
+        </TextBox>
 
         <!-- Connect Button -->
         <!--<control:LoadingAnimation Grid.Row="1" Grid.Column="1" Margin="0,-30,0,0"/>-->
-        <Button x:Name="ConnectButton" Grid.Row="1" Grid.Column="1" Content="Connect" Width="80" Height="25" HorizontalAlignment="Center" FontFamily="/Fonts/#Roboto Light" Margin="40,0,0,0" Click="ConnectClick"/>
+        <!--<Button x:Name="ConnectButton" Grid.Row="1" Grid.Column="1" Content="Connect" Width="80" Height="25" HorizontalAlignment="Center" Click="ConnectClick" Margin="40,0,0,0"/>
+        <Button x:Name="DisConnectButton" Grid.Row="1" Grid.Column="1" Content="Disconnect" Width="80" Height="25" HorizontalAlignment="Center" Visibility="Collapsed" Click="DisConnectClick" Margin="40,0,0,0"/>-->
+        <Button x:Name="ConnectButton" Grid.Row="1" Grid.Column="1" Content="Connect" Width="80" Height="25" HorizontalAlignment="Center" Visibility="{Binding IsConnectButtonVisibility}" Margin="40,0,0,0"
+                Command="{Binding CommandConnectClick}" CommandParameter="{Binding ElementName=IpMaskedTextBoxView}"/>
+        <Button x:Name="DisConnectButton" Grid.Row="1" Grid.Column="1" Content="Disconnect" Width="80" Height="25" HorizontalAlignment="Center" Visibility="{Binding IsDisConnectButtonVisibility}" Margin="40,0,0,0"
+                Command="{Binding CommandDisConnectClick}"/>
         <Ellipse Grid.Row="1" Grid.Column="1" Width="20" Height="20" Fill="#717171" HorizontalAlignment="Right"/>
-        <Ellipse Grid.Row="1" Grid.Column="1" Width="16" Height="16" HorizontalAlignment="Right" Stroke="Black" Margin="0,0,2,0">
-            <Ellipse.Fill>
-                <LinearGradientBrush StartPoint="0 0" EndPoint="1 1">
-                    <LinearGradientBrush.GradientStops>
-                        <GradientStop x:Name="ConnectLampStartColor" Offset="0.0" Color="#B6B6B6"/>
-                        <GradientStop x:Name="ConnectLampEndColor" Offset="1.0" Color="#969696"/>
-                    </LinearGradientBrush.GradientStops>
-                </LinearGradientBrush>
-            </Ellipse.Fill>
-            <Ellipse.Style>
-                <Style TargetType="{x:Type Ellipse}">
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding IsConnect}" Value="True">
-                            <Setter Property="Fill" Value="Red"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Ellipse.Style>
-        </Ellipse>
+        <Ellipse Style="{DynamicResource ConnectLampStyle}" Grid.Row="1" Grid.Column="1" Width="16" Height="16" HorizontalAlignment="Right" Stroke="Black" Margin="0,0,2,0"/>
     </Grid>
 </UserControl>

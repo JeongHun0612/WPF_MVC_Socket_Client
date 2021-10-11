@@ -5,11 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_MVC_Socket_Client"
         xmlns:view="clr-namespace:WPF_MVC_Socket_Client.View"
+        xmlns:viewModel="clr-namespace:WPF_MVC_Socket_Client.ViewModel"
         mc:Ignorable="d"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         Background="{StaticResource MainBackgroundBrush}"
         Title="MainWindow" Height="1000" Width="900">
+
+    <Window.DataContext>
+        <viewModel:MainWindowViewModel/>
+    </Window.DataContext>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="330"/>

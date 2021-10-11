@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,31 @@ namespace WPF_MVC_Socket_Client.View
         public ReceiveOptionView()
         {
             InitializeComponent();
+        }
+
+        private void StringPrintMethod_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton radioButton = sender as RadioButton;
+            string content = radioButton.Content as string;
+
+            MainWindow.connectTCPController.CallStringPrintMethod(content);
+        }
+
+        private void TimeTag_Checked(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("Checked");
+            MainWindow.connectTCPController.CallTimeTag(true);
+        }
+
+        private void TimeTag_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("UnChecked");
+            MainWindow.connectTCPController.CallTimeTag(false);
+        }
+
+        private void RXTXTag_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

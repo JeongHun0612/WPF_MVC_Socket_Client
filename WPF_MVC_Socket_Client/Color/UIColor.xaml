@@ -27,4 +27,9 @@
     <Color x:Key="Color_011">#B00020</Color>
     <Color x:Key="Color_012">#CF6679</Color>
 
+    <Color x:Key="LampNormalStartColor">#B6B6B6</Color>
+    <Color x:Key="LampNormalEndColor">#969696</Color>
+    <Color x:Key="LampConnectStartColor">#A7E59E</Color>
+    <Color x:Key="LampConnectEndBrush">#69E03A</Color>
+
 </ResourceDictionary>

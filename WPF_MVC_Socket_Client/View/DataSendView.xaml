@@ -3,9 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WPF_MVC_Socket_Client.View"
+             xmlns:viewModel="clr-namespace:WPF_MVC_Socket_Client.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="70" d:DesignWidth="900">
+
+    <UserControl.DataContext>
+        <viewModel:DataSendViewModel/>
+    </UserControl.DataContext>
 
     <Grid Margin="0,5,0,0">
         <Grid.RowDefinitions>
@@ -20,8 +24,8 @@
                         <WrapPanel VerticalAlignment="Center">
                             <TextBlock Text="Every(Sec)" Foreground="{StaticResource ContentForegroundBrush}" FontSize="13" FontFamily="/Fonts/#Roboto Light"/>
                             <Slider x:Name="sliderValue" Width="200" Minimum="1" Maximum="15" TickPlacement="None" Value="1" TickFrequency="1" IsSnapToTickEnabled="True" Margin="10,0,0,0"/>
-                        <!--<TextBlock Text="{Binding ElementName=sliderValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Foreground="{StaticResource ContentForegroundBrush}" FontSize="14" FontFamily="/Fonts/#Roboto Light" Margin="10,0,0,0"/>-->
-                            <TextBox Width="40" Text="{Binding ElementName=sliderValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center" Foreground="{StaticResource ContentForegroundBrush}" FontSize="14" FontFamily="/Fonts/#Roboto Light" Margin="10,0,0,0"/>
+                            <TextBlock Text="{Binding ElementName=sliderValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Foreground="{StaticResource ContentForegroundBrush}" FontSize="14" FontFamily="/Fonts/#Roboto Light" Margin="10,0,0,0"/>
+                            <!--<TextBox Width="40" Text="{Binding ElementName=sliderValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center" Foreground="{StaticResource ContentForegroundBrush}" FontSize="14" FontFamily="/Fonts/#Roboto Light" Margin="10,0,0,0"/>-->
                         </WrapPanel>
                     </Grid>
             </DockPanel>
@@ -33,8 +37,8 @@
                 <ColumnDefinition Width="60"/>
             </Grid.ColumnDefinitions>
             
-            <TextBox Grid.Column="0" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" ContextMenu="{x:Null}"/>
-            <Button Grid.Column="1" Content="Send" Width="50" HorizontalAlignment="Right" Click="Button_Click"/>
+            <TextBox x:Name="DataSendTextBox" Grid.Column="0" Text="{Binding SendText}" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" ContextMenu="{x:Null}"/>
+            <Button x:Name="SendButton" Grid.Column="1" Content="Send" Width="50" HorizontalAlignment="Right" IsEnabled="{Binding SendBtnIsEnabled}" Command="{Binding CommandSendClick}"/>
         </Grid>
     </Grid>
 </UserControl>

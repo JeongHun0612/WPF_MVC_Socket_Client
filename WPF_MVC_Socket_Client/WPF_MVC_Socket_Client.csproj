@@ -35,8 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -57,8 +63,14 @@
     </ApplicationDefinition>
     <Compile Include="Controller\ConnectTCPController.cs" />
     <Compile Include="Model\ClientDataModel.cs" />
-    <Compile Include="Model\DataReceiveModel.cs" />
-    <Compile Include="Notifier.cs" />
+    <Compile Include="Model\ReceiveDataModel.cs" />
+    <Compile Include="ViewModel\ConnectTCPViewModel.cs" />
+    <Compile Include="ViewModel\DataReceiveViewModel.cs" />
+    <Compile Include="ViewModel\DataSendViewModel.cs" />
+    <Compile Include="ViewModel\ICommand.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\Notifier.cs" />
+    <Compile Include="ViewModel\ReceiveOptionViewModel.cs" />
     <Compile Include="View\ConnectSelectView.xaml.cs">
       <DependentUpon>ConnectSelectView.xaml</DependentUpon>
     </Compile>
@@ -111,6 +123,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Style\CheckBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\EllipseStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -217,6 +233,7 @@
     <Resource Include="Fonts\Roboto-Regular.ttf" />
     <Resource Include="Fonts\Roboto-Thin.ttf" />
     <Resource Include="Fonts\Roboto-ThinItalic.ttf" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

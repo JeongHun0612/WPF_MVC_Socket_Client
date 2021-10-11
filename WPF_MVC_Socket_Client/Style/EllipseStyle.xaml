@@ -1,0 +1,31 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="ConnectLampStyle" TargetType="{x:Type Ellipse}">
+        <Setter Property="Fill">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0 0" EndPoint="1 1">
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Offset="0.0" Color="{StaticResource LampNormalStartColor}"/>
+                        <GradientStop Offset="1.0" Color="{StaticResource LampNormalEndColor}"/>
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding ElementName=ConnectButton, Path=Visibility}" Value="Collapsed">
+                <Setter Property="Fill">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0 0" EndPoint="1 1">
+                            <LinearGradientBrush.GradientStops>
+                                <GradientStop Offset="0.0" Color="{StaticResource LampConnectStartColor}"/>
+                                <GradientStop Offset="1.0" Color="{StaticResource LampConnectEndBrush}"/>
+                            </LinearGradientBrush.GradientStops>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

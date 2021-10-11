@@ -18,6 +18,7 @@
                 <ResourceDictionary Source="pack://application:,,,/WPF_MVC_Socket_Client;component/Style/ListItemStyle.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/WPF_MVC_Socket_Client;component/Style/SliderStyle.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/WPF_MVC_Socket_Client;component/Style/ScrollBarStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WPF_MVC_Socket_Client;component/Style/EllipseStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
          

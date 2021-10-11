@@ -30,7 +30,7 @@
         </Style>
     </UserControl.Resources>
 
-    <Grid x:Name="TestName">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="auto"/>

@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Threading;
 
-namespace WPF_MVC_Socket_Client
+namespace WPF_MVC_Socket_Client.ViewModel
 {
     /// <summary>
     /// PropertyChanged 이벤트를 thread-safe하게 호출하는 클래스

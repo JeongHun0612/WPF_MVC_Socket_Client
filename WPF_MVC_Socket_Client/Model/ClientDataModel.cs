@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WPF_MVC_Socket_Client.ViewModel;
 
 namespace WPF_MVC_Socket_Client.Model
 {
