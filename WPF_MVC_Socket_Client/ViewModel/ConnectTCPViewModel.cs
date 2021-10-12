@@ -50,15 +50,15 @@ namespace WPF_MVC_Socket_Client.ViewModel
             set { this.isIPAddressError = value; Notify("IsIPAddressError"); }
         }
 
-        private Visibility isConnectButtonVisibility = Visibility.Visible;
-        public Visibility IsConnectButtonVisibility
+        private bool isConnectButtonVisibility = true;
+        public bool IsConnectButtonVisibility
         {
             get { return this.isConnectButtonVisibility; }
             set { this.isConnectButtonVisibility = value; Notify("IsConnectButtonVisibility"); }
         }
 
-        private Visibility isDisConnectButtonVisibility = Visibility.Collapsed;
-        public Visibility IsDisConnectButtonVisibility
+        private bool isDisConnectButtonVisibility = true;
+        public bool IsDisConnectButtonVisibility
         {
             get { return this.isDisConnectButtonVisibility; }
             set { this.isDisConnectButtonVisibility = value; Notify("IsDisConnectButtonVisibility"); }
@@ -112,8 +112,8 @@ namespace WPF_MVC_Socket_Client.ViewModel
         private void DisConnect()
         {
             tcpClient.Close();
-            IsConnectButtonVisibility = Visibility.Visible;
-            IsDisConnectButtonVisibility = Visibility.Collapsed;
+            IsConnectButtonVisibility = true;
+            IsDisConnectButtonVisibility = false;
             MainWindowViewModel.DataSendViewModel.SendBtnIsEnabled = false;
         }
 
@@ -122,8 +122,8 @@ namespace WPF_MVC_Socket_Client.ViewModel
             try
             {
                 tcpClient.EndConnect(ar);
-                IsDisConnectButtonVisibility = Visibility.Visible;
-                IsConnectButtonVisibility = Visibility.Collapsed;
+                IsDisConnectButtonVisibility = true;
+                IsConnectButtonVisibility = false;
                 MainWindowViewModel.DataSendViewModel.SendBtnIsEnabled = true;
                 ReceiveMessage();
             }

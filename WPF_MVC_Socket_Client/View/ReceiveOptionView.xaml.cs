@@ -34,17 +34,17 @@ namespace WPF_MVC_Socket_Client.View
             MainWindow.connectTCPController.CallStringPrintMethod(content);
         }
 
-        private void TimeTag_Checked(object sender, RoutedEventArgs e)
-        {
-            Debug.WriteLine("Checked");
-            MainWindow.connectTCPController.CallTimeTag(true);
-        }
+        //private void TimeTag_Checked(object sender, RoutedEventArgs e)
+        //{
+        //    Debug.WriteLine("Checked");
+        //    MainWindow.connectTCPController.CallTimeTag(true);
+        //}
 
-        private void TimeTag_Unchecked(object sender, RoutedEventArgs e)
-        {
-            Debug.WriteLine("UnChecked");
-            MainWindow.connectTCPController.CallTimeTag(false);
-        }
+        //private void TimeTag_Unchecked(object sender, RoutedEventArgs e)
+        //{
+        //    Debug.WriteLine("UnChecked");
+        //    MainWindow.connectTCPController.CallTimeTag(false);
+        //}
 
         private void RXTXTag_Checked(object sender, RoutedEventArgs e)
         {

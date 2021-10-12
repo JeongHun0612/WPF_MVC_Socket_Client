@@ -1,7 +1,7 @@
 ﻿<Application x:Class="WPF_MVC_Socket_Client.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:WPF_MVC_Socket_Client"
+             xmlns:library="clr-namespace:WPF_MVC_Socket_Client.Library"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -17,10 +17,13 @@
                 <ResourceDictionary Source="pack://application:,,,/WPF_MVC_Socket_Client;component/Style/RadioButtonStyle.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/WPF_MVC_Socket_Client;component/Style/ListItemStyle.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/WPF_MVC_Socket_Client;component/Style/SliderStyle.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/WPF_MVC_Socket_Client;component/Style/ScrollBarStyle.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/WPF_MVC_Socket_Client;component/Style/EllipseStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WPF_MVC_Socket_Client;component/Style/DataGridStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WPF_MVC_Socket_Client;component/Style/ScrollBarStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+            <library:BoolToVisibility x:Key="BoolToVisibility"/>
+            <library:BindingProxy x:Key="FirstColumnProxy"/>
         </ResourceDictionary>
-         
     </Application.Resources>
 </Application>

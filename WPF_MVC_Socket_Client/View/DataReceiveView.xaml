@@ -5,12 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:viewModel="clr-namespace:WPF_MVC_Socket_Client.ViewModel"
              xmlns:model="clr-namespace:WPF_MVC_Socket_Client.Model"
+             xmlns:library="clr-namespace:WPF_MVC_Socket_Client.Library"
              mc:Ignorable="d" 
              d:DesignHeight="760" d:DesignWidth="900">
 
     <UserControl.DataContext>
         <viewModel:DataReceiveViewModel/>
     </UserControl.DataContext>
+    
+    <UserControl.Resources>
+        <Style x:Key="WrapText" TargetType="{x:Type TextBlock}">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+        <Style TargetType="{x:Type DataGridRow}">
+            <Setter Property="Background" Value="{StaticResource MainBackgroundBrush}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+    </UserControl.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -20,8 +31,8 @@
 
         <Grid Grid.Row="0" HorizontalAlignment="Right" Margin="0,2,0,0">
             <WrapPanel>
-                <Button Content="Save" Width="70" Height="25" Click="SaveClick"/>
-                <Button Style="{DynamicResource ErrorButtonStyle}" Content="Clear" Width="70" Height="25" Click="ClearClick" Margin="10,0,0,0"/>
+                <Button Content="Save" Width="70" Height="25" Command="{Binding CommandSaveClick}"/>
+                <Button Style="{DynamicResource ErrorButtonStyle}" Content="Clear" Width="70" Height="25" Command="{Binding CommandClearClick}" Margin="10,0,0,0"/>
             </WrapPanel>
         </Grid>
         
@@ -51,12 +62,47 @@
                 </ListView.ItemTemplate>
             </ListView>
         </Grid>-->
+        
         <Grid Grid.Row="1">
-            <DataGrid Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HeadersVisibility="None" Background="{StaticResource MainBackgroundBrush}" BorderBrush="{StaticResource ContentBorderBrush}" Foreground="{StaticResource ContentForegroundBrush}" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <!--<DataGrid ItemsSource="{Binding Path= ReceiveDataCollection, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" GridLinesVisibility="None" HeadersVisibility="None" AutoGenerateColumns="False"
+                      Background="{StaticResource MainBackgroundBrush}" BorderBrush="{StaticResource ContentBorderBrush}" Foreground="{StaticResource ContentForegroundBrush}" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <DataGrid.Resources>
+                    <library:BindingProxy x:Key="FirstColumnProxy" Data="{Binding}"/>
+                </DataGrid.Resources>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="*" Binding="{Binding RXTXTag}"/>
-                    <DataGridTextColumn Width="*" Binding="{Binding Time}"/>
-                    <DataGridTextColumn Width="*" Binding="{Binding Content}"/>
+                    <DataGridTextColumn CellStyle="{DynamicResource RXTXTagCellStyle}" MinWidth="30" Width="Auto" Binding="{Binding RXTXTag}" IsReadOnly="True"/>
+                    <DataGridTextColumn CellStyle="{DynamicResource TimeCellStyle}" MinWidth ="60" Width="Auto" Binding="{Binding Time}" Visibility="{Binding Data.IsTimeVisibility, Converter={StaticResource BoolToVisibilityConverter}, Source={StaticResource FirstColumnProxy}}" IsReadOnly="True"/>
+                    <DataGridTextColumn ElementStyle="{StaticResource WrapText}" Width="*" Binding="{Binding Content}" IsReadOnly="True"/>
+                </DataGrid.Columns>
+            </DataGrid>-->
+
+            <DataGrid ItemsSource="{Binding ReceiveDataCollection}" ColumnWidth="*" GridLinesVisibility="None" HeadersVisibility="None" AutoGenerateColumns="False"
+                      Background="{StaticResource MainBackgroundBrush}" BorderBrush="{StaticResource ContentBorderBrush}" Foreground="{StaticResource ContentForegroundBrush}" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate DataType="{x:Type model:ReceiveDataModel}">
+                                <WrapPanel>
+                                    <TextBlock Text="{Binding RXTXTag}" FontFamily="/Fonts/#Roboto Light" Visibility="{Binding IsRXTXTagVisibility}" Margin="0,0,10,0">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding RXTXTag}" Value="[RX]">
+                                                        <Setter Property="Foreground" Value="{StaticResource ListItemRXTagForegroundBrush}"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding RXTXTag}" Value="[TX]">
+                                                        <Setter Property="Foreground" Value="{StaticResource ListItemTXTagForegroundBrush}"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                    <TextBlock Text="{Binding Time}" Visibility="{Binding IsTimeVisibility}" Margin="0,0,10,0"/>
+                                    <TextBlock Text="{Binding Content}" TextWrapping="Wrap" Margin="0,0,10,0"/>
+                                </WrapPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

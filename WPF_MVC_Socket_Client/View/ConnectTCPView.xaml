@@ -36,12 +36,10 @@
 
         <!-- Connect Button -->
         <!--<control:LoadingAnimation Grid.Row="1" Grid.Column="1" Margin="0,-30,0,0"/>-->
-        <!--<Button x:Name="ConnectButton" Grid.Row="1" Grid.Column="1" Content="Connect" Width="80" Height="25" HorizontalAlignment="Center" Click="ConnectClick" Margin="40,0,0,0"/>
-        <Button x:Name="DisConnectButton" Grid.Row="1" Grid.Column="1" Content="Disconnect" Width="80" Height="25" HorizontalAlignment="Center" Visibility="Collapsed" Click="DisConnectClick" Margin="40,0,0,0"/>-->
-        <Button x:Name="ConnectButton" Grid.Row="1" Grid.Column="1" Content="Connect" Width="80" Height="25" HorizontalAlignment="Center" Visibility="{Binding IsConnectButtonVisibility}" Margin="40,0,0,0"
-                Command="{Binding CommandConnectClick}" CommandParameter="{Binding ElementName=IpMaskedTextBoxView}"/>
-        <Button x:Name="DisConnectButton" Grid.Row="1" Grid.Column="1" Content="Disconnect" Width="80" Height="25" HorizontalAlignment="Center" Visibility="{Binding IsDisConnectButtonVisibility}" Margin="40,0,0,0"
-                Command="{Binding CommandDisConnectClick}"/>
+        <Button x:Name="ConnectButton" Grid.Row="1" Grid.Column="1" Content="Connect" Width="80" Height="25" HorizontalAlignment="Center"  Margin="40,0,0,0"
+                Visibility="{Binding IsConnectButtonVisibility, Converter={StaticResource BoolToVisibility}}" Command="{Binding CommandConnectClick}" CommandParameter="{Binding ElementName=IpMaskedTextBoxView}"/>
+        <Button x:Name="DisConnectButton" Grid.Row="1" Grid.Column="1" Content="Disconnect" Width="80" Height="25" HorizontalAlignment="Center"  Margin="40,0,0,0"
+                Visibility="{Binding IsDisConnectButtonVisibility, Converter={StaticResource BoolToVisibility}}" Command="{Binding CommandDisConnectClick}"/>
         <Ellipse Grid.Row="1" Grid.Column="1" Width="20" Height="20" Fill="#717171" HorizontalAlignment="Right"/>
         <Ellipse Style="{DynamicResource ConnectLampStyle}" Grid.Row="1" Grid.Column="1" Width="16" Height="16" HorizontalAlignment="Right" Stroke="Black" Margin="0,0,2,0"/>
     </Grid>

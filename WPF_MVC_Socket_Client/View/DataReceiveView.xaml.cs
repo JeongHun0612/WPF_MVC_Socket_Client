@@ -13,15 +13,18 @@ namespace WPF_MVC_Socket_Client.View
     /// </summary>
     public partial class DataReceiveView : UserControl
     {
-        //private ObservableCollection<ReceiveDataModel> receiveDataList = new ObservableCollection<ReceiveDataModel>();
+        private ObservableCollection<ReceiveDataModel> receiveDataList = new ObservableCollection<ReceiveDataModel>();
 
         public DataReceiveView()
         {
             InitializeComponent();
             //MainWindow.connectTCPController.delegateReceiveData += SendReceiveData;
             //MainWindow.connectTCPController.delegateIsTimeTag += SendIsTimeTag;
+            //receiveDataList.Add(new ReceiveDataModel("[RX]", "TestMessage2TestMessage2TestMessage2TestMessage2TestMessage2TestMessage2TestMessage2TestMessage2TestMessage2TestMessage2TestMessage2TestMessage2TestMessage2TestMessage2TestMessage2"));
+            //receiveDataList.Add(new ReceiveDataModel("[RX]", "TestMessage2"));
+            //receiveDataList.Add(new ReceiveDataModel("[RX]", "TestMessage2"));
 
-            //DataReceiveListView.ItemsSource = receiveDataList;
+            //GridTest.ItemsSource = receiveDataList;
         }
 
         //private void SendReceiveData(ReceiveDataModel receiveData)
@@ -31,17 +34,6 @@ namespace WPF_MVC_Socket_Client.View
         //        receiveDataList.Add(receiveData);
         //    }));
         //}
-
-        private void SaveClick(object sender, RoutedEventArgs e)
-        {
-            Debug.WriteLine("Save Click");
-        }
-
-        private void ClearClick(object sender, RoutedEventArgs e)
-        {
-            Debug.WriteLine("Clear Clcik");
-            //receiveDataList.Clear();
-        }
 
         //private void SendIsTimeTag(bool isTimeTage)
         //{

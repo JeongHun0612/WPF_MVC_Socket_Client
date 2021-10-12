@@ -62,6 +62,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controller\ConnectTCPController.cs" />
+    <Compile Include="Library\BindingProxy.cs" />
+    <Compile Include="Library\BoolToVisibility.cs" />
     <Compile Include="Model\ClientDataModel.cs" />
     <Compile Include="Model\ReceiveDataModel.cs" />
     <Compile Include="ViewModel\ConnectTCPViewModel.cs" />
@@ -123,6 +125,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Style\CheckBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\DataGridStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
