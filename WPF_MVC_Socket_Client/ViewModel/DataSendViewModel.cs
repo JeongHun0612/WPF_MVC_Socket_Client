@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Threading;
 using WPF_MVC_Socket_Client.Model;
 
@@ -31,6 +27,14 @@ namespace WPF_MVC_Socket_Client.ViewModel
             set { this.sendBtnIsEnabled = value; Notify("SendBtnIsEnabled"); }
         }
 
+        private bool isSendTextBoxFocus = false;
+        public bool IsSendTextBoxFocus
+        {
+            get { return this.isSendTextBoxFocus; }
+            set { this.isSendTextBoxFocus = value; Notify("IsSendTextBoxFocus"); }
+        }
+
+
         private DelegateCommand commandSendClick = null;
         public DelegateCommand CommandSendClick
         {
@@ -38,36 +42,52 @@ namespace WPF_MVC_Socket_Client.ViewModel
             set => this.commandSendClick = value;
         }
 
+
         private void SendClick(object obj)
         {
+            IsSendTextBoxFocus = false;
+
             try
             {
-                SendText = SendText.Replace(" ", string.Empty);
-                byte[] sendByte = new byte[SendText.Length / 2];
+                string replaceString = string.Empty;
+                replaceString = SendText.Replace(" ", string.Empty);
+                byte[] sendByte = new byte[replaceString.Length / 2];
 
                 for (int i = 0; i < sendByte.Length; i++)
                 {
-                    sendByte[i] = Convert.ToByte(SendText.Substring(i * 2, 2), 16);
+                    sendByte[i] = Convert.ToByte(replaceString.Substring(i * 2, 2), 16);
                 }
 
                 MainWindowViewModel.ConnectTCPViewModel.TcpClient.GetStream().Write(sendByte, 0, sendByte.Length);
-                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
-                {
-                    MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Add(new ReceiveDataModel("[TX]", SendText));
-                }));
+                SendTextConvert(sendByte);
             }
             catch (Exception e)
             {
                 byte[] sendByte = Encoding.Default.GetBytes(SendText);
                 MainWindowViewModel.ConnectTCPViewModel.TcpClient.GetStream().Write(sendByte, 0, sendByte.Length);
-                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
-                {
-                    MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Add(new ReceiveDataModel("[TX]", SendText));
-                }));
+                SendTextConvert(sendByte);
             }
 
+            Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+            {
+                MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Add(new ReceiveDataModel("[TX]", SendText));
+            }));
+
             SendText = string.Empty;
-            //DataSendTextBox.Focus();
+            IsSendTextBoxFocus = true;
+        }
+
+        private void SendTextConvert(byte[] sendByte)
+        {
+            if (MainWindowViewModel.ReceiveOptionViewModel.IsHex)
+            {
+                SendText = BitConverter.ToString(sendByte).Replace("-00", string.Empty).Replace("-", " ");
+            }
+
+            if (MainWindowViewModel.ReceiveOptionViewModel.IsAscii)
+            {
+                SendText = Encoding.ASCII.GetString(sendByte).Trim('\0');
+            }
         }
     }
 }

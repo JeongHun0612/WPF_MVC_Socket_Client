@@ -61,9 +61,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controller\ConnectTCPController.cs" />
-    <Compile Include="Library\BindingProxy.cs" />
     <Compile Include="Library\BoolToVisibility.cs" />
+    <Compile Include="Library\FocusExtension.cs" />
     <Compile Include="Model\ClientDataModel.cs" />
     <Compile Include="Model\ReceiveDataModel.cs" />
     <Compile Include="ViewModel\ConnectTCPViewModel.cs" />

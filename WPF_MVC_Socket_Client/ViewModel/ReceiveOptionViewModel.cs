@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Diagnostics;
 using WPF_MVC_Socket_Client.Model;
 
 namespace WPF_MVC_Socket_Client.ViewModel
@@ -14,15 +8,34 @@ namespace WPF_MVC_Socket_Client.ViewModel
         public ReceiveOptionViewModel()
         {
             MainWindowViewModel.ReceiveOptionViewModel = this;
-
-            this.commandTimeTagClick = new DelegateCommand(TimeTagClick);
         }
 
-        private DelegateCommand commandTimeTagClick = null;
-        public DelegateCommand CommandTimeTagClick
+        private bool isHex = true;
+        public bool IsHex
         {
-            get => this.commandTimeTagClick;
-            set => this.commandTimeTagClick = value;
+            get { return this.isHex; }
+            set { this.isHex = value; Notify("IsHex"); }
+        }
+
+        private bool isAscii = true;
+        public bool IsAscii
+        {
+            get { return this.isAscii; }
+            set { this.isAscii = value; Notify("IsAscii"); }
+        }
+
+        private bool isReceive = true;
+        public bool IsReceive
+        {
+            get { return this.isReceive; }
+            set { this.isReceive = value; Notify("IsReceive"); }
+        }
+
+        private bool isTransmit = true;
+        public bool IsTransmit
+        {
+            get { return this.isTransmit; }
+            set { this.isTransmit = value; Notify("IsTransmit"); }
         }
 
         private bool isTimeTag = true;
@@ -32,25 +45,18 @@ namespace WPF_MVC_Socket_Client.ViewModel
             set { this.isTimeTag = value; Notify("IsTimeTag"); }
         }
 
-        private void TimeTagClick(object obj)
+        private bool isRXTXTag = true;
+        public bool IsRXTXTag
         {
-            if (IsTimeTag)
-            {
-                foreach (ReceiveDataModel item in MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection)
-                {
-                    Debug.WriteLine(item.Time);
-                    item.IsTimeVisibility = Visibility.Visible;
-                }
-                //MainWindowViewModel.DataReceiveViewModel.IsTimeVisibility = true;
-            }
-            else
-            {
-                foreach (ReceiveDataModel item in MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection)
-                {
-                    item.IsTimeVisibility = Visibility.Collapsed;
-                }
-                //MainWindowViewModel.DataReceiveViewModel.IsTimeVisibility = false;
-            }
+            get { return this.isRXTXTag; }
+            set { this.isRXTXTag = value; Notify("IsRXTXTag"); }
+        }
+
+        private bool isLineBreak = true;
+        public bool IsLineBreak
+        {
+            get { return this.isLineBreak; }
+            set { this.isLineBreak = value; Notify("IsLineBreak"); }
         }
     }
 }

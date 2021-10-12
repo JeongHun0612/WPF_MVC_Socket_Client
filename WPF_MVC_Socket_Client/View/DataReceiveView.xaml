@@ -12,16 +12,6 @@
     <UserControl.DataContext>
         <viewModel:DataReceiveViewModel/>
     </UserControl.DataContext>
-    
-    <UserControl.Resources>
-        <Style x:Key="WrapText" TargetType="{x:Type TextBlock}">
-            <Setter Property="TextWrapping" Value="Wrap"/>
-        </Style>
-        <Style TargetType="{x:Type DataGridRow}">
-            <Setter Property="Background" Value="{StaticResource MainBackgroundBrush}"/>
-            <Setter Property="BorderThickness" Value="0"/>
-        </Style>
-    </UserControl.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -35,76 +25,35 @@
                 <Button Style="{DynamicResource ErrorButtonStyle}" Content="Clear" Width="70" Height="25" Command="{Binding CommandClearClick}" Margin="10,0,0,0"/>
             </WrapPanel>
         </Grid>
-        
-        <!--<Grid Grid.Row="1">
-            <ListView x:Name="DataReceiveListView" ItemsSource="{Binding ReceiveDataCollection}" Width="Auto" Height="Auto" Background="{StaticResource MainBackgroundBrush}" BorderBrush="{StaticResource ContentBorderBrush}" Foreground="{StaticResource ContentForegroundBrush}" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                <ListView.ItemTemplate>
-                    <DataTemplate DataType="{x:Type model:ReceiveDataModel}">
-                        <WrapPanel>
-                            <TextBlock x:Name="TagName" Text="{Binding RXTXTag}" FontFamily="/Fonts/#Roboto Light" Visibility="{Binding IsRXTXTagVisibility}" Margin="0,0,10,0">
-                                <TextBlock.Style>
-                                    <Style TargetType="{x:Type TextBlock}">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding RXTXTag}" Value="[RX]">
-                                                <Setter Property="Foreground" Value="{StaticResource ListItemRXTagForegroundBrush}"/>
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding RXTXTag}" Value="[TX]">
-                                                <Setter Property="Foreground" Value="{StaticResource ListItemTXTagForegroundBrush}"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBlock.Style>
-                            </TextBlock>
-                            <TextBlock Text="{Binding Time}" FontFamily="/Fonts/#Roboto Light" Visibility="{Binding IsTimeVisibility}" Margin="0,0,10,0"/>
-                            <TextBlock Text="{Binding Content}" FontFamily="/Fonts/#Roboto Light" TextWrapping="Wrap"/>
-                        </WrapPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </Grid>-->
-        
-        <Grid Grid.Row="1">
-            <!--<DataGrid ItemsSource="{Binding Path= ReceiveDataCollection, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" GridLinesVisibility="None" HeadersVisibility="None" AutoGenerateColumns="False"
-                      Background="{StaticResource MainBackgroundBrush}" BorderBrush="{StaticResource ContentBorderBrush}" Foreground="{StaticResource ContentForegroundBrush}" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                <DataGrid.Resources>
-                    <library:BindingProxy x:Key="FirstColumnProxy" Data="{Binding}"/>
-                </DataGrid.Resources>
-                <DataGrid.Columns>
-                    <DataGridTextColumn CellStyle="{DynamicResource RXTXTagCellStyle}" MinWidth="30" Width="Auto" Binding="{Binding RXTXTag}" IsReadOnly="True"/>
-                    <DataGridTextColumn CellStyle="{DynamicResource TimeCellStyle}" MinWidth ="60" Width="Auto" Binding="{Binding Time}" Visibility="{Binding Data.IsTimeVisibility, Converter={StaticResource BoolToVisibilityConverter}, Source={StaticResource FirstColumnProxy}}" IsReadOnly="True"/>
-                    <DataGridTextColumn ElementStyle="{StaticResource WrapText}" Width="*" Binding="{Binding Content}" IsReadOnly="True"/>
-                </DataGrid.Columns>
-            </DataGrid>-->
 
-            <DataGrid ItemsSource="{Binding ReceiveDataCollection}" ColumnWidth="*" GridLinesVisibility="None" HeadersVisibility="None" AutoGenerateColumns="False"
+        <Grid Grid.Row="1">
+            <DataGrid ItemsSource="{Binding Path=ReceiveDataCollection, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" GridLinesVisibility="None" HeadersVisibility="None" AutoGenerateColumns="False"
+                      Background="{StaticResource MainBackgroundBrush}" BorderBrush="{StaticResource ContentBorderBrush}" Foreground="{StaticResource ContentForegroundBrush}" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="Auto" ElementStyle="{DynamicResource RXTXTagTextStyle}" Binding="{Binding RXTXTag}" IsReadOnly="True"
+                                        Visibility="{Binding Source={x:Static viewModel:MainWindowViewModel.ReceiveOptionViewModel}, Path=IsRXTXTag, Converter={StaticResource BoolToVisibility}}"/>
+                    <DataGridTextColumn Width="Auto" ElementStyle="{DynamicResource TimeTextStyle}" Binding="{Binding Time}" IsReadOnly="True"
+                                        Visibility="{Binding Source={x:Static viewModel:MainWindowViewModel.ReceiveOptionViewModel}, Path=IsTimeTag, Converter={StaticResource BoolToVisibility}}"/>
+                    <DataGridTextColumn Width="*" ElementStyle="{DynamicResource ContentTextStyle}" Binding="{Binding Content}" IsReadOnly="True"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!--<DataGrid ItemsSource="{Binding ReceiveDataCollection}" ColumnWidth="*" GridLinesVisibility="None" HeadersVisibility="None" AutoGenerateColumns="False"
                       Background="{StaticResource MainBackgroundBrush}" BorderBrush="{StaticResource ContentBorderBrush}" Foreground="{StaticResource ContentForegroundBrush}" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <DataGrid.Columns>
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate DataType="{x:Type model:ReceiveDataModel}">
                                 <WrapPanel>
-                                    <TextBlock Text="{Binding RXTXTag}" FontFamily="/Fonts/#Roboto Light" Visibility="{Binding IsRXTXTagVisibility}" Margin="0,0,10,0">
-                                        <TextBlock.Style>
-                                            <Style TargetType="{x:Type TextBlock}">
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding RXTXTag}" Value="[RX]">
-                                                        <Setter Property="Foreground" Value="{StaticResource ListItemRXTagForegroundBrush}"/>
-                                                    </DataTrigger>
-                                                    <DataTrigger Binding="{Binding RXTXTag}" Value="[TX]">
-                                                        <Setter Property="Foreground" Value="{StaticResource ListItemTXTagForegroundBrush}"/>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </TextBlock.Style>
-                                    </TextBlock>
-                                    <TextBlock Text="{Binding Time}" Visibility="{Binding IsTimeVisibility}" Margin="0,0,10,0"/>
-                                    <TextBlock Text="{Binding Content}" TextWrapping="Wrap" Margin="0,0,10,0"/>
+                                    <TextBlock Style="{DynamicResource RXTXTagTextStyle}" Text="{Binding RXTXTag}" Margin="0,0,10,0"/>
+                                    <TextBlock Style="{DynamicResource TimeTextStyle}" Text="{Binding Time}" Margin="0,0,10,0"/>
+                                    <TextBlock Style="{DynamicResource ContentTextStyle}" Text="{Binding Content}" Margin="0,0,10,0"/>
                                 </WrapPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
-            </DataGrid>
+            </DataGrid>-->
         </Grid>
     </Grid>
 </UserControl>

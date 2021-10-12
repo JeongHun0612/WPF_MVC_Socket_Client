@@ -1,6 +1,14 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewModel="clr-namespace:WPF_MVC_Socket_Client.ViewModel">
 
+    <!-- DataGridRowStyle -->
+    <Style TargetType="{x:Type DataGridRow}">
+        <Setter Property="Background" Value="{StaticResource MainBackgroundBrush}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+    
+    <!-- DataGridCellStyle -->
     <Style TargetType="{x:Type DataGridCell}">
         <Setter Property="Background" Value="{StaticResource MainBackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
@@ -28,42 +36,27 @@
                 <Setter Property="Background" Value="{StaticResource ListItemSelectedFalseBackgroudBrush}"/>
                 <Setter Property="Foreground" Value="{StaticResource ContentForegroundBrush}"/>
             </MultiTrigger>
-            <Trigger Property="IsEnabled" Value="false">
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
-            </Trigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding RXTXTag}" Value="[RX]"/>
+                    <Condition Binding="{Binding Source={x:Static viewModel:MainWindowViewModel.ReceiveOptionViewModel}, Path=IsReceive}" Value="False"/>
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Visibility" Value="Collapsed"/>
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding RXTXTag}" Value="[TX]"/>
+                    <Condition Binding="{Binding Source={x:Static viewModel:MainWindowViewModel.ReceiveOptionViewModel}, Path=IsTransmit}" Value="False"/>
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Visibility" Value="Collapsed"/>
+            </MultiDataTrigger>
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="RXTXTagCellStyle" TargetType="{x:Type DataGridCell}">
-        <Setter Property="Background" Value="{StaticResource MainBackgroundBrush}"/>
-        <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="FontSize" Value="13"/>
-        <Setter Property="FontFamily" Value="/Fonts/#Roboto Light"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type DataGridCell}">
-                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
-                        <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
+    <!-- RXTXTagTextStyle -->
+    <Style x:Key="RXTXTagTextStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="Margin" Value="5,0,5,0"/>
         <Style.Triggers>
-            <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="{StaticResource ListItemSelectedTrueBackgroudBrush}"/>
-            </Trigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="IsSelected" Value="true"/>
-                    <Condition Property="Selector.IsSelectionActive" Value="false"/>
-                </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{StaticResource ListItemSelectedFalseBackgroudBrush}"/>
-                <Setter Property="Foreground" Value="{StaticResource ContentForegroundBrush}"/>
-            </MultiTrigger>
-            <Trigger Property="IsEnabled" Value="false">
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
-            </Trigger>
             <DataTrigger Binding="{Binding RXTXTag}" Value="[RX]">
                 <Setter Property="Foreground" Value="{StaticResource ListItemRXTagForegroundBrush}"/>
             </DataTrigger>
@@ -73,43 +66,19 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="TimeCellStyle" TargetType="{x:Type DataGridCell}">
-        <Setter Property="Background" Value="{StaticResource MainBackgroundBrush}"/>
-        <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="FontSize" Value="13"/>
-        <Setter Property="FontFamily" Value="/Fonts/#Roboto Light"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type DataGridCell}">
-                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
-                        <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
+    <!-- TimeTextStyle -->
+    <Style x:Key="TimeTextStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="Margin" Value="0,0,5,0"/>
+    </Style>
+
+    <!-- ContentTextStyle -->
+    <Style x:Key="ContentTextStyle" TargetType="{x:Type TextBlock}">
         <Style.Triggers>
-            <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="{StaticResource ListItemSelectedTrueBackgroudBrush}"/>
-            </Trigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="IsSelected" Value="true"/>
-                    <Condition Property="Selector.IsSelectionActive" Value="false"/>
-                </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{StaticResource ListItemSelectedFalseBackgroudBrush}"/>
-                <Setter Property="Foreground" Value="{StaticResource ContentForegroundBrush}"/>
-            </MultiTrigger>
-            <Trigger Property="IsEnabled" Value="false">
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
-            </Trigger>
-            <DataTrigger Binding="{Binding IsTimeVisibility}" Value="true">
-                <Setter Property="Visibility" Value="Visible"/>
-                <Setter Property="Foreground" Value="Red"/>
+            <DataTrigger Binding="{Binding Source={x:Static viewModel:MainWindowViewModel.ReceiveOptionViewModel}, Path=IsLineBreak}" Value="True">
+                <Setter Property="TextWrapping" Value="Wrap"/>
             </DataTrigger>
-            <DataTrigger Binding="{Binding IsTimeVisibility}" Value="false">
-                <Setter Property="Visibility" Value="Collapsed"/>
-                <Setter Property="Foreground" Value="Blue"/>
+            <DataTrigger Binding="{Binding Source={x:Static viewModel:MainWindowViewModel.ReceiveOptionViewModel}, Path=IsLineBreak}" Value="False">
+                <Setter Property="TextWrapping" Value="NoWrap"/>
             </DataTrigger>
         </Style.Triggers>
     </Style>

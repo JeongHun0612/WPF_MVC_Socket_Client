@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using WPF_MVC_Socket_Client.Controller;
 
 namespace WPF_MVC_Socket_Client
 {
@@ -12,7 +11,5 @@ namespace WPF_MVC_Socket_Client
         {
             InitializeComponent();
         }
-
-        public static ConnectTCPController connectTCPController = new ConnectTCPController();
     }
 }

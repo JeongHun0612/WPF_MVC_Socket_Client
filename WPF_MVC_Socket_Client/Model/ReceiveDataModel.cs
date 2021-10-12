@@ -37,18 +37,11 @@ namespace WPF_MVC_Socket_Client.Model
             set { this.content = value; NotifyCollection("Content"); }
         }
 
-        private Visibility isRXTXTagVisibility = Visibility.Visible;
-        public Visibility IsRXTXTagVisibility
+        private bool isVisibility = true;
+        public bool IsVisibility
         {
-            get { return this.isRXTXTagVisibility; }
-            set { this.isRXTXTagVisibility = value; NotifyCollection("IsRXTXTagVisibility"); }
-        }
-
-        private Visibility isTimeVisibility = Visibility.Visible;
-        public Visibility IsTimeVisibility
-        {
-            get { return this.isTimeVisibility; }
-            set { this.isTimeVisibility = value; NotifyCollection("IsTimeVisibility"); }
+            get { return this.isVisibility; }
+            set { this.isVisibility = value; NotifyCollection("IsVisibility"); }
         }
     }
 }

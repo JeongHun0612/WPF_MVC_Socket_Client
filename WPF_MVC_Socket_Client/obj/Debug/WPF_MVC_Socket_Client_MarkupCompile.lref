@@ -1,6 +1,7 @@
 ﻿
 FC:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\App.xaml;;
 FC:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\MainWindow.xaml;;
+FC:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\Style\DataGridStyle.xaml;;
 FC:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\View\ConnectSelectView.xaml;;
 FC:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\View\ConnectTCPView.xaml;;
 FC:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\View\Control\LoadingAnimation.xaml;;
@@ -9,4 +10,5 @@ FC:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Clie
 FC:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\View\IPMaskedTextBox.xaml;;
 FC:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\View\ReceiveOptionView.xaml;;
 FC:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\View\WindowTitleBarView.xaml;;
+FC:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\Style\EllipseStyle.xaml;;
 

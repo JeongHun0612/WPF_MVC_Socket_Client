@@ -31,7 +31,7 @@
     <SolidColorBrush x:Key="ExitButtonHoverBackgroudBrush" Color="{StaticResource Color_011}"/>
     <SolidColorBrush x:Key="ExitButtonPressedBackgroudBrush" Color="{StaticResource Color_012}"/>
 
-    <!-- ListItem Brush -->
+    <!-- DataGrid Brush -->
     <SolidColorBrush x:Key="ListItemHoverBackgroudBrush" Color="{StaticResource Color_002}"/>
     <SolidColorBrush x:Key="ListItemSelectedTrueBackgroudBrush" Color="{StaticResource Color_002}"/>
     <SolidColorBrush x:Key="ListItemSelectedFalseBackgroudBrush" Color="{StaticResource Color_001}"/>

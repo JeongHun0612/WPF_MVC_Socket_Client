@@ -57,27 +57,28 @@ namespace WPF_MVC_Socket_Client.ViewModel
             set { this.isConnectButtonVisibility = value; Notify("IsConnectButtonVisibility"); }
         }
 
-        private bool isDisConnectButtonVisibility = true;
+        private bool isDisConnectButtonVisibility = false;
         public bool IsDisConnectButtonVisibility
         {
             get { return this.isDisConnectButtonVisibility; }
             set { this.isDisConnectButtonVisibility = value; Notify("IsDisConnectButtonVisibility"); }
         }
 
-        private DelegateCommand commandConnectClick = null;
-        private DelegateCommand commandDisConnectClick = null;
 
+        private DelegateCommand commandConnectClick = null;
         public DelegateCommand CommandConnectClick
         {
             get => this.commandConnectClick;
             set => this.commandConnectClick = value;
         }
 
+        private DelegateCommand commandDisConnectClick = null;
         public DelegateCommand CommandDisConnectClick
         {
             get => this.commandDisConnectClick;
             set => this.commandDisConnectClick = value;
         }
+
 
         private void ConnectClick(object obj)
         {
@@ -104,26 +105,13 @@ namespace WPF_MVC_Socket_Client.ViewModel
             }
         }
 
-        private void DisConnectClick(object obj)
-        {
-            DisConnect();
-        }
-
-        private void DisConnect()
-        {
-            tcpClient.Close();
-            IsConnectButtonVisibility = true;
-            IsDisConnectButtonVisibility = false;
-            MainWindowViewModel.DataSendViewModel.SendBtnIsEnabled = false;
-        }
-
         private void CallbackConnect(IAsyncResult ar)
         {
             try
             {
                 tcpClient.EndConnect(ar);
-                IsDisConnectButtonVisibility = true;
                 IsConnectButtonVisibility = false;
+                IsDisConnectButtonVisibility = true;
                 MainWindowViewModel.DataSendViewModel.SendBtnIsEnabled = true;
                 ReceiveMessage();
             }
@@ -143,26 +131,20 @@ namespace WPF_MVC_Socket_Client.ViewModel
             {
                 if (tcpClient.GetStream().Read(receiveByte, 0, receiveByte.Length) != 0)
                 {
-                    receiveMessage = BitConverter.ToString(receiveByte).Replace("-00", string.Empty).Replace("-", " ");
+                    if (MainWindowViewModel.ReceiveOptionViewModel.IsHex)
+                    {
+                        receiveMessage = BitConverter.ToString(receiveByte).Replace("-00", string.Empty).Replace("-", " ");
+                    }
+
+                    if (MainWindowViewModel.ReceiveOptionViewModel.IsAscii)
+                    {
+                        receiveMessage = Encoding.ASCII.GetString(receiveByte).Trim('\0');
+                    }
 
                     Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                     {
                         MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Add(new ReceiveDataModel("[RX]", receiveMessage));
                     }));
-
-                    //switch (stringMethod)
-                    //{
-                    //    case "HEX":
-                    //        receiveMessage = BitConverter.ToString(receiveByte).Replace("-00", string.Empty).Replace("-", " ");
-                    //        delegateReceiveData?.Invoke(new ReceiveDataModel("[RX]", receiveMessage));
-                    //        break;
-                    //    case "ASCII":
-                    //        receiveMessage = Encoding.ASCII.GetString(receiveByte).Trim('\0');
-                    //        delegateReceiveData?.Invoke(new ReceiveDataModel("[RX]", receiveMessage));
-                    //        break;
-                    //    default:
-                    //        break;
-                    //}
                 }
                 else
                 {
@@ -170,6 +152,19 @@ namespace WPF_MVC_Socket_Client.ViewModel
                     break;
                 }
             }
+        }
+
+        private void DisConnectClick(object obj)
+        {
+            DisConnect();
+        }
+
+        private void DisConnect()
+        {
+            tcpClient.Close();
+            IsConnectButtonVisibility = true;
+            IsDisConnectButtonVisibility = false;
+            MainWindowViewModel.DataSendViewModel.SendBtnIsEnabled = false;
         }
     }
 }
