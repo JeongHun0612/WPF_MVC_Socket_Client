@@ -53,7 +53,7 @@
                             <CheckBox Content="RX/TX Tag" Height="25" IsChecked="{Binding IsRXTXTag}"/>
                         </StackPanel>
                         <StackPanel Grid.Column="2" Margin="20,0,0,0">
-                            <CheckBox Content="Pause" Height="25"/>
+                            <CheckBox Content="Pause" Height="25" IsChecked="{Binding IsPause}"/>
                             <CheckBox Content="Line Break" Height="25" IsChecked="{Binding IsLineBreak}"/>
                         </StackPanel>
                     </Grid>

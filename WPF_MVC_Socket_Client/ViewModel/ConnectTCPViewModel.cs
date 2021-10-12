@@ -29,6 +29,13 @@ namespace WPF_MVC_Socket_Client.ViewModel
             set { this.tcpClient = value; Notify("TcpClient"); }
         }
 
+        private bool isConnect = false;
+        public bool IsConnect
+        {
+            get { return this.isConnect; }
+            set { this.isConnect = value; Notify("IsConnect"); }
+        }
+
         private string portNumText = string.Empty;
         public string PortNumText
         {
@@ -110,9 +117,11 @@ namespace WPF_MVC_Socket_Client.ViewModel
             try
             {
                 tcpClient.EndConnect(ar);
+                IsConnect = true;
                 IsConnectButtonVisibility = false;
                 IsDisConnectButtonVisibility = true;
-                MainWindowViewModel.DataSendViewModel.SendBtnIsEnabled = true;
+                MainWindowViewModel.DataSendViewModel.IsSendBtnEnabled = true;
+                MainWindowViewModel.DataSendViewModel.IsAutoSendBtnEnabled = true;
                 ReceiveMessage();
             }
 
@@ -124,11 +133,11 @@ namespace WPF_MVC_Socket_Client.ViewModel
 
         private void ReceiveMessage()
         {
-            byte[] receiveByte = new byte[1024];
-            string receiveMessage = string.Empty;
-
             while (true)
             {
+                byte[] receiveByte = new byte[1024];
+                string receiveMessage = string.Empty;
+
                 if (tcpClient.GetStream().Read(receiveByte, 0, receiveByte.Length) != 0)
                 {
                     if (MainWindowViewModel.ReceiveOptionViewModel.IsHex)
@@ -143,7 +152,10 @@ namespace WPF_MVC_Socket_Client.ViewModel
 
                     Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                     {
-                        MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Add(new ReceiveDataModel("[RX]", receiveMessage));
+                        if (!MainWindowViewModel.ReceiveOptionViewModel.IsPause)
+                        {
+                            MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Add(new ReceiveDataModel("[RX]", receiveMessage));
+                        }
                     }));
                 }
                 else
@@ -162,9 +174,12 @@ namespace WPF_MVC_Socket_Client.ViewModel
         private void DisConnect()
         {
             tcpClient.Close();
+            IsConnect = false;
             IsConnectButtonVisibility = true;
             IsDisConnectButtonVisibility = false;
-            MainWindowViewModel.DataSendViewModel.SendBtnIsEnabled = false;
+            MainWindowViewModel.DataSendViewModel.IsAutoSend = false;
+            MainWindowViewModel.DataSendViewModel.IsSendBtnEnabled = false;
+            MainWindowViewModel.DataSendViewModel.IsAutoSendBtnEnabled = false;
         }
     }
 }

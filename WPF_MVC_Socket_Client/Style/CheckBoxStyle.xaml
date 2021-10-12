@@ -33,6 +33,7 @@
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource ContentHoverBorderBrush}"/>
+                            <Setter Property="Cursor" Value="Hand"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
                             <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource ContentPressedBorderBrush}"/>

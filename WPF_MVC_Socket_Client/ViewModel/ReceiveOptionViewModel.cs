@@ -58,5 +58,12 @@ namespace WPF_MVC_Socket_Client.ViewModel
             get { return this.isLineBreak; }
             set { this.isLineBreak = value; Notify("IsLineBreak"); }
         }
+
+        private bool isPause = false;
+        public bool IsPause
+        {
+            get { return this.isPause; }
+            set { this.isPause = value; Notify("IsPause"); }
+        }
     }
 }
