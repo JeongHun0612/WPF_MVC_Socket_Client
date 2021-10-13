@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewModel="clr-namespace:WPF_MVC_Socket_Client.ViewModel">
 
     <!-- TextBoxStyle -->
     <Style TargetType="{x:Type TextBox}">
@@ -57,9 +58,6 @@
                         <Trigger Property="IsFocused" Value="true">
                             <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource ContentPressedBackgroundBrush}"/>
                         </Trigger>
-                        <DataTrigger Binding="{Binding IsPortError}" Value="true">
-                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource ErrorContentPressedBorderBrush}"/>
-                        </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

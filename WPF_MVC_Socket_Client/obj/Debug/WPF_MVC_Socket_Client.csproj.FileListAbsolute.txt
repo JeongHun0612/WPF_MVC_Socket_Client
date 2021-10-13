@@ -97,3 +97,5 @@ C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Clien
 C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\WPF_MVC_Socket_Client.csproj.CopyComplete
 C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\Style\EllipseStyle.baml
 C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\Style\DataGridStyle.baml
+C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\Control\ucSpinnerSwirl.baml
+C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\Control\ucSpinnerSwirl.g.cs

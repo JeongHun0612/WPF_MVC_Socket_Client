@@ -24,7 +24,7 @@
                     <TextBlock Text="String Method" Foreground="{StaticResource ContentForegroundBrush}" FontSize="14" FontFamily="/Fonts/#Roboto Medium"/>
                     <StackPanel Margin="0,10,0,0">
                         <RadioButton GroupName="StringPrintMethod" Content="HEX" IsChecked="{Binding IsHex}"/>
-                        <RadioButton GroupName="StringPrintMethod" Content="ASCII" IsChecked="{Binding IsAscii}" Margin="0,10,0,0"/>
+                        <RadioButton GroupName="StringPrintMethod" Content="ASCII" Margin="0,10,0,0"/>
                     </StackPanel>
                 </StackPanel>
             </Grid>

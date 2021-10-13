@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 
 namespace WPF_MVC_Socket_Client.View
 {
@@ -10,6 +11,14 @@ namespace WPF_MVC_Socket_Client.View
         public DataReceiveView()
         {
             InitializeComponent();
+        }
+
+        private void DataGridText_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+            if (e.OriginalSource is ScrollViewer scrollViewer && Math.Abs(e.ExtentHeightChange) > 0.0)
+            {
+                scrollViewer.ScrollToEnd();
+            }
         }
     }
 }

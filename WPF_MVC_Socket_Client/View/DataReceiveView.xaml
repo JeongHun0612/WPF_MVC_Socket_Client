@@ -27,8 +27,8 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <DataGrid x:Name="DataGridText" ItemsSource="{Binding Path=ReceiveDataCollection, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" GridLinesVisibility="None" HeadersVisibility="None" AutoGenerateColumns="False"
-                      Background="{StaticResource MainBackgroundBrush}" BorderBrush="{StaticResource ContentBorderBrush}" Foreground="{StaticResource ContentForegroundBrush}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled">
+            <DataGrid x:Name="DataGridText" ItemsSource="{Binding Path=ReceiveDataCollection, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" GridLinesVisibility="None" HeadersVisibility="Row" AutoGenerateColumns="False"
+                      ScrollViewer.ScrollChanged="DataGridText_ScrollChanged" Background="{StaticResource MainBackgroundBrush}" BorderBrush="{StaticResource ContentBorderBrush}" Foreground="{StaticResource ContentForegroundBrush}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled">
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="Auto" ElementStyle="{DynamicResource RXTXTagTextStyle}" Binding="{Binding RXTXTag}" IsReadOnly="True"
                                         Visibility="{Binding Source={x:Static viewModel:MainWindowViewModel.ReceiveOptionViewModel}, Path=IsRXTXTag, Converter={StaticResource BoolToVisibility}}"/>
@@ -37,23 +37,6 @@
                     <DataGridTextColumn Width="*" ElementStyle="{DynamicResource ContentTextStyle}" Binding="{Binding Content}" IsReadOnly="True"/>
                 </DataGrid.Columns>
             </DataGrid>
-
-            <!--<DataGrid ItemsSource="{Binding ReceiveDataCollection}" ColumnWidth="*" GridLinesVisibility="None" HeadersVisibility="None" AutoGenerateColumns="False"
-                      Background="{StaticResource MainBackgroundBrush}" BorderBrush="{StaticResource ContentBorderBrush}" Foreground="{StaticResource ContentForegroundBrush}" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                <DataGrid.Columns>
-                    <DataGridTemplateColumn>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate DataType="{x:Type model:ReceiveDataModel}">
-                                <WrapPanel>
-                                    <TextBlock Style="{DynamicResource RXTXTagTextStyle}" Text="{Binding RXTXTag}" Margin="0,0,10,0"/>
-                                    <TextBlock Style="{DynamicResource TimeTextStyle}" Text="{Binding Time}" Margin="0,0,10,0"/>
-                                    <TextBlock Style="{DynamicResource ContentTextStyle}" Text="{Binding Content}" Margin="0,0,10,0"/>
-                                </WrapPanel>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>-->
         </Grid>
     </Grid>
 </UserControl>

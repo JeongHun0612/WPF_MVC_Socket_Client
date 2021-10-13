@@ -23,7 +23,7 @@ namespace WPF_MVC_Socket_Client.Model
             set { this.RXTXtag = value; NotifyCollection("RXTXTag"); }
         }
 
-        private string time = DateTime.Now.ToString("HH:mm:ss");
+        private string time = DateTime.Now.ToString("[HH:mm:ss]");
         public string Time
         {
             get { return this.time; }

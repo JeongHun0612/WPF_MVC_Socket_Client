@@ -17,13 +17,6 @@ namespace WPF_MVC_Socket_Client.ViewModel
             set { this.isHex = value; Notify("IsHex"); }
         }
 
-        private bool isAscii = true;
-        public bool IsAscii
-        {
-            get { return this.isAscii; }
-            set { this.isAscii = value; Notify("IsAscii"); }
-        }
-
         private bool isReceive = true;
         public bool IsReceive
         {

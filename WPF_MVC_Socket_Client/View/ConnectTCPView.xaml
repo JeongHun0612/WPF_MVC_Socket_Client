@@ -4,8 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:view="clr-namespace:WPF_MVC_Socket_Client.View"
+             xmlns:control="clr-namespace:WPF_MVC_Socket_Client.View.Control"
              xmlns:viewModel="clr-namespace:WPF_MVC_Socket_Client.ViewModel"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:library="clr-namespace:WPF_MVC_Socket_Client.Library"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="220">
 
@@ -30,17 +31,19 @@
 
         <!-- Port Number TextBox -->
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Port" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="13" FontFamily="/Fonts/#Roboto Light"/>
-        <TextBox Grid.Row="1" Grid.Column="1" x:Name="PortTextBox" Text="{Binding PortNumText}" Width="40" Height="25" HorizontalAlignment="Left" VerticalContentAlignment="Center" MaxLength="4" ContextMenu="{x:Null}" Margin="10,0,0,0"
-                 PreviewTextInput="OnlyNumber_PreviewTextInput">
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding PortNumText}" Width="40" Height="25" HorizontalAlignment="Left" VerticalContentAlignment="Center" MaxLength="4" ContextMenu="{x:Null}" Margin="10,0,0,0"
+                 library:FocusExtension.IsFocused="{Binding IsPortTextBoxFocus}" PreviewTextInput="OnlyNumber_PreviewTextInput">
         </TextBox>
 
         <!-- Connect Button -->
-        <!--<control:LoadingAnimation Grid.Row="1" Grid.Column="1" Margin="0,-30,0,0"/>-->
         <Button Grid.Row="1" Grid.Column="1" Content="Connect" Width="80" Height="25" HorizontalAlignment="Center" Margin="40,0,0,0"
-                Visibility="{Binding IsConnectButtonVisibility, Converter={StaticResource BoolToVisibility}}" Command="{Binding CommandConnectClick}" CommandParameter="{Binding ElementName=IpMaskedTextBoxView}"/>
+                Visibility="{Binding IsConnectButtonVisibility, Converter={StaticResource BoolToVisibility}}" IsEnabled="{Binding IsConnectButtonEnabled}" Command="{Binding CommandConnectClick}" CommandParameter="{Binding ElementName=IpMaskedTextBoxView}"/>
         <Button Grid.Row="1" Grid.Column="1" Content="Disconnect" Width="80" Height="25" HorizontalAlignment="Center" Margin="40,0,0,0"
                 Visibility="{Binding IsDisConnectButtonVisibility, Converter={StaticResource BoolToVisibility}}" Command="{Binding CommandDisConnectClick}"/>
-        <Ellipse Grid.Row="1" Grid.Column="1" Width="20" Height="20" Fill="#717171" HorizontalAlignment="Right"/>
-        <Ellipse Style="{DynamicResource ConnectLampStyle}" Grid.Row="1" Grid.Column="1" Width="16" Height="16" HorizontalAlignment="Right" Stroke="Black" Margin="0,0,2,0"/>
+        <Grid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Visibility="{Binding IsConnectLampVisibility, Converter={StaticResource BoolToVisibility}}">
+            <Ellipse  Width="20" Height="20" Fill="#717171"/>
+            <Ellipse Style="{DynamicResource ConnectLampStyle}" Width="16" Height="16" Stroke="Black"/>
+        </Grid>
+        <control:ucSpinnerSwirl Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Visibility="{Binding IsSpinnerVisibility, Converter={StaticResource BoolToVisibility}}" Margin="0,5,22,0"/>
     </Grid>
 </UserControl>

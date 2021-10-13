@@ -7,6 +7,10 @@
         <Setter Property="Background" Value="{StaticResource MainBackgroundBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
     </Style>
+
+    <Style TargetType="{x:Type DataGridRowHeader}">
+        <Setter Property="Background" Value="{StaticResource MainBackgroundBrush}"/>
+    </Style>
     
     <!-- DataGridCellStyle -->
     <Style TargetType="{x:Type DataGridCell}">

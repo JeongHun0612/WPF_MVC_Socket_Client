@@ -27,7 +27,6 @@
                         <TextBlock Text="Every(Sec)" Foreground="{StaticResource ContentForegroundBrush}" FontSize="13" FontFamily="/Fonts/#Roboto Light"/>
                         <Slider x:Name="sliderValue" Width="200" Minimum="1" Maximum="15" TickPlacement="None" Value="{Binding SendTime, UpdateSourceTrigger=PropertyChanged}" TickFrequency="1" IsSnapToTickEnabled="True" Margin="10,0,0,0"/>
                         <TextBlock Text="{Binding SendTime}" VerticalAlignment="Center" Foreground="{StaticResource ContentForegroundBrush}" FontSize="14" FontFamily="/Fonts/#Roboto Light" Margin="10,0,0,0"/>
-                        <!--<TextBox Width="40" Text="{Binding ElementName=sliderValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center" Foreground="{StaticResource ContentForegroundBrush}" FontSize="14" FontFamily="/Fonts/#Roboto Light" Margin="10,0,0,0"/>-->
                     </WrapPanel>
                 </Grid>
             </DockPanel>
