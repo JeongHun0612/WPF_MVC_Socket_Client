@@ -8,6 +8,8 @@ namespace WPF_MVC_Socket_Client.ViewModel
         public ReceiveOptionViewModel()
         {
             MainWindowViewModel.ReceiveOptionViewModel = this;
+            this.commandIsReceiveClick = new DelegateCommand(IsReceiveClick);
+            this.commandIsTransmitClick = new DelegateCommand(IsTransmitClick);
         }
 
         private bool isHex = true;
@@ -57,6 +59,42 @@ namespace WPF_MVC_Socket_Client.ViewModel
         {
             get { return this.isPause; }
             set { this.isPause = value; Notify("IsPause"); }
+        }
+
+        private DelegateCommand commandIsReceiveClick = null;
+        public DelegateCommand CommandIsReceiveClick
+        {
+            get => this.commandIsReceiveClick;
+            set => this.commandIsReceiveClick = value;
+        }
+
+        private DelegateCommand commandIsTransmitClick = null;
+        public DelegateCommand CommandIsTransmitClick
+        {
+            get => this.commandIsTransmitClick;
+            set => this.commandIsTransmitClick = value;
+        }
+
+        private void IsReceiveClick(object obj)
+        {
+            foreach (ReceiveDataModel item in MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection)
+            {
+                if (item.RXTXTag == "[RX]")
+                {
+                    item.IsVisibility = IsReceive;
+                }
+            }
+        }
+
+        private void IsTransmitClick(object obj)
+        {
+            foreach (ReceiveDataModel item in MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection)
+            {
+                if (item.RXTXTag == "[TX]")
+                {
+                    item.IsVisibility = IsTransmit;
+                }
+            }
         }
     }
 }

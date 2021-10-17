@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:viewModel="clr-namespace:WPF_MVC_Socket_Client.ViewModel"
              xmlns:model="clr-namespace:WPF_MVC_Socket_Client.Model"
-             xmlns:library="clr-namespace:WPF_MVC_Socket_Client.Library"
              mc:Ignorable="d" 
              d:DesignHeight="760" d:DesignWidth="900">
 
@@ -27,16 +27,45 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <DataGrid x:Name="DataGridText" ItemsSource="{Binding Path=ReceiveDataCollection, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" GridLinesVisibility="None" HeadersVisibility="Row" AutoGenerateColumns="False"
-                      ScrollViewer.ScrollChanged="DataGridText_ScrollChanged" Background="{StaticResource MainBackgroundBrush}" BorderBrush="{StaticResource ContentBorderBrush}" Foreground="{StaticResource ContentForegroundBrush}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled">
+            <!--<DataGrid x:Name="DataGridReceive" ItemsSource="{Binding Path=ReceiveDataCollection, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" GridLinesVisibility="None" HeadersVisibility="Row" AutoGenerateColumns="False"
+                      ScrollViewer.ScrollChanged="DataGridReceive_ScrollChanged" Background="{StaticResource MainBackgroundBrush}" BorderBrush="{StaticResource ContentBorderBrush}" Foreground="{StaticResource ContentForegroundBrush}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="Auto" ElementStyle="{DynamicResource RXTXTagTextStyle}" Binding="{Binding RXTXTag}" IsReadOnly="True"
                                         Visibility="{Binding Source={x:Static viewModel:MainWindowViewModel.ReceiveOptionViewModel}, Path=IsRXTXTag, Converter={StaticResource BoolToVisibility}}"/>
                     <DataGridTextColumn Width="Auto" ElementStyle="{DynamicResource TimeTextStyle}" Binding="{Binding Time}" IsReadOnly="True"
                                         Visibility="{Binding Source={x:Static viewModel:MainWindowViewModel.ReceiveOptionViewModel}, Path=IsTimeTag, Converter={StaticResource BoolToVisibility}}"/>
-                    <DataGridTextColumn Width="*" ElementStyle="{DynamicResource ContentTextStyle}" Binding="{Binding Content}" IsReadOnly="True"/>
+                    <DataGridTextColumn Width="*" ElementStyle="{DynamicResource ContentTextStyle}" Binding="{Binding Content}" IsReadOnly="True">
+                    </DataGridTextColumn>
                 </DataGrid.Columns>
-            </DataGrid>
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Setter Property="Background" Value="{StaticResource MainBackgroundBrush}"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Visibility" Value="{Binding IsVisibility, Converter={StaticResource BoolToVisibility}}"/>
+                        <Setter Property="Margin" Value="0,1"/>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.InputBindings>
+                    <KeyBinding Modifiers="Ctrl" Key="C" Command="{Binding CommandSelectedItemCopy}" CommandParameter="{Binding ElementName=DataGridReceive, Path=SelectedItems}"/>
+                </DataGrid.InputBindings>
+            </DataGrid>-->
+    
+            <ListView x:Name="DataReceiveListView" ItemsSource="{Binding ReceiveDataCollection}" Background="{StaticResource MainBackgroundBrush}" BorderBrush="{StaticResource ContentBorderBrush}" Foreground="{StaticResource ContentForegroundBrush}" 
+                      ScrollViewer.ScrollChanged="DataReceiveListView_ScrollChanged" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionMode="Extended">
+                <ListView.ItemTemplate>
+                    <DataTemplate DataType="{x:Type model:ReceiveDataModel}">
+                        <WrapPanel>
+                            <TextBlock Style="{DynamicResource RXTXTagTextStyle}" Text="{Binding RXTXTag}" Margin="0,0,5,0"
+                                       Visibility="{Binding Source={x:Static viewModel:MainWindowViewModel.ReceiveOptionViewModel}, Path=IsRXTXTag, Converter={StaticResource BoolToVisibility}}"/>
+                            <TextBlock Text="{Binding Time}" Margin="0,0,5,0" Visibility="{Binding Source={x:Static viewModel:MainWindowViewModel.ReceiveOptionViewModel}, Path=IsTimeTag, Converter={StaticResource BoolToVisibility}}"/>
+                            <TextBlock Style="{DynamicResource ContentTextStyle}" Text="{Binding Content}"/>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.InputBindings>
+                    <KeyBinding Modifiers="Ctrl" Key="C" Command="{Binding CommandSelectedItemCopy}" CommandParameter="{Binding ElementName=DataReceiveListView, Path=SelectedItems}"/>
+                </ListView.InputBindings>
+            </ListView>
         </Grid>
     </Grid>
 </UserControl>

@@ -59,12 +59,9 @@ C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Clien
 C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\Style\SliderStyle.baml
 C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\Style\TabItemStyle.baml
 C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\Style\TextBoxStyle.baml
-C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\Control\Block.baml
 C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\MainWindow.g.cs
 C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\ConnectSelectView.g.cs
 C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\ConnectTCPView.g.cs
-C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\Control\Block.g.cs
-C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\Control\LoadingAnimation.g.cs
 C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\DataReceiveView.g.cs
 C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\DataSendView.g.cs
 C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\IPMaskedTextBox.g.cs
@@ -78,7 +75,6 @@ C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Clien
 C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\MainWindow.baml
 C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\ConnectSelectView.baml
 C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\ConnectTCPView.baml
-C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\Control\LoadingAnimation.baml
 C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\DataReceiveView.baml
 C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\DataSendView.baml
 C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\obj\Debug\View\IPMaskedTextBox.baml

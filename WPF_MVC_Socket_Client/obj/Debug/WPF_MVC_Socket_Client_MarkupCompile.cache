@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\sjh96\OneDrive\바탕 화면\WPF_MVC_Socket_Client\WPF_MVC_Socket_Client\App.xaml
-241758795649
+221969765013
 
-26-1612312276
+241171309572
 151760457388
-Color\UIBrush.xaml;Color\UIColor.xaml;MainWindow.xaml;Style\ButtonStyle.xaml;Style\CheckBoxStyle.xaml;Style\DataGridStyle.xaml;Style\EllipseStyle.xaml;Style\FocusVisualStyle.xaml;Style\ListItemStyle.xaml;Style\RadioButtonStyle.xaml;Style\ScrollBarStyle.xaml;Style\SliderStyle.xaml;Style\TabItemStyle.xaml;Style\TextBoxStyle.xaml;View\ConnectSelectView.xaml;View\ConnectTCPView.xaml;View\Control\Block.xaml;View\Control\LoadingAnimation.xaml;View\Control\ucSpinnerSwirl.xaml;View\DataReceiveView.xaml;View\DataSendView.xaml;View\IPMaskedTextBox.xaml;View\ReceiveOptionView.xaml;View\WindowTitleBarView.xaml;
+Color\UIBrush.xaml;Color\UIColor.xaml;MainWindow.xaml;Style\ButtonStyle.xaml;Style\CheckBoxStyle.xaml;Style\DataGridStyle.xaml;Style\EllipseStyle.xaml;Style\FocusVisualStyle.xaml;Style\ListItemStyle.xaml;Style\RadioButtonStyle.xaml;Style\ScrollBarStyle.xaml;Style\SliderStyle.xaml;Style\TabItemStyle.xaml;Style\TextBoxStyle.xaml;View\ConnectSelectView.xaml;View\ConnectTCPView.xaml;View\Control\ucSpinnerSwirl.xaml;View\DataReceiveView.xaml;View\DataSendView.xaml;View\IPMaskedTextBox.xaml;View\ReceiveOptionView.xaml;View\WindowTitleBarView.xaml;
 
 False
 

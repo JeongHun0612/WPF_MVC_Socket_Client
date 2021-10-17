@@ -2,16 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:viewModel="clr-namespace:WPF_MVC_Socket_Client.ViewModel">
 
-    <!-- DataGridRowStyle -->
-    <Style TargetType="{x:Type DataGridRow}">
-        <Setter Property="Background" Value="{StaticResource MainBackgroundBrush}"/>
-        <Setter Property="BorderThickness" Value="0"/>
-    </Style>
-
     <Style TargetType="{x:Type DataGridRowHeader}">
         <Setter Property="Background" Value="{StaticResource MainBackgroundBrush}"/>
     </Style>
-    
+
     <!-- DataGridCellStyle -->
     <Style TargetType="{x:Type DataGridCell}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -41,25 +35,11 @@
                 <Setter Property="Background" Value="{StaticResource ListItemSelectedFalseBackgroudBrush}"/>
                 <Setter Property="Foreground" Value="{StaticResource ContentForegroundBrush}"/>
             </MultiTrigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding RXTXTag}" Value="[RX]"/>
-                    <Condition Binding="{Binding Source={x:Static viewModel:MainWindowViewModel.ReceiveOptionViewModel}, Path=IsReceive}" Value="False"/>
-                </MultiDataTrigger.Conditions>
-                <Setter Property="Visibility" Value="Collapsed"/>
-            </MultiDataTrigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding RXTXTag}" Value="[TX]"/>
-                    <Condition Binding="{Binding Source={x:Static viewModel:MainWindowViewModel.ReceiveOptionViewModel}, Path=IsTransmit}" Value="False"/>
-                </MultiDataTrigger.Conditions>
-                <Setter Property="Visibility" Value="Collapsed"/>
-            </MultiDataTrigger>
         </Style.Triggers>
     </Style>
 
     <!-- RXTXTagTextStyle -->
-    <Style x:Key="RXTXTagTextStyle" TargetType="{x:Type TextBlock}">
+    <!--<Style x:Key="RXTXTagTextStyle" TargetType="{x:Type TextBlock}">
         <Setter Property="Margin" Value="5,0,5,0"/>
         <Style.Triggers>
             <DataTrigger Binding="{Binding RXTXTag}" Value="[RX]">
@@ -69,23 +49,24 @@
                 <Setter Property="Foreground" Value="{StaticResource ListItemTXTagForegroundBrush}"/>
             </DataTrigger>
         </Style.Triggers>
-    </Style>
+    </Style>-->
 
     <!-- TimeTextStyle -->
-    <Style x:Key="TimeTextStyle" TargetType="{x:Type TextBlock}">
+    <!--<Style x:Key="TimeTextStyle" TargetType="{x:Type TextBlock}">
         <Setter Property="Margin" Value="0,0,5,0"/>
-    </Style>
+    </Style>-->
 
     <!-- ContentTextStyle -->
-    <Style x:Key="ContentTextStyle" TargetType="{x:Type TextBlock}">
+    <!--<Style x:Key="ContentTextStyle" TargetType="{x:Type TextBlock}">
         <Style.Triggers>
             <DataTrigger Binding="{Binding Source={x:Static viewModel:MainWindowViewModel.ReceiveOptionViewModel}, Path=IsLineBreak}" Value="True">
                 <Setter Property="TextWrapping" Value="Wrap"/>
             </DataTrigger>
             <DataTrigger Binding="{Binding Source={x:Static viewModel:MainWindowViewModel.ReceiveOptionViewModel}, Path=IsLineBreak}" Value="False">
                 <Setter Property="TextWrapping" Value="NoWrap"/>
+                --><!--<Setter Property="Width" Value="Auto"/>--><!--
             </DataTrigger>
         </Style.Triggers>
-    </Style>
+    </Style>-->
 
 </ResourceDictionary>

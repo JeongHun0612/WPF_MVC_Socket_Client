@@ -40,11 +40,11 @@
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
                             <WrapPanel>
-                                <CheckBox Content="Receive" IsChecked="{Binding IsReceive}"/>
+                                <CheckBox Content="Receive" IsChecked="{Binding IsReceive}" Command="{Binding CommandIsReceiveClick}"/>
                                 <Label Content="  [RX]" FontSize="13" Foreground="{StaticResource ListItemRXTagForegroundBrush}" FontFamily="/Fonts/#Roboto Light"/>
                             </WrapPanel>
                             <WrapPanel>
-                                <CheckBox Content="Transmit" IsChecked="{Binding IsTransmit}"/>
+                                <CheckBox Content="Transmit" IsChecked="{Binding IsTransmit}" Command="{Binding CommandIsTransmitClick}"/>
                                 <Label Content="[TX]" FontSize="13" Foreground="{StaticResource ListItemTXTagForegroundBrush}" FontFamily="/Fonts/#Roboto Light"/>
                             </WrapPanel>
                         </StackPanel>

@@ -10,10 +10,11 @@ namespace WPF_MVC_Socket_Client.Model
 {
     public class ReceiveDataModel : NotifierCollection
     {
-        public ReceiveDataModel(string RXTXtag, string content)
+        public ReceiveDataModel(string RXTXtag, string content, bool isVisibility)
         {
             this.RXTXtag = RXTXtag;
             this.content = content;
+            this.isVisibility = isVisibility;
         }
 
         private string RXTXtag = string.Empty;

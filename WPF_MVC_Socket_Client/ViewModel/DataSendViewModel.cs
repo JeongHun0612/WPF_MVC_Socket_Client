@@ -16,6 +16,8 @@ namespace WPF_MVC_Socket_Client.ViewModel
             this.commandAutoSendClick = new DelegateCommand(AutoSendClick);
         }
 
+        private bool IsCatch = false;
+
         private string sendText = string.Empty;
         public string SendText
         {
@@ -85,31 +87,32 @@ namespace WPF_MVC_Socket_Client.ViewModel
             IsSendTextBoxFocus = true;
         }
 
-
         private void AutoSendClick(object obj)
         {
             if (IsAutoSend && SendText != string.Empty)
             {
                 IsSendBtnEnabled = false;
+                IsAutoSend = true;
                 ThreadPool.QueueUserWorkItem(AutoSendLoop);
             }
             else
             {
-                SendText = string.Empty;
-                IsAutoSend = false;
                 IsSendBtnEnabled = true;
+                ReleaseAutoSend();
             }
+        }
+
+        public void ReleaseAutoSend()
+        {
+            IsCatch = false;
+            IsAutoSend = false;
+            SendText = string.Empty;
         }
 
         private void AutoSendLoop(object callBack)
         {
-            while (true)
+            while (IsAutoSend)
             {
-                if (!IsAutoSend || ConnectTCPViewModel.tcpClient == null)
-                {
-                    return;
-                }
-
                 DataSend();
                 Thread.Sleep(SendTime * 1000);
             }
@@ -121,26 +124,42 @@ namespace WPF_MVC_Socket_Client.ViewModel
 
             try
             {
-                sendByte = HexToByte();
+                if (IsCatch)
+                {
+                    sendByte = AsciiToByte();
+                }
+                else
+                {
+                    sendByte = HexToByte();
+                }
             }
             catch
             {
+                IsCatch = true;
                 sendByte = AsciiToByte();
             }
 
-            ConnectTCPViewModel.tcpClient.GetStream().Write(sendByte, 0, sendByte.Length);
-
-            Dispatcher.Invoke(() =>
+            try
             {
-                if (!MainWindowViewModel.ReceiveOptionViewModel.IsPause)
+                ConnectTCPViewModel.tcpClient.GetStream().Write(sendByte, 0, sendByte.Length);
+
+                Dispatcher.Invoke(() =>
                 {
-                    if (MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Count >= 50)
+                    if (!MainWindowViewModel.ReceiveOptionViewModel.IsPause)
                     {
-                        MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.RemoveAt(0);
+                        if (MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Count >= 100)
+                        {
+                            MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.RemoveAt(0);
+                        }
+
+                        MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Add(new ReceiveDataModel("[TX]", SendTextConvert(sendByte), MainWindowViewModel.ReceiveOptionViewModel.IsTransmit));
                     }
-                    MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Add(new ReceiveDataModel("[TX]", SendTextConvert(sendByte)));
-                }
-            });
+                });
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+            }
         }
 
         private byte[] HexToByte()
