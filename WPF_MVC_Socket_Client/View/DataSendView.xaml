@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:library="clr-namespace:WPF_MVC_Socket_Client.Library"
              xmlns:viewModel="clr-namespace:WPF_MVC_Socket_Client.ViewModel"
              mc:Ignorable="d" 
@@ -25,7 +26,13 @@
                 <Grid Margin="20,2,0,0" Visibility="{Binding IsAutoSend, Converter={StaticResource BoolToVisibility}}">
                     <WrapPanel VerticalAlignment="Center">
                         <TextBlock Text="Every(Sec)" Foreground="{StaticResource ContentForegroundBrush}" FontSize="13" FontFamily="/Fonts/#Roboto Light"/>
-                        <Slider x:Name="sliderValue" Width="200" Minimum="1" Maximum="15" TickPlacement="None" Value="{Binding SendTime, UpdateSourceTrigger=PropertyChanged}" TickFrequency="1" IsSnapToTickEnabled="True" Margin="10,0,0,0"/>
+                        <Slider x:Name="sliderValue" Width="200" Minimum="1" Maximum="15" TickPlacement="None" Value="{Binding SendTime, UpdateSourceTrigger=PropertyChanged}" TickFrequency="1" IsSnapToTickEnabled="True" Margin="10,0,0,0">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="ValueChanged">
+                                    <i:InvokeCommandAction Command="{Binding CommandValueChanged}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Slider>
                         <TextBlock Text="{Binding SendTime}" VerticalAlignment="Center" Foreground="{StaticResource ContentForegroundBrush}" FontSize="14" FontFamily="/Fonts/#Roboto Light" Margin="10,0,0,0"/>
                     </WrapPanel>
                 </Grid>

@@ -26,6 +26,26 @@
             </WrapPanel>
         </Grid>
 
+        <Border Grid.Row="1" Background="{StaticResource MainBackgroundBrush}" BorderBrush="{StaticResource ContentBorderBrush}" BorderThickness="1">
+            <ScrollViewer ScrollViewer.ScrollChanged="DataReceiveListView_ScrollChanged" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled">
+                <ListView x:Name="DataReceiveListView" ItemsSource="{Binding ReceiveDataCollection}" Background="Transparent" BorderThickness="0" Foreground="{StaticResource ContentForegroundBrush}" SelectionMode="Extended">
+                    <ListView.ItemTemplate>
+                        <DataTemplate DataType="{x:Type model:ReceiveDataModel}">
+                            <WrapPanel>
+                                <TextBlock Width="Auto" Style="{DynamicResource RXTXTagTextStyle}" Text="{Binding RXTXTag}" Margin="0,0,5,0"
+                                       Visibility="{Binding Source={x:Static viewModel:MainWindowViewModel.ReceiveOptionViewModel}, Path=IsRXTXTag, Converter={StaticResource BoolToVisibility}}"/>
+                                <TextBlock Width="Auto" Text="{Binding Time}" Margin="0,0,5,0" Visibility="{Binding Source={x:Static viewModel:MainWindowViewModel.ReceiveOptionViewModel}, Path=IsTimeTag, Converter={StaticResource BoolToVisibility}}"/>
+                                <TextBlock Width="Auto" Style="{DynamicResource ContentTextStyle}" Text="{Binding Content}"/>
+                            </WrapPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.InputBindings>
+                        <KeyBinding Modifiers="Ctrl" Key="C" Command="{Binding CommandSelectedItemCopy}" CommandParameter="{Binding ElementName=DataReceiveListView, Path=SelectedItems}"/>
+                    </ListView.InputBindings>
+                </ListView>
+            </ScrollViewer>
+        </Border>
+        
         <Grid Grid.Row="1">
             <!--<DataGrid x:Name="DataGridReceive" ItemsSource="{Binding Path=ReceiveDataCollection, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" GridLinesVisibility="None" HeadersVisibility="Row" AutoGenerateColumns="False"
                       ScrollViewer.ScrollChanged="DataGridReceive_ScrollChanged" Background="{StaticResource MainBackgroundBrush}" BorderBrush="{StaticResource ContentBorderBrush}" Foreground="{StaticResource ContentForegroundBrush}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
@@ -49,23 +69,23 @@
                     <KeyBinding Modifiers="Ctrl" Key="C" Command="{Binding CommandSelectedItemCopy}" CommandParameter="{Binding ElementName=DataGridReceive, Path=SelectedItems}"/>
                 </DataGrid.InputBindings>
             </DataGrid>-->
-    
-            <ListView x:Name="DataReceiveListView" ItemsSource="{Binding ReceiveDataCollection}" Background="{StaticResource MainBackgroundBrush}" BorderBrush="{StaticResource ContentBorderBrush}" Foreground="{StaticResource ContentForegroundBrush}" 
+            
+            <!--<ListView x:Name="DataReceiveListView" ItemsSource="{Binding ReceiveDataCollection}" Background="{StaticResource MainBackgroundBrush}" BorderBrush="{StaticResource ContentBorderBrush}" Foreground="{StaticResource ContentForegroundBrush}" 
                       ScrollViewer.ScrollChanged="DataReceiveListView_ScrollChanged" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionMode="Extended">
                 <ListView.ItemTemplate>
                     <DataTemplate DataType="{x:Type model:ReceiveDataModel}">
                         <WrapPanel>
-                            <TextBlock Style="{DynamicResource RXTXTagTextStyle}" Text="{Binding RXTXTag}" Margin="0,0,5,0"
+                            <TextBlock Width="Auto" Style="{DynamicResource RXTXTagTextStyle}" Text="{Binding RXTXTag}" Margin="0,0,5,0"
                                        Visibility="{Binding Source={x:Static viewModel:MainWindowViewModel.ReceiveOptionViewModel}, Path=IsRXTXTag, Converter={StaticResource BoolToVisibility}}"/>
-                            <TextBlock Text="{Binding Time}" Margin="0,0,5,0" Visibility="{Binding Source={x:Static viewModel:MainWindowViewModel.ReceiveOptionViewModel}, Path=IsTimeTag, Converter={StaticResource BoolToVisibility}}"/>
-                            <TextBlock Style="{DynamicResource ContentTextStyle}" Text="{Binding Content}"/>
+                            <TextBlock Width="Auto" Text="{Binding Time}" Margin="0,0,5,0" Visibility="{Binding Source={x:Static viewModel:MainWindowViewModel.ReceiveOptionViewModel}, Path=IsTimeTag, Converter={StaticResource BoolToVisibility}}"/>
+                            <TextBlock Width="Auto" Style="{DynamicResource ContentTextStyle}" Text="{Binding Content}"/>
                         </WrapPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
                 <ListView.InputBindings>
                     <KeyBinding Modifiers="Ctrl" Key="C" Command="{Binding CommandSelectedItemCopy}" CommandParameter="{Binding ElementName=DataReceiveListView, Path=SelectedItems}"/>
                 </ListView.InputBindings>
-            </ListView>
+            </ListView>-->
         </Grid>
     </Grid>
 </UserControl>

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Text;
-using System.Threading;
 using System.Windows.Threading;
 using WPF_MVC_Socket_Client.Model;
 
@@ -14,8 +13,12 @@ namespace WPF_MVC_Socket_Client.ViewModel
             MainWindowViewModel.DataSendViewModel = this;
             this.commandSendClick = new DelegateCommand(SendClick);
             this.commandAutoSendClick = new DelegateCommand(AutoSendClick);
+            this.commandValueChanged = new DelegateCommand(ValueChanged);
+
+            AutoSendLoop();
         }
 
+        DispatcherTimer timer = new DispatcherTimer();
         private bool IsCatch = false;
 
         private string sendText = string.Empty;
@@ -74,6 +77,13 @@ namespace WPF_MVC_Socket_Client.ViewModel
             set => this.commandAutoSendClick = value;
         }
 
+        private DelegateCommand commandValueChanged = null;
+        public DelegateCommand CommandValueChanged
+        {
+            get => this.commandValueChanged;
+            set => this.commandValueChanged = value;
+        }
+
 
         private void SendClick(object obj)
         {
@@ -91,9 +101,9 @@ namespace WPF_MVC_Socket_Client.ViewModel
         {
             if (IsAutoSend && SendText != string.Empty)
             {
+                DataSend();
+                timer.Start();
                 IsSendBtnEnabled = false;
-                IsAutoSend = true;
-                ThreadPool.QueueUserWorkItem(AutoSendLoop);
             }
             else
             {
@@ -104,18 +114,24 @@ namespace WPF_MVC_Socket_Client.ViewModel
 
         public void ReleaseAutoSend()
         {
+            timer.Stop();
             IsCatch = false;
             IsAutoSend = false;
             SendText = string.Empty;
         }
 
-        private void AutoSendLoop(object callBack)
+        private void AutoSendLoop()
         {
-            while (IsAutoSend)
+            timer.Interval = TimeSpan.FromMilliseconds(SendTime * 1000);
+            timer.Tick += (o, e) =>
             {
                 DataSend();
-                Thread.Sleep(SendTime * 1000);
-            }
+            };
+        }
+
+        private void ValueChanged(object obj)
+        {
+            timer.Interval = TimeSpan.FromMilliseconds(SendTime * 1000);
         }
 
         private void DataSend()

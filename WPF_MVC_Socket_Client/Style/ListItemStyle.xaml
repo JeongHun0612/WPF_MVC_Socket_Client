@@ -3,7 +3,6 @@
                     xmlns:viewModel="clr-namespace:WPF_MVC_Socket_Client.ViewModel">
 
     <Style TargetType="{x:Type ListView}">
-        <Setter Property="Background" Value="Red"/>
         <Style.Triggers>
             <DataTrigger Binding="{Binding Source={x:Static viewModel:MainWindowViewModel.ReceiveOptionViewModel}, Path=IsLineBreak}" Value="True">
                 <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
