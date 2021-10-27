@@ -45,7 +45,11 @@
                 <ColumnDefinition Width="60"/>
             </Grid.ColumnDefinitions>
 
-            <TextBox Grid.Column="0" Text="{Binding SendText}" library:FocusExtension.IsFocused="{Binding IsSendTextBoxFocus}" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" ContextMenu="{x:Null}"/>
+            <TextBox Grid.Column="0" Text="{Binding SendText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" library:FocusExtension.IsFocused="{Binding IsSendTextBoxFocus}" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" ContextMenu="{x:Null}">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Enter" Command="{Binding CommandSendClick}"/>
+                </TextBox.InputBindings>
+            </TextBox>
             <Button Grid.Column="1" Content="Send" Width="50" HorizontalAlignment="Right" IsEnabled="{Binding IsSendBtnEnabled}" Command="{Binding CommandSendClick}"/>
         </Grid>
     </Grid>

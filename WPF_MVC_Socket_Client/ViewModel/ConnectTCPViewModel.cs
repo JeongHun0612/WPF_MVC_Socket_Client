@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using System.Windows;
 using System.Windows.Threading;
 using WPF_MVC_Socket_Client.Model;
 using WPF_MVC_Socket_Client.View;
@@ -130,8 +131,6 @@ namespace WPF_MVC_Socket_Client.ViewModel
                 {
                     if (tcpClient.GetStream().Read(receiveByte, 0, receiveByte.Length) != 0)
                     {
-                        receiveMessage = MainWindowViewModel.ReceiveOptionViewModel.IsHex ? ByteToHex(receiveByte) : ByteToAscii(receiveByte);
-
                         Dispatcher.Invoke(() =>
                         {
                             if (!MainWindowViewModel.ReceiveOptionViewModel.IsPause)
@@ -141,7 +140,7 @@ namespace WPF_MVC_Socket_Client.ViewModel
                                     MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.RemoveAt(0);
                                 }
 
-                                MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Add(new ReceiveDataModel("[RX]", receiveMessage, MainWindowViewModel.ReceiveOptionViewModel.IsReceive));
+                                MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Add(new ReceiveDataModel("[RX]", ReceiveTextConvert(receiveByte), MainWindowViewModel.ReceiveOptionViewModel.IsReceive));
                             }
                         });
                     }
@@ -199,14 +198,17 @@ namespace WPF_MVC_Socket_Client.ViewModel
             }
         }
 
-        private string ByteToHex(byte[] receiveByte)
+        private string ReceiveTextConvert(byte[] sendByte)
         {
-            return BitConverter.ToString(receiveByte).Replace("-00", string.Empty).Replace("-", " ");
-        }
+            if (MainWindowViewModel.ReceiveOptionViewModel.IsHex)
+            {
+                return BitConverter.ToString(sendByte).Replace("-00", string.Empty).Replace("-", " ");
+            }
 
-        private string ByteToAscii(byte[] receiveByte)
-        {
-            return Encoding.ASCII.GetString(receiveByte).Trim('\0');
+            else
+            {
+                return Encoding.ASCII.GetString(sendByte).Trim('\0');
+            }
         }
     }
 }

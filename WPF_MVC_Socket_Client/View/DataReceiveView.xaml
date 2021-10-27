@@ -13,6 +13,10 @@
         <viewModel:DataReceiveViewModel/>
     </UserControl.DataContext>
 
+    <UserControl.InputBindings>
+        <KeyBinding Modifiers="Ctrl" Key="S" Command="{Binding CommandSaveClick}"/>
+    </UserControl.InputBindings>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="34"/>

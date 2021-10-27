@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Text;
+using System.Windows;
 using System.Windows.Threading;
 using WPF_MVC_Socket_Client.Model;
 
@@ -19,7 +20,6 @@ namespace WPF_MVC_Socket_Client.ViewModel
         }
 
         DispatcherTimer timer = new DispatcherTimer();
-        private bool IsCatch = false;
 
         private string sendText = string.Empty;
         public string SendText
@@ -115,7 +115,6 @@ namespace WPF_MVC_Socket_Client.ViewModel
         public void ReleaseAutoSend()
         {
             timer.Stop();
-            IsCatch = false;
             IsAutoSend = false;
             SendText = string.Empty;
         }
@@ -138,22 +137,7 @@ namespace WPF_MVC_Socket_Client.ViewModel
         {
             byte[] sendByte = null;
 
-            try
-            {
-                if (IsCatch)
-                {
-                    sendByte = AsciiToByte();
-                }
-                else
-                {
-                    sendByte = HexToByte();
-                }
-            }
-            catch
-            {
-                IsCatch = true;
-                sendByte = AsciiToByte();
-            }
+            sendByte = IsHex(SendText) ? HexToByte() : AsciiToByte();
 
             try
             {
@@ -207,6 +191,19 @@ namespace WPF_MVC_Socket_Client.ViewModel
             {
                 return Encoding.ASCII.GetString(sendByte).Trim('\0');
             }
+        }
+
+        private bool IsHex(string sendText)
+        {
+            foreach (char c in sendText.Replace(" ", string.Empty))
+            {
+                if (!Uri.IsHexDigit(c))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }
