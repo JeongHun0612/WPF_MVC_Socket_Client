@@ -36,32 +36,18 @@ namespace WPF_MVC_Socket_Client.ViewModel
             set { this.isPortTextBoxFocus = value; Notify("IsPortTextBoxFocus"); }
         }
 
-        private bool isConnectButtonEnabled = true;
-        public bool IsConnectButtonEnabled
+        private bool isConnect = false;
+        public bool IsConnect
         {
-            get { return this.isConnectButtonEnabled; }
-            set { this.isConnectButtonEnabled = value; Notify("IsConnectButtonEnabled"); }
+            get { return this.isConnect; }
+            set { this.isConnect = value; Notify("IsConnect"); }
         }
 
-        private bool isDisConnectButtonVisibility = false;
-        public bool IsDisConnectButtonVisibility
+        private bool isConnecting = false;
+        public bool IsConnecting
         {
-            get { return this.isDisConnectButtonVisibility; }
-            set { this.isDisConnectButtonVisibility = value; Notify("IsDisConnectButtonVisibility"); }
-        }
-
-        private bool isConnectLampVisibility = true;
-        public bool IsConnectLampVisibility
-        {
-            get { return this.isConnectLampVisibility; }
-            set { this.isConnectLampVisibility = value; Notify("IsConnectLampVisibility"); }
-        }
-
-        private bool isSpinnerVisibility = false;
-        public bool IsSpinnerVisibility
-        {
-            get { return this.isSpinnerVisibility; }
-            set { this.isSpinnerVisibility = value; Notify("IsSpinnerVisibility"); }
+            get { return this.isConnecting; }
+            set { this.isConnecting = value; Notify("IsConnecting"); }
         }
 
         private DelegateCommand commandConnectClick = null;
@@ -82,24 +68,22 @@ namespace WPF_MVC_Socket_Client.ViewModel
         {
             IPMaskedTextBox iPMaskedTextBox = obj as IPMaskedTextBox;
 
-            if (IPAddress.TryParse(iPMaskedTextBox.GetIPAddress(), out IPAddress ipAddress))
-            {
-                if (int.TryParse(PortNumText, out int portNum) && PortNumText != "0")
-                {
-                    IsConnecting(true);
-                    ThreadPool.QueueUserWorkItem(state => Connect(ipAddress, portNum));
-                }
-                else
-                {
-                    PortNumText = string.Empty;
-                    IsPortTextBoxFocus = false;
-                    IsPortTextBoxFocus = true;
-                }
-            }
-            else
+            if (!IPAddress.TryParse(iPMaskedTextBox.GetIPAddress(), out IPAddress ipAddress))
             {
                 iPMaskedTextBox.IPAddressError();
+                return;
             }
+
+            if (!int.TryParse(PortNumText, out int portNum) || portNumText == "0")
+            {
+                PortNumText = string.Empty;
+                IsPortTextBoxFocus = false;
+                IsPortTextBoxFocus = true;
+                return;
+            }
+
+            IsConnecting = true;
+            ThreadPool.QueueUserWorkItem(state => Connect(ipAddress, portNum));
         }
 
         private void Connect(IPAddress ipAddress, int portNum)
@@ -109,51 +93,50 @@ namespace WPF_MVC_Socket_Client.ViewModel
 
             if (!result.AsyncWaitHandle.WaitOne(TimeSpan.FromSeconds(2), false))
             {
-                IsConnecting(false);
+                IsConnecting = false;
             }
             else
             {
+                IsConnect = true;
+                IsConnecting = false;
                 tcpClient.EndConnect(result);
-                IsConnecting(false);
-                IsConnect(true);
                 ReceiveMessage();
             }
         }
 
         private void ReceiveMessage()
         {
+            string receiveMessage = string.Empty;
+
             while (true)
             {
                 byte[] receiveByte = new byte[1024];
-                string receiveMessage = string.Empty;
 
                 try
                 {
-                    if (tcpClient.GetStream().Read(receiveByte, 0, receiveByte.Length) != 0)
+                    if (tcpClient.GetStream().Read(receiveByte, 0, receiveByte.Length) == 0)
                     {
-                        Dispatcher.Invoke(() =>
-                        {
-                            if (!MainWindowViewModel.ReceiveOptionViewModel.IsPause)
-                            {
-                                if (MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Count >= 100)
-                                {
-                                    MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.RemoveAt(0);
-                                }
-
-                                MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Add(new ReceiveDataModel("[RX]", ReceiveTextConvert(receiveByte), MainWindowViewModel.ReceiveOptionViewModel.IsReceive));
-                            }
-                        });
-                    }
-                    else
-                    {
-                        IsConnect(false);
+                        DisConnect();
                         break;
                     }
+
+                    Dispatcher.Invoke(() =>
+                    {
+                        if (!MainWindowViewModel.ReceiveOptionViewModel.IsPause)
+                        {
+                            if (MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Count >= 100)
+                            {
+                                MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.RemoveAt(0);
+                            }
+
+                            MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Add(new ReceiveDataModel("[RX]", ReceiveTextConvert(receiveByte), MainWindowViewModel.ReceiveOptionViewModel.IsReceive));
+                        }
+                    });
                 }
                 catch (Exception e)
                 {
                     Debug.WriteLine(e.Message);
-                    IsConnect(false);
+                    DisConnect();
                     break;
                 }
             }
@@ -161,53 +144,26 @@ namespace WPF_MVC_Socket_Client.ViewModel
 
         private void DisConnectClick(object obj)
         {
-            IsConnect(false);
+            DisConnect();
         }
 
-        private void IsConnecting(bool isConnecting)
+        private void DisConnect()
         {
-            if (isConnecting)
-            {
-                IsConnectButtonEnabled = false;
-                IsSpinnerVisibility = true;
-                IsConnectLampVisibility = false;
-            }
-            else
-            {
-                IsConnectButtonEnabled = true;
-                IsSpinnerVisibility = false;
-                IsConnectLampVisibility = true;
-            }
+            tcpClient.Close();
+            IsConnect = false;
+            MainWindowViewModel.DataSendViewModel.ReleaseAutoSend();
         }
 
-        private void IsConnect(bool isConnect)
-        {
-            if (isConnect)
-            {
-                IsDisConnectButtonVisibility = true;
-                MainWindowViewModel.DataSendViewModel.IsSendBtnEnabled = true;
-                MainWindowViewModel.DataSendViewModel.IsAutoSendBtnEnabled = true;
-            }
-            else
-            {
-                tcpClient.Close();
-                IsDisConnectButtonVisibility = false;
-                MainWindowViewModel.DataSendViewModel.ReleaseAutoSend();
-                MainWindowViewModel.DataSendViewModel.IsSendBtnEnabled = false;
-                MainWindowViewModel.DataSendViewModel.IsAutoSendBtnEnabled = false;
-            }
-        }
-
-        private string ReceiveTextConvert(byte[] sendByte)
+        private string ReceiveTextConvert(byte[] receiveByte)
         {
             if (MainWindowViewModel.ReceiveOptionViewModel.IsHex)
             {
-                return BitConverter.ToString(sendByte).Replace("-00", string.Empty).Replace("-", " ");
+                return BitConverter.ToString(receiveByte).Replace("-00", string.Empty).Replace("-", " ");
             }
 
             else
             {
-                return Encoding.ASCII.GetString(sendByte).Trim('\0');
+                return Encoding.ASCII.GetString(receiveByte).Trim('\0');
             }
         }
     }

@@ -22,7 +22,7 @@
         <Grid Grid.Row="0">
             <DockPanel>
                 <ToggleButton Content="Auto Send" Width="90" Height="25" HorizontalAlignment="Left" 
-                              IsChecked="{Binding IsAutoSend}" IsEnabled="{Binding IsAutoSendBtnEnabled}" Command="{Binding CommandAutoSendClick}"/>
+                              IsChecked="{Binding IsAutoSend}" IsEnabled="{Binding Source={x:Static viewModel:MainWindowViewModel.ConnectTCPViewModel}, Path=IsConnect}" Command="{Binding CommandAutoSendClick}"/>
                 <Grid Margin="20,2,0,0" Visibility="{Binding IsAutoSend, Converter={StaticResource BoolToVisibility}}">
                     <WrapPanel VerticalAlignment="Center">
                         <TextBlock Text="Every(Sec)" Foreground="{StaticResource ContentForegroundBrush}" FontSize="13" FontFamily="/Fonts/#Roboto Light"/>
@@ -50,7 +50,8 @@
                     <KeyBinding Key="Enter" Command="{Binding CommandSendClick}"/>
                 </TextBox.InputBindings>
             </TextBox>
-            <Button Grid.Column="1" Content="Send" Width="50" HorizontalAlignment="Right" IsEnabled="{Binding IsSendBtnEnabled}" Command="{Binding CommandSendClick}"/>
+            <Button Grid.Column="1" Content="Send" Width="50" HorizontalAlignment="Right" 
+                    IsEnabled="{Binding Source={x:Static viewModel:MainWindowViewModel.ConnectTCPViewModel}, Path=IsConnect}" Command="{Binding CommandSendClick}"/>
         </Grid>
     </Grid>
 </UserControl>

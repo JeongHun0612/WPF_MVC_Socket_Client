@@ -37,13 +37,13 @@
 
         <!-- Connect Button -->
         <Button Grid.Row="1" Grid.Column="1" Content="Connect" Width="80" Height="25" HorizontalAlignment="Center" Margin="40,0,0,0"
-                IsEnabled="{Binding IsConnectButtonEnabled}" Command="{Binding CommandConnectClick}" CommandParameter="{Binding ElementName=IpMaskedTextBoxView}"/>
+                IsEnabled="{Binding IsConnecting, Converter={StaticResource NegateBooleanConverter}}" Command="{Binding CommandConnectClick}" CommandParameter="{Binding ElementName=IpMaskedTextBoxView}"/>
         <Button Grid.Row="1" Grid.Column="1" Content="Disconnect" Width="80" Height="25" HorizontalAlignment="Center" Margin="40,0,0,0"
-                Visibility="{Binding IsDisConnectButtonVisibility, Converter={StaticResource BoolToVisibility}}" Command="{Binding CommandDisConnectClick}"/>
-        <Grid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Visibility="{Binding IsConnectLampVisibility, Converter={StaticResource BoolToVisibility}}">
+                Visibility="{Binding IsConnect, Converter={StaticResource BoolToVisibility}}" Command="{Binding CommandDisConnectClick}"/>
+        <Grid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Visibility="{Binding IsConnecting, Converter={StaticResource BoolToVisibilityReverse}}">
             <Ellipse  Width="20" Height="20" Fill="#717171"/>
             <Ellipse Style="{DynamicResource ConnectLampStyle}" Width="16" Height="16" Stroke="Black"/>
         </Grid>
-        <control:ucSpinnerSwirl Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Visibility="{Binding IsSpinnerVisibility, Converter={StaticResource BoolToVisibility}}" Margin="0,5,22,0"/>
+        <control:ucSpinnerSwirl Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Visibility="{Binding IsConnecting, Converter={StaticResource BoolToVisibility}}" Margin="0,5,22,0"/>
     </Grid>
 </UserControl>

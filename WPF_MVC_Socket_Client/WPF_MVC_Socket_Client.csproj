@@ -63,6 +63,7 @@
     </ApplicationDefinition>
     <Compile Include="Library\BoolToVisibility.cs" />
     <Compile Include="Library\FocusExtension.cs" />
+    <Compile Include="Library\NegateBooleanConverter.cs" />
     <Compile Include="Model\ReceiveDataModel.cs" />
     <Compile Include="ViewModel\ConnectTCPViewModel.cs" />
     <Compile Include="ViewModel\DataReceiveViewModel.cs" />

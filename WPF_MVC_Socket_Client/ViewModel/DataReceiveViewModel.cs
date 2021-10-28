@@ -60,7 +60,6 @@ namespace WPF_MVC_Socket_Client.ViewModel
 
         private void SaveClick(object obj)
         {
-            Debug.WriteLine("Save Click");
             SaveFileDialog fileDialog = new SaveFileDialog();
 
             fileDialog.Filter = "Text File (*.txt;)|*.txt;";

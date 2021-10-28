@@ -14,7 +14,7 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <DataTrigger Binding="{Binding Source={x:Static viewModel:MainWindowViewModel.ConnectTCPViewModel}, Path=IsDisConnectButtonVisibility}" Value="True">
+            <DataTrigger Binding="{Binding IsConnect}" Value="True">
                 <Setter Property="Fill">
                     <Setter.Value>
                         <LinearGradientBrush StartPoint="0 0" EndPoint="1 1">
