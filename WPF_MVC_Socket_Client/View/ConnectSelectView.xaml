@@ -19,15 +19,20 @@
 
     <Grid Margin="5">
         <TabControl TabStripPlacement="Left" VerticalAlignment="Center" Background="{StaticResource AreaBackgroundBrush}" BorderBrush="{x:Null}">
+            <!-- TCP -->
             <TabItem Style="{DynamicResource TabItemStyle}" Header="TCP">
                 <GroupBox Header="Connect Setting">
                     <view:ConnectTCPView/>
                 </GroupBox>
             </TabItem>
+            
+            <!-- UDP -->
             <TabItem Style="{DynamicResource TabItemStyle}" Header="UDP">
                 <GroupBox Header="Connect Setting">
                 </GroupBox>
             </TabItem>
+
+            <!-- Serial -->
             <TabItem Style="{DynamicResource TabItemStyle}" Header="Serial">
                 <GroupBox Header="Connect Setting">
                 </GroupBox>

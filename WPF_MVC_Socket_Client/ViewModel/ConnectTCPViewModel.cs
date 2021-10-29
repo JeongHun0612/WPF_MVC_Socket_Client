@@ -99,6 +99,7 @@ namespace WPF_MVC_Socket_Client.ViewModel
             {
                 IsConnect = true;
                 IsConnecting = false;
+                MainWindowViewModel.DataSendViewModel.IsSendBtnEnabled = true;
                 tcpClient.EndConnect(result);
                 ReceiveMessage();
             }
@@ -152,6 +153,7 @@ namespace WPF_MVC_Socket_Client.ViewModel
             tcpClient.Close();
             IsConnect = false;
             MainWindowViewModel.DataSendViewModel.ReleaseAutoSend();
+            MainWindowViewModel.DataSendViewModel.IsSendBtnEnabled = false;
         }
 
         private string ReceiveTextConvert(byte[] receiveByte)

@@ -28,25 +28,18 @@ namespace WPF_MVC_Socket_Client.ViewModel
             set { this.sendText = value; Notify("SendText"); }
         }
 
-        private bool isSendBtnEnabled = false;
-        public bool IsSendBtnEnabled
-        {
-            get { return this.isSendBtnEnabled; }
-            set { this.isSendBtnEnabled = value; Notify("IsSendBtnEnabled"); }
-        }
-
-        private bool isAutoSendBtnEnabled = false;
-        public bool IsAutoSendBtnEnabled
-        {
-            get { return this.isAutoSendBtnEnabled; }
-            set { this.isAutoSendBtnEnabled = value; Notify("IsAutoSendBtnEnabled"); }
-        }
-
         private bool isSendTextBoxFocus = false;
         public bool IsSendTextBoxFocus
         {
             get { return this.isSendTextBoxFocus; }
             set { this.isSendTextBoxFocus = value; Notify("IsSendTextBoxFocus"); }
+        }
+
+        private bool isSendBtnEnabled = false;
+        public bool IsSendBtnEnabled
+        {
+            get { return this.isSendBtnEnabled; }
+            set { this.isSendBtnEnabled = value; Notify("IsSendBtnEnabled"); }
         }
 
         private bool isAutoSend = false;
@@ -84,30 +77,30 @@ namespace WPF_MVC_Socket_Client.ViewModel
             set => this.commandValueChanged = value;
         }
 
-
         private void SendClick(object obj)
         {
             if (SendText != string.Empty)
             {
                 DataSend();
+                SendText = string.Empty;
             }
 
-            SendText = string.Empty;
             IsSendTextBoxFocus = false;
             IsSendTextBoxFocus = true;
         }
 
         private void AutoSendClick(object obj)
         {
-            if (IsAutoSend && SendText != string.Empty)
+            if (IsAutoSend)
             {
                 DataSend();
                 timer.Start();
                 IsSendBtnEnabled = false;
+                IsSendTextBoxFocus = false;
+                IsSendTextBoxFocus = true;
             }
             else
             {
-                IsSendBtnEnabled = true;
                 ReleaseAutoSend();
             }
         }
@@ -116,6 +109,7 @@ namespace WPF_MVC_Socket_Client.ViewModel
         {
             timer.Stop();
             IsAutoSend = false;
+            IsSendBtnEnabled = true;
             SendText = string.Empty;
         }
 
@@ -135,9 +129,7 @@ namespace WPF_MVC_Socket_Client.ViewModel
 
         private void DataSend()
         {
-            byte[] sendByte = null;
-
-            sendByte = IsHex(SendText) ? HexToByte() : AsciiToByte();
+            byte[] sendByte = IsHex(SendText) ? HexToByte() : AsciiToByte();
 
             try
             {
@@ -160,6 +152,19 @@ namespace WPF_MVC_Socket_Client.ViewModel
             {
                 Debug.WriteLine(e.Message);
             }
+        }
+
+        private bool IsHex(string sendText)
+        {
+            foreach (char sendTextChar in sendText.Replace(" ", string.Empty))
+            {
+                if (!Uri.IsHexDigit(sendTextChar))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         private byte[] HexToByte()
@@ -191,19 +196,6 @@ namespace WPF_MVC_Socket_Client.ViewModel
             {
                 return Encoding.ASCII.GetString(sendByte).Trim('\0');
             }
-        }
-
-        private bool IsHex(string sendText)
-        {
-            foreach (char c in sendText.Replace(" ", string.Empty))
-            {
-                if (!Uri.IsHexDigit(c))
-                {
-                    return false;
-                }
-            }
-
-            return true;
         }
     }
 }

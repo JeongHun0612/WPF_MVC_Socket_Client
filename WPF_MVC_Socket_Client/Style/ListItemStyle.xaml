@@ -71,9 +71,21 @@
         </Setter>
     </Style>
 
+    <!-- RXTXRectAngleStyle -->
+    <Style x:Key="RXTXRectAngleStyle" TargetType="{x:Type Rectangle}">
+        <Setter Property="Stroke" Value="Black"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RXTXTag}" Value="[RX]">
+                <Setter Property="Fill" Value="{StaticResource ListItemRXTagForegroundBrush}"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RXTXTag}" Value="[TX]">
+                <Setter Property="Fill" Value="{StaticResource ListItemTXTagForegroundBrush}"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
     <!-- RXTXTagTextStyle -->
     <Style x:Key="RXTXTagTextStyle" TargetType="{x:Type TextBlock}">
-        <Setter Property="Margin" Value="5,0,5,0"/>
         <Style.Triggers>
             <DataTrigger Binding="{Binding RXTXTag}" Value="[RX]">
                 <Setter Property="Foreground" Value="{StaticResource ListItemRXTagForegroundBrush}"/>
@@ -83,7 +95,7 @@
             </DataTrigger>
         </Style.Triggers>
     </Style>
-  
+
     <!-- ContentTextStyle -->
     <Style x:Key="ContentTextStyle" TargetType="{x:Type TextBlock}">
         <Style.Triggers>

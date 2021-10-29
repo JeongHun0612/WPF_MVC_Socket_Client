@@ -19,6 +19,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <!-- Auto Send -->
         <Grid Grid.Row="0">
             <DockPanel>
                 <ToggleButton Content="Auto Send" Width="90" Height="25" HorizontalAlignment="Left" 
@@ -39,6 +40,7 @@
             </DockPanel>
         </Grid>
 
+        <!-- Send -->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -50,8 +52,7 @@
                     <KeyBinding Key="Enter" Command="{Binding CommandSendClick}"/>
                 </TextBox.InputBindings>
             </TextBox>
-            <Button Grid.Column="1" Content="Send" Width="50" HorizontalAlignment="Right" 
-                    IsEnabled="{Binding Source={x:Static viewModel:MainWindowViewModel.ConnectTCPViewModel}, Path=IsConnect}" Command="{Binding CommandSendClick}"/>
+            <Button Grid.Column="1" Content="Send" Width="50" HorizontalAlignment="Right" IsEnabled="{Binding IsSendBtnEnabled}" Command="{Binding CommandSendClick}"/>
         </Grid>
     </Grid>
 </UserControl>
