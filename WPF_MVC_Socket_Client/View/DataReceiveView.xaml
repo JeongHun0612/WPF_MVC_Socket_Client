@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:viewModel="clr-namespace:WPF_MVC_Socket_Client.ViewModel"
              xmlns:model="clr-namespace:WPF_MVC_Socket_Client.Model"
              mc:Ignorable="d" 
@@ -24,7 +23,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Save & Clear Button -->
+         <!--Save & Clear Button--> 
         <Grid Grid.Row="0" HorizontalAlignment="Right" Margin="0,2,0,0">
             <WrapPanel>
                 <Button Content="Save" Width="70" Height="25" Command="{Binding CommandSaveClick}"/>
@@ -32,14 +31,14 @@
             </WrapPanel>
         </Grid>
 
-        <!-- DataReceive ListView -->
+         <!--DataReceive ListView--> 
         <Border Grid.Row="1" Background="{StaticResource MainBackgroundBrush}" BorderBrush="{StaticResource ContentBorderBrush}" BorderThickness="1">
             <ScrollViewer ScrollViewer.ScrollChanged="DataReceiveListView_ScrollChanged" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled">
                 <ListView x:Name="DataReceiveListView" ItemsSource="{Binding ReceiveDataCollection}" Background="Transparent" BorderThickness="0" Foreground="{StaticResource ContentForegroundBrush}" SelectionMode="Extended">
                     <ListView.ItemTemplate>
                         <DataTemplate DataType="{x:Type model:ReceiveDataModel}">
                             <WrapPanel>
-                                <!--<Rectangle Style="{DynamicResource RXTXRectAngleStyle}" Width="10" Visibility="{Binding Source={x:Static viewModel:MainWindowViewModel.ReceiveOptionViewModel}, Path=IsRXTXTag, Converter={StaticResource BoolToVisibilityReverse}}"/>-->
+                                <Rectangle Style="{DynamicResource RXTXRectAngleStyle}" Width="10" Visibility="{Binding Source={x:Static viewModel:MainWindowViewModel.ReceiveOptionViewModel}, Path=IsRXTXTag, Converter={StaticResource BoolToVisibilityReverse}}"/>
                                 <TextBlock Width="Auto" Style="{DynamicResource RXTXTagTextStyle}" Text="{Binding RXTXTag}" Margin="0,0,5,0"
                                        Visibility="{Binding Source={x:Static viewModel:MainWindowViewModel.ReceiveOptionViewModel}, Path=IsRXTXTag, Converter={StaticResource BoolToVisibility}}"/>
                                 <TextBlock Width="Auto" Text="{Binding Time}" Margin="0,0,5,0" 

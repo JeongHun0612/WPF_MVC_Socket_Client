@@ -66,6 +66,7 @@
     <Compile Include="Library\NegateBooleanConverter.cs" />
     <Compile Include="Model\ReceiveDataModel.cs" />
     <Compile Include="ViewModel\ConnectTCPViewModel.cs" />
+    <Compile Include="ViewModel\ConnectUDPViewModel.cs" />
     <Compile Include="ViewModel\DataReceiveViewModel.cs" />
     <Compile Include="ViewModel\DataSendViewModel.cs" />
     <Compile Include="ViewModel\ICommand.cs" />
@@ -77,6 +78,9 @@
     </Compile>
     <Compile Include="View\ConnectTCPView.xaml.cs">
       <DependentUpon>ConnectTCPView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ConnectUDPView.xaml.cs">
+      <DependentUpon>ConnectUDPView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Control\ucSpinnerSwirl.xaml.cs">
       <DependentUpon>ucSpinnerSwirl.xaml</DependentUpon>
@@ -165,6 +169,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ConnectTCPView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ConnectUDPView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -27,6 +27,11 @@
                         <Trigger Property="IsFocused" Value="true">
                             <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource ContentPressedBackgroundBrush}"/>
                         </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource ContentEnabledBackgroundBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource ContentBorderBrush}"/>
+                            <Setter Property="Opacity" TargetName="border" Value="0.5"/>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

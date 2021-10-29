@@ -29,6 +29,7 @@
             <!-- UDP -->
             <TabItem Style="{DynamicResource TabItemStyle}" Header="UDP">
                 <GroupBox Header="Connect Setting">
+                    <view:ConnectUDPView/>
                 </GroupBox>
             </TabItem>
 
