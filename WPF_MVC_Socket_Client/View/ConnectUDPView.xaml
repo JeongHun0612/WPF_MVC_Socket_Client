@@ -44,6 +44,5 @@
             <Ellipse  Width="20" Height="20" Fill="#717171"/>
             <Ellipse Style="{DynamicResource ConnectLampStyle}" Width="16" Height="16" Stroke="Black"/>
         </Grid>
-        <control:ucSpinnerSwirl Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Visibility="{Binding IsConnecting, Converter={StaticResource BoolToVisibility}}" Margin="0,5,22,0"/>
     </Grid>
 </UserControl>

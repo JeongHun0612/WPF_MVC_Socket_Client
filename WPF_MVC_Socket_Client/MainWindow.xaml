@@ -58,7 +58,5 @@
                 </Grid>
             </Border>
         </Grid>
-
-        <!--<control:LoadingAnimation Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
     </Grid>
 </Window>

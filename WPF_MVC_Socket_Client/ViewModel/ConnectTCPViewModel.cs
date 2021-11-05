@@ -4,7 +4,6 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using System.Windows;
 using System.Windows.Threading;
 using WPF_MVC_Socket_Client.Model;
 using WPF_MVC_Socket_Client.View;
@@ -107,8 +106,6 @@ namespace WPF_MVC_Socket_Client.ViewModel
 
         private void ReceiveMessage()
         {
-            string receiveMessage = string.Empty;
-
             while (true)
             {
                 byte[] receiveByte = new byte[1024];
@@ -121,18 +118,18 @@ namespace WPF_MVC_Socket_Client.ViewModel
                         break;
                     }
 
-                    Dispatcher.Invoke(() =>
+                    if (!MainWindowViewModel.ReceiveOptionViewModel.IsPause)
                     {
-                        if (!MainWindowViewModel.ReceiveOptionViewModel.IsPause)
+                        if (MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Count >= 100)
                         {
-                            if (MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Count >= 100)
-                            {
-                                MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.RemoveAt(0);
-                            }
-
-                            MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Add(new ReceiveDataModel("[RX]", ReceiveTextConvert(receiveByte), MainWindowViewModel.ReceiveOptionViewModel.IsReceive));
+                            MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.RemoveAt(0);
                         }
-                    });
+
+                        Dispatcher.Invoke(() =>
+                        {
+                            MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Add(new ReceiveDataModel("[RX]", ReceiveTextConvert(receiveByte), MainWindowViewModel.ReceiveOptionViewModel.IsReceive));
+                        });
+                    }
                 }
                 catch (Exception e)
                 {

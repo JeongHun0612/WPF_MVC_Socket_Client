@@ -3,6 +3,9 @@ using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
+using System.Windows;
+using WPF_MVC_Socket_Client.Model;
 using WPF_MVC_Socket_Client.View;
 
 namespace WPF_MVC_Socket_Client.ViewModel
@@ -16,6 +19,7 @@ namespace WPF_MVC_Socket_Client.ViewModel
             this.commandDisConnectClick = new DelegateCommand(DisConnectClick);
         }
 
+        private UdpClient udpClient = null;
 
         private string portNumText = string.Empty;
         public string PortNumText
@@ -36,13 +40,6 @@ namespace WPF_MVC_Socket_Client.ViewModel
         {
             get { return this.isConnect; }
             set { this.isConnect = value; Notify("IsConnect"); }
-        }
-
-        private bool isConnecting = false;
-        public bool IsConnecting
-        {
-            get { return this.isConnecting; }
-            set { this.isConnecting = value; Notify("IsConnecting"); }
         }
 
         private DelegateCommand commandConnectClick = null;
@@ -77,42 +74,76 @@ namespace WPF_MVC_Socket_Client.ViewModel
                 return;
             }
 
-            UdpClient udpClient = new UdpClient();
-            IPEndPoint ipe = new IPEndPoint(ipAddress, portNum);
+            udpClient = new UdpClient();
+            IPEndPoint remoteEP = new IPEndPoint(ipAddress, portNum);
 
-            byte[] data = Encoding.Default.GetBytes("Hello Client");
-            udpClient.Send(data, data.Length, ipe);
-            //Debug.Write(udpClient.Send(data, data.Length, ipe));
+            byte[] sendData = Encoding.Default.GetBytes("Send Data2");
+            udpClient.Send(sendData, sendData.Length, remoteEP);
+
+            IsConnect = true;
+            MainWindowViewModel.DataSendViewModel.IsSendBtnEnabled = true;
+            ThreadPool.QueueUserWorkItem(state => ReceiveMessage());
+
+            //try
+            //{
+            //    byte[] receiveData = new byte[1024];
+            //    receiveData = udpClient.Receive(ref localEP);
+            //    Debug.WriteLine(Encoding.ASCII.GetString(receiveData, 0, receiveData.Length));
+            //}
+            //catch (Exception e)
+            //{
+            //    Debug.WriteLine(e.Message);
+            //}
+
+       
+
+            //ThreadPool.QueueUserWorkItem(state => ReceiveMessage());
         }
-
+     
         private void ReceiveMessage()
         {
-            string receiveMessage = string.Empty;
+            IPEndPoint localEP = new IPEndPoint(IPAddress.Any, 0);
 
-            while (true)
+            try
             {
-                try
-                {
-                    Dispatcher.Invoke(() =>
-                    {
-                        if (!MainWindowViewModel.ReceiveOptionViewModel.IsPause)
-                        {
-                            if (MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Count >= 100)
-                            {
-                                MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.RemoveAt(0);
-                            }
-
-                            //MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Add(new ReceiveDataModel("[RX]", ReceiveTextConvert(receiveByte), MainWindowViewModel.ReceiveOptionViewModel.IsReceive));
-                        }
-                    });
-                }
-                catch (Exception e)
-                {
-                    Debug.WriteLine(e.Message);
-                    DisConnect();
-                    break;
-                }
+                byte[] receiveData = new byte[1024];
+                receiveData = udpClient.Receive(ref localEP);
+                Debug.WriteLine(Encoding.ASCII.GetString(receiveData, 0, receiveData.Length));
             }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Receive Error");
+                Debug.WriteLine(e.Message);
+            }
+
+            //IPEndPoint sendEP = new IPEndPoint(IPAddress.None, 0);
+
+            //while (true)
+            //{
+            //    try
+            //    {
+            //        byte[] receiveByte = udpClient.Receive(ref sendEP);
+
+            //        Dispatcher.Invoke(() =>
+            //        {
+            //            if (!MainWindowViewModel.ReceiveOptionViewModel.IsPause)
+            //            {
+            //                if (MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Count >= 100)
+            //                {
+            //                    MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.RemoveAt(0);
+            //                }
+
+            //                MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Add(new ReceiveDataModel("[RX]", ReceiveTextConvert(receiveByte), MainWindowViewModel.ReceiveOptionViewModel.IsReceive));
+            //            }
+            //        });
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        Debug.WriteLine(e.Message);
+            //        DisConnect();
+            //        break;
+            //    }
+            //}
         }
 
         private void DisConnectClick(object obj)
@@ -122,7 +153,7 @@ namespace WPF_MVC_Socket_Client.ViewModel
 
         private void DisConnect()
         {
-            //udpClient.Close();
+            udpClient.Close();
             IsConnect = false;
             MainWindowViewModel.DataSendViewModel.ReleaseAutoSend();
             MainWindowViewModel.DataSendViewModel.IsSendBtnEnabled = false;

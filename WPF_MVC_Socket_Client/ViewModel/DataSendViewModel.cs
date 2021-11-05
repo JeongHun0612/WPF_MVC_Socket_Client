@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Text;
-using System.Windows;
 using System.Windows.Threading;
 using WPF_MVC_Socket_Client.Model;
 
@@ -135,18 +134,18 @@ namespace WPF_MVC_Socket_Client.ViewModel
             {
                 ConnectTCPViewModel.tcpClient.GetStream().Write(sendByte, 0, sendByte.Length);
 
-                Dispatcher.Invoke(() =>
+                if (!MainWindowViewModel.ReceiveOptionViewModel.IsPause)
                 {
-                    if (!MainWindowViewModel.ReceiveOptionViewModel.IsPause)
+                    if (MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Count >= 100)
                     {
-                        if (MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Count >= 100)
-                        {
-                            MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.RemoveAt(0);
-                        }
-
-                        MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Add(new ReceiveDataModel("[TX]", SendTextConvert(sendByte), MainWindowViewModel.ReceiveOptionViewModel.IsTransmit));
+                        MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.RemoveAt(0);
                     }
-                });
+
+                    Dispatcher.Invoke(() =>
+                    {
+                        MainWindowViewModel.DataReceiveViewModel.ReceiveDataCollection.Add(new ReceiveDataModel("[TX]", SendTextConvert(sendByte), MainWindowViewModel.ReceiveOptionViewModel.IsTransmit));
+                    });
+                }
             }
             catch (Exception e)
             {

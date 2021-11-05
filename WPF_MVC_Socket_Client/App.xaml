@@ -14,6 +14,7 @@
                 <ResourceDictionary Source="pack://application:,,,/WPF_MVC_Socket_Client;component/Style/TabItemStyle.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/WPF_MVC_Socket_Client;component/Style/TextBoxStyle.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/WPF_MVC_Socket_Client;component/Style/CheckBoxStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WPF_MVC_Socket_Client;component/Style/ComboBoxStyle.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/WPF_MVC_Socket_Client;component/Style/RadioButtonStyle.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/WPF_MVC_Socket_Client;component/Style/ListItemStyle.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/WPF_MVC_Socket_Client;component/Style/SliderStyle.xaml"/>

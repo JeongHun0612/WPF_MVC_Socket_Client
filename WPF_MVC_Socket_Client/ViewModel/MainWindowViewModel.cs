@@ -14,6 +14,7 @@ namespace WPF_MVC_Socket_Client.ViewModel
 
         }
 
+        public static ConnectSelectViewModel ConnectSelectViewModel { get; set; } = null;
         public static ConnectTCPViewModel ConnectTCPViewModel { get; set; } = null;
         public static ConnectUDPViewModel ConnectUDPViewModel { get; set; } = null;
         public static ReceiveOptionViewModel ReceiveOptionViewModel { get; set; } = null;

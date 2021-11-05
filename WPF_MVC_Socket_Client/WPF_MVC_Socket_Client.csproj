@@ -64,7 +64,9 @@
     <Compile Include="Library\BoolToVisibility.cs" />
     <Compile Include="Library\FocusExtension.cs" />
     <Compile Include="Library\NegateBooleanConverter.cs" />
+    <Compile Include="Model\ClientDataModel.cs" />
     <Compile Include="Model\ReceiveDataModel.cs" />
+    <Compile Include="ViewModel\ConnectSelectViewModel.cs" />
     <Compile Include="ViewModel\ConnectTCPViewModel.cs" />
     <Compile Include="ViewModel\ConnectUDPViewModel.cs" />
     <Compile Include="ViewModel\DataReceiveViewModel.cs" />
@@ -125,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Style\CheckBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\ComboBoxStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

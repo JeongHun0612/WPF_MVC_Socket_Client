@@ -6,6 +6,7 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:library="clr-namespace:WPF_MVC_Socket_Client.Library"
              xmlns:viewModel="clr-namespace:WPF_MVC_Socket_Client.ViewModel"
+             xmlns:model="clr-namespace:WPF_MVC_Socket_Client.Model"
              mc:Ignorable="d" 
              d:DesignHeight="70" d:DesignWidth="900">
 
